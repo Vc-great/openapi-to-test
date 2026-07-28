@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: Widget API
+  version: 1.0.0
+  description: A compact local fixture for consumer-side code generation checks.
+servers:
+  - url: https://api.example.test
+tags:
+  - name: Widgets
+    description: Widget operations
+paths:
+  /widgets/{widgetId}:
+    get:
+      operationId: getWidget
+      summary: Get a widget
+      tags:
+        - Widgets
+      parameters:
+        - name: widgetId
+          in: path
+          required: true
+          description: Unique widget identifier
+          schema:
+            type: string
+        - name: includeDetails
+          in: query
+          required: false
+          description: Include extended details in the response
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: The requested widget
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Widget"
+        "404":
+          description: Widget not found
+  /widgets:
+    post:
+      operationId: createWidget
+      summary: Create a widget
+      tags:
+        - Widgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateWidgetRequest"
+      responses:
+        "201":
+          description: The created widget
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Widget"
+components:
+  schemas:
+    AuditMetadata:
+      type: object
+      required:
+        - createdAt
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    WidgetMetadata:
+      type: object
+      required:
+        - labels
+        - audit
+      properties:
+        labels:
+          type: array
+          items:
+            type: string
+        owner:
+          type: string
+        audit:
+          $ref: "#/components/schemas/AuditMetadata"
+    WidgetDetails:
+      type: object
+      required:
+        - category
+        - stockCount
+      properties:
+        category:
+          type: string
+          enum:
+            - basic
+            - premium
+        stockCount:
+          type: integer
+          minimum: 0
+    Widget:
+      type: object
+      required:
+        - id
+        - name
+        - status
+        - tags
+        - metadata
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - archived
+        tags:
+          type: array
+          items:
+            type: string
+        metadata:
+          $ref: "#/components/schemas/WidgetMetadata"
+        details:
+          $ref: "#/components/schemas/WidgetDetails"
+    CreateWidgetRequest:
+      type: object
+      required:
+        - name
+        - status
+        - tags
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - archived
+        tags:
+          type: array
+          items:
+            type: string
+        metadata:
+          $ref: "#/components/schemas/WidgetMetadata"
+        details:
+          $ref: "#/components/schemas/WidgetDetails"
