@@ -3,14 +3,16 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { parseJson, portableValue, runProcess, writeCommandEvidence, writeFailureEvidence } from "./lib/process.mjs";
-import { summarize, writeResultDocument } from "./lib/results.mjs";
+import { resultIdentity, summarize, writeResultDocument } from "./lib/results.mjs";
 
 const root = process.cwd();
+const identity = resultIdentity();
 const valueAfter = (flag) => process.argv.includes(flag)
   ? process.argv[process.argv.indexOf(flag) + 1]
   : undefined;
 const requestedSuite = valueAfter("--suite");
-const output = valueAfter("--output") ?? `.tmp/results-acceptance${requestedSuite ? `-${requestedSuite}` : ""}.json`;
+const output = valueAfter("--output") ??
+  `.tmp/verify-${identity.runId}/acceptance${requestedSuite ? `-${requestedSuite}` : ""}.json`;
 const results = [];
 const openapiBin = path.join(root, "node_modules/openapi-to/bin/openapi.js");
 const currentTsc = path.join(root, "node_modules/typescript-current/bin/tsc");
@@ -276,7 +278,14 @@ if (!requestedSuite || requestedSuite === "skills") {
   }
 }
 
-await writeResultDocument(root, output, results, { source: "acceptance", suite: requestedSuite ?? "all" });
+await writeResultDocument(root, output, results, {
+  source: "acceptance",
+  suite: requestedSuite ?? "all",
+  runId: identity.runId,
+  testHarnessCommit: identity.testHarnessCommit,
+  verifyStartedAt: identity.verifyStartedAt,
+  startedAt: identity.startedAt,
+});
 const summary = summarize(results);
 console.log(JSON.stringify(summary, null, 2));
 process.exitCode = summary.fail === 0 ? 0 : 1;

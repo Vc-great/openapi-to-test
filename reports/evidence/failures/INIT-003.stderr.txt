@@ -1,6 +1,6 @@
 - 📦 Initializing openapi-to
-- 📀 Writing `openapi.config.ts` <workspace>/.tmp/init-json-59941/openapi.config.ts
-✔ 📀 Wrote `openapi.config.ts` <workspace>/.tmp/init-json-59941/openapi.config.ts
-- 📀 Writing `/.openapi-to/` to the .gitignore <workspace>/.tmp/init-json-59941/.gitignore
-✔ 📀 Wrote `/.openapi-to/` to the .gitignore <workspace>/.tmp/init-json-59941/.gitignore
+- 📀 Writing `openapi.config.ts` <workspace>/.tmp/init-json-68360/openapi.config.ts
+✔ 📀 Wrote `openapi.config.ts` <workspace>/.tmp/init-json-68360/openapi.config.ts
+- 📀 Writing `/.openapi-to/` to the .gitignore <workspace>/.tmp/init-json-68360/.gitignore
+✔ 📀 Wrote `/.openapi-to/` to the .gitignore <workspace>/.tmp/init-json-68360/.gitignore
 ✔ 📦 initialized openapi-to

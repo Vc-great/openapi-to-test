@@ -4,11 +4,14 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { parseJson, portableValue, runProcess, writeCommandEvidence, writeFailureEvidence } from "./lib/process.mjs";
-import { summarize, writeResultDocument } from "./lib/results.mjs";
+import { resultIdentity, summarize, writeResultDocument } from "./lib/results.mjs";
 
 const root = process.cwd();
+const identity = resultIdentity();
 const outputIndex = process.argv.indexOf("--output");
-const output = outputIndex >= 0 ? process.argv[outputIndex + 1] : ".tmp/results-lifecycle.json";
+const output = outputIndex >= 0
+  ? process.argv[outputIndex + 1]
+  : `.tmp/verify-${identity.runId}/lifecycle.json`;
 const openapiBin = path.join(root, "node_modules/openapi-to/bin/openapi.js");
 const relativeOutputDir = `.tmp/lifecycle-${process.pid}`;
 const outputDir = path.join(root, relativeOutputDir);
@@ -245,7 +248,13 @@ try {
   await rm(outputDir, { recursive: true, force: true });
 }
 
-await writeResultDocument(root, output, results, { source: "lifecycle" });
+await writeResultDocument(root, output, results, {
+  source: "lifecycle",
+  runId: identity.runId,
+  testHarnessCommit: identity.testHarnessCommit,
+  verifyStartedAt: identity.verifyStartedAt,
+  startedAt: identity.startedAt,
+});
 const summary = summarize(results);
 console.log(JSON.stringify(summary, null, 2));
 process.exitCode = summary.fail === 0 ? 0 : 1;

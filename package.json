@@ -12,6 +12,7 @@
 		"test:security": "node scripts/acceptance.mjs --suite security",
 		"test:lifecycle": "node scripts/lifecycle.mjs",
 		"test:regression": "node scripts/acceptance.mjs --suite regression",
+		"test:verify-integrity": "node --test scripts/__tests__/verify-integrity.test.mjs",
 		"report": "node scripts/report.mjs"
 	},
 	"devDependencies": {

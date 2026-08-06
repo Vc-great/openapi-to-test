@@ -4,11 +4,14 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { portableValue, runProcess, writeCommandEvidence, writeFailureEvidence } from "./lib/process.mjs";
-import { summarize, writeResultDocument } from "./lib/results.mjs";
+import { resultIdentity, summarize, writeResultDocument } from "./lib/results.mjs";
 
 const root = process.cwd();
+const identity = resultIdentity();
 const outputIndex = process.argv.indexOf("--output");
-const output = outputIndex >= 0 ? process.argv[outputIndex + 1] : ".tmp/results-typescript-matrix.json";
+const output = outputIndex >= 0
+  ? process.argv[outputIndex + 1]
+  : `.tmp/verify-${identity.runId}/typescript-matrix.json`;
 const openapiBin = path.join(root, "node_modules/openapi-to/bin/openapi.js");
 const evidenceGenerated = path.join(root, "reports/evidence/generated-minimal");
 const evidenceHashes = path.join(root, "reports/evidence/hashes");
@@ -284,6 +287,10 @@ await writeFile(path.join(evidenceHashes, "generated-minimal.sha256.json"), `${J
 const swrPackage = JSON.parse(await readFile(path.join(root, "node_modules/swr/package.json"), "utf8"));
 await writeResultDocument(root, output, results, {
   source: "typescript-matrix",
+  runId: identity.runId,
+  testHarnessCommit: identity.testHarnessCommit,
+  verifyStartedAt: identity.verifyStartedAt,
+  startedAt: identity.startedAt,
   compilerOptions: strictOptions,
   compilerDifferences: [],
   dependencies: { swr: swrPackage.version },

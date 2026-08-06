@@ -12,8 +12,7 @@ const resultDocument = JSON.parse(await readFile(resultsPath, "utf8"));
 const harnessPackage = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
 const pkg = JSON.parse(await readFile(path.join(root, "node_modules/openapi-to/package.json"), "utf8"));
 const lock = await readFile(path.join(root, "pnpm-lock.yaml"), "utf8");
-const baselineStart = JSON.parse(await readFile(path.join(root, "reports/evidence/commands/BASELINE-START.json"), "utf8"));
-const baselineGitStatus = baselineStart.commands.find((item) => item.command === "git status --short");
+const baseline = resultDocument.baseline;
 
 async function observedCommand(id, executable, args) {
   const result = await runProcess({ executable, args, cwd: root, stage: id, timeoutMs: 120_000 });
@@ -49,16 +48,46 @@ const environmentCommandsComplete = [
   gitHead,
   gitStatus,
 ].every((item) => item.result.exitCode === 0);
+const fragmentIdentityComplete = Object.values(resultDocument.sources ?? {})
+  .every((item) =>
+    item.runId === resultDocument.runId &&
+    item.testHarnessCommit === resultDocument.testHarnessCommit &&
+    item.fragmentIdentityValid === true
+  );
+const suiteExitCodesConsistent = Object.values(resultDocument.sources ?? {})
+  .every((item) => item.exitCodeConsistent === true);
+const allFailuresHaveRootCauses = resultDocument.cases
+  .filter((item) => item.status === "FAIL")
+  .every((item) => item.rootCauseId && Array.isArray(item.rootCauseIds) && item.rootCauseIds.length > 0);
+const baselineComplete =
+  baseline?.branch &&
+  baseline?.gitHead &&
+  Array.isArray(baseline?.gitStatus) &&
+  Number.isFinite(Date.parse(baseline?.startedAt)) &&
+  baseline.gitHead === resultDocument.testHarnessCommit;
+const testHarnessCommitMatchesBaseline = resultDocument.testHarnessCommit === baseline?.gitHead;
 const evidenceCompleteness = {
   requiredEvidenceCount: evidenceTargets.length,
   missingEvidence,
-  complete: missingEvidence.length === 0 && compilerVersionsComplete && environmentCommandsComplete,
+  complete: false,
+  fragmentIdentityComplete,
+  suiteExitCodesConsistent,
+  allFailuresHaveRootCauses,
+  baselineComplete: Boolean(baselineComplete),
   compilerVersionsComplete,
+  testHarnessCommitMatchesBaseline,
   environmentCommandsComplete,
 };
+evidenceCompleteness.complete =
+  missingEvidence.length === 0 &&
+  Object.entries(evidenceCompleteness)
+    .filter(([key]) => !["complete", "requiredEvidenceCount", "missingEvidence"].includes(key))
+    .every(([, value]) => value === true) &&
+  resultDocument.evidenceCompleteness?.complete === true;
+const reportGeneratedAt = new Date().toISOString();
 const environment = {
   reportSchemaVersion: resultDocument.schemaVersion,
-  testDate: new Date().toISOString(),
+  testDate: reportGeneratedAt,
   os: `${os.platform()} ${os.release()} ${os.arch()}`,
   node: process.version,
   pnpm: pnpmVersion.result.exitCode === 0 ? pnpmVersion.result.stdout.trim() : null,
@@ -67,12 +96,15 @@ const environment = {
   installedVersion: pkg.version,
   distTagsObserved: distTags.result.exitCode === 0 ? distTagsValue : null,
   distTagsEvidence: distTags.evidence,
-  testHarnessCommit: resultDocument.testHarnessCommit ?? (gitHead.result.exitCode === 0 ? gitHead.result.stdout.trim() : null),
-  gitHead: gitHead.result.exitCode === 0 ? gitHead.result.stdout.trim() : null,
-  gitStatus: gitStatus.result.exitCode === 0 ? gitStatus.result.stdout.split("\n").filter(Boolean) : null,
+  runId: resultDocument.runId,
+  verifyStartedAt: resultDocument.verifyStartedAt,
+  resultsGeneratedAt: resultDocument.generatedAt,
+  reportGeneratedAt,
+  testHarnessCommit: resultDocument.testHarnessCommit,
+  baseline,
+  reportTimeGitHead: gitHead.result.exitCode === 0 ? gitHead.result.stdout.trim() : null,
+  reportTimeGitStatus: gitStatus.result.exitCode === 0 ? gitStatus.result.stdout.split("\n").filter(Boolean) : null,
   gitEvidence: [gitHead.evidence, gitStatus.evidence],
-  gitStartStatus: baselineGitStatus?.stdout.split("\n").filter(Boolean) ?? null,
-  baselineStartEvidence: "reports/evidence/commands/BASELINE-START.json",
   testedPackageIntegrity: {
     registry: registryIntegrity.result.exitCode === 0 ? registryIntegrityValue : null,
     lockfile: lockIntegrity,
@@ -155,16 +187,22 @@ const report = `# openapi-to@${pkg.version} 独立消费者验收报告
 ## 报告与环境证据
 
 - Report schema version：${resultDocument.schemaVersion}
+- Run ID：${environment.runId ?? "NO_EVIDENCE"}
 - Test harness commit：${environment.testHarnessCommit ?? "NO_EVIDENCE"}
+- Baseline branch：${environment.baseline?.branch ?? "NO_EVIDENCE"}
+- Baseline Git HEAD：${environment.baseline?.gitHead ?? "NO_EVIDENCE"}
+- Baseline working tree status：${Array.isArray(environment.baseline?.gitStatus) ? (environment.baseline.gitStatus.length === 0 ? "clean" : `${environment.baseline.gitStatus.length} 条变更`) : "NO_EVIDENCE"}
+- Verify startedAt：${environment.verifyStartedAt ?? "NO_EVIDENCE"}
+- Results generatedAt：${environment.resultsGeneratedAt ?? "NO_EVIDENCE"}
+- Report generatedAt：${environment.reportGeneratedAt}
+- Current report-time Git HEAD：${environment.reportTimeGitHead ?? "NO_EVIDENCE"}
+- Current report-time working tree status：${environment.reportTimeGitStatus ? `${environment.reportTimeGitStatus.length} 条变更` : "NO_EVIDENCE"}
 - Tested package：openapi-to@${environment.installedVersion}
 - Tested package integrity：${environment.testedPackageIntegrity.matches ? "registry 与 lockfile 一致" : "未能证明一致"}
 - Node：${environment.node}
 - pnpm：${environment.pnpm ?? "NO_EVIDENCE"}
 - npm Registry：${environment.registry ?? "NO_EVIDENCE"}
 - dist-tags：${environment.distTagsObserved ? JSON.stringify(environment.distTagsObserved) : "NO_EVIDENCE"}
-- Git HEAD：${environment.gitHead ?? "NO_EVIDENCE"}
-- Git 起始状态：${environment.gitStartStatus ? (environment.gitStartStatus.length === 0 ? "clean" : `${environment.gitStartStatus.length} 条变更`) : "NO_EVIDENCE"}（${environment.baselineStartEvidence}）
-- 工作树状态证据：${environment.gitStatus ? `${environment.gitStatus.length} 条变更` : "NO_EVIDENCE"}
 - Evidence completeness：${environment.evidenceCompleteness.complete ? "COMPLETE" : `INCOMPLETE（missing=${environment.evidenceCompleteness.missingEvidence.length}）`}
 
 ## 测试统计
@@ -268,3 +306,4 @@ ${matrixRows}
 `;
 await writeFile(path.join(root, "reports/generated-code-review.md"), generatedReview);
 console.log(`wrote result-driven reports (${summary.total} cases, ${failures.length} failures)`);
+process.exitCode = evidenceCompleteness.complete ? 0 : 1;

@@ -7,16 +7,22 @@
 ## 报告与环境证据
 
 - Report schema version：2.0.0
-- Test harness commit：0866dd1e4d511bdf5499c5bc0fb46511273cebe2
+- Run ID：454c4b2c-c8ac-428e-947e-8812fce1655b
+- Test harness commit：ad97c11e77d7e16fc21d47009fc3d94bed2de224
+- Baseline branch：main
+- Baseline Git HEAD：ad97c11e77d7e16fc21d47009fc3d94bed2de224
+- Baseline working tree status：110 条变更
+- Verify startedAt：2026-08-06T08:10:48.338Z
+- Results generatedAt：2026-08-06T08:11:55.078Z
+- Report generatedAt：2026-08-06T08:11:56.800Z
+- Current report-time Git HEAD：ad97c11e77d7e16fc21d47009fc3d94bed2de224
+- Current report-time working tree status：112 条变更
 - Tested package：openapi-to@4.0.0-rc.3
 - Tested package integrity：registry 与 lockfile 一致
 - Node：v24.8.0
 - pnpm：10.33.0
 - npm Registry：https://registry.npmjs.org
 - dist-tags：{"alpha":"3.0.0-alpha.5","latest":"3.2.2","rc":"4.0.0-rc.3"}
-- Git HEAD：0866dd1e4d511bdf5499c5bc0fb46511273cebe2
-- Git 起始状态：clean（reports/evidence/commands/BASELINE-START.json）
-- 工作树状态证据：38 条变更
 - Evidence completeness：COMPLETE
 
 ## 测试统计

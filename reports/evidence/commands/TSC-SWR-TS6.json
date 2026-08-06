@@ -12,7 +12,7 @@
   "exitCode": 2,
   "signal": null,
   "timedOut": false,
-  "durationMs": 1868,
+  "durationMs": 1759,
   "requestedVersion": "6.0.3",
   "actualVersion": "6.0.3",
   "compilerOptions": {
