@@ -1,24 +1,21 @@
-import { spawn } from "node:child_process";
 import path from "node:path";
 import process from "node:process";
+import { runProcess } from "./lib/process.mjs";
 
-const executable = path.join(process.cwd(), "node_modules/.bin/openapi");
-function inspect() {
-  return new Promise((resolve) => {
-    const child = spawn(executable, ["inspect", "fixtures/openapi30/main.yaml", "--json"], {
-      cwd: process.cwd(),
-      env: { ...process.env, NO_UPDATE_NOTIFIER: "1" },
-      stdio: ["ignore", "pipe", "pipe"],
-    });
-    let stdout = "";
-    let stderr = "";
-    child.stdout.on("data", (chunk) => { stdout += chunk; });
-    child.stderr.on("data", (chunk) => { stderr += chunk; });
-    child.on("close", (exitCode) => resolve({ exitCode, stdout, stderr }));
+const root = process.cwd();
+const openapiBin = path.join(root, "node_modules/openapi-to/bin/openapi.js");
+
+async function inspect(stage) {
+  return await runProcess({
+    executable: process.execPath,
+    args: [openapiBin, "inspect", "fixtures/openapi30/main.yaml", "--json"],
+    cwd: root,
+    stage,
   });
 }
-const first = await inspect();
-const second = await inspect();
+
+const first = await inspect("inspect-stability:first");
+const second = await inspect("inspect-stability:second");
 const result = {
   byteStable: first.stdout === second.stdout,
   firstExit: first.exitCode,

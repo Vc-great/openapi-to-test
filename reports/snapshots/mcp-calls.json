@@ -7675,11 +7675,11 @@
     "plan": {
       "kind": "selective",
       "applySupported": true,
-      "planId": "8289a966-2d5c-4ee5-a962-1e72d7e37bda",
-      "token": "6NMwmBVpR3BiFhLI3OYtKleumJsZxJ49CRzJylUC7NE",
-      "planHash": "8b366de5e39395920a61c5326424b818981a7aa2777a004b23bc9751bc5eb292",
-      "createdAt": "2026-08-06T05:38:30.124Z",
-      "expiresAt": "2026-08-06T05:43:30.124Z",
+      "planId": "[DYNAMIC_ID]",
+      "token": "[REDACTED]",
+      "planHash": "[DYNAMIC_HASH]",
+      "createdAt": "[DYNAMIC_TIMESTAMP]",
+      "expiresAt": "[DYNAMIC_TIMESTAMP]",
       "targets": [
         "mcp-api"
       ],
@@ -7807,15 +7807,15 @@
     "selectionHash": "sha256:8a51240805507ac70e52252cbc974b8bf23825ffed6024e91e8b9594bba2426c",
     "projectionHash": "78ec2d2ea53998828e5376ec459ad0567a17c88b533fcff0f899419b85563c0a",
     "transactionMetrics": {
-      "stagingMs": 48,
-      "commitMs": 59,
+      "stagingMs": "[DYNAMIC_DURATION]",
+      "commitMs": "[DYNAMIC_DURATION]",
       "stagedBytes": 2780,
       "backupBytes": 1495,
       "journalBytes": 1944
     },
-    "planId": "8289a966-2d5c-4ee5-a962-1e72d7e37bda",
-    "planHash": "8b366de5e39395920a61c5326424b818981a7aa2777a004b23bc9751bc5eb292",
-    "transactionId": "f5125a75-6aa2-4e9e-8f03-a915c0a437a2",
+    "planId": "[DYNAMIC_ID]",
+    "planHash": "[DYNAMIC_HASH]",
+    "transactionId": "[DYNAMIC_ID]",
     "summary": {
       "added": 2,
       "modified": 0,
@@ -7883,11 +7883,11 @@
     "plan": {
       "kind": "selective",
       "applySupported": true,
-      "planId": "f4ee2e85-1496-49b5-a1d6-5234002981a1",
-      "token": "EQDYZ3-tyZVRbPbleExOW126KMG971kygD9073xzWFM",
-      "planHash": "1cc27887c0bd136cb28ce8029e0f14f074e38bede50155ab3f161383c59e7d31",
-      "createdAt": "2026-08-06T05:38:30.322Z",
-      "expiresAt": "2026-08-06T05:43:30.322Z",
+      "planId": "[DYNAMIC_ID]",
+      "token": "[REDACTED]",
+      "planHash": "[DYNAMIC_HASH]",
+      "createdAt": "[DYNAMIC_TIMESTAMP]",
+      "expiresAt": "[DYNAMIC_TIMESTAMP]",
       "targets": [
         "mcp-api"
       ],
@@ -8000,15 +8000,15 @@
     "selectionHash": "sha256:8a51240805507ac70e52252cbc974b8bf23825ffed6024e91e8b9594bba2426c",
     "projectionHash": "78ec2d2ea53998828e5376ec459ad0567a17c88b533fcff0f899419b85563c0a",
     "transactionMetrics": {
-      "stagingMs": 26,
-      "commitMs": 60,
+      "stagingMs": "[DYNAMIC_DURATION]",
+      "commitMs": "[DYNAMIC_DURATION]",
       "stagedBytes": 1896,
       "backupBytes": 1896,
       "journalBytes": 1492
     },
-    "planId": "f4ee2e85-1496-49b5-a1d6-5234002981a1",
-    "planHash": "1cc27887c0bd136cb28ce8029e0f14f074e38bede50155ab3f161383c59e7d31",
-    "transactionId": "c653b027-aedd-4514-825f-0b529391f4ca",
+    "planId": "[DYNAMIC_ID]",
+    "planHash": "[DYNAMIC_HASH]",
+    "transactionId": "[DYNAMIC_ID]",
     "summary": {
       "added": 0,
       "modified": 0,
@@ -8042,11 +8042,11 @@
     "plan": {
       "kind": "selective",
       "applySupported": true,
-      "planId": "d346d1b9-b15f-42e1-ad32-21ffc5c24461",
-      "token": "g48bzsIAHyXA09CtwW1RmeUQokh-Ch9iIu2ZAssiRAI",
-      "planHash": "2d24ec178f62453e7c59362a7646718bbafd282ad6cde53a66bcf485d1d5b333",
-      "createdAt": "2026-08-06T05:38:30.458Z",
-      "expiresAt": "2026-08-06T05:43:30.458Z",
+      "planId": "[DYNAMIC_ID]",
+      "token": "[REDACTED]",
+      "planHash": "[DYNAMIC_HASH]",
+      "createdAt": "[DYNAMIC_TIMESTAMP]",
+      "expiresAt": "[DYNAMIC_TIMESTAMP]",
       "targets": [
         "mcp-api"
       ],
@@ -8174,15 +8174,15 @@
     "selectionHash": "sha256:50878e25be7b5da6b9278ab877fabe93953c1c6976b4f7a20f5f81c11c8947b3",
     "projectionHash": "290e4d0b828169714c4c3bdc8689179579558c1d33f02c972dc47e90e1886a8e",
     "transactionMetrics": {
-      "stagingMs": 29,
-      "commitMs": 55,
+      "stagingMs": "[DYNAMIC_DURATION]",
+      "commitMs": "[DYNAMIC_DURATION]",
       "stagedBytes": 1495,
       "backupBytes": 2780,
       "journalBytes": 2128
     },
-    "planId": "d346d1b9-b15f-42e1-ad32-21ffc5c24461",
-    "planHash": "2d24ec178f62453e7c59362a7646718bbafd282ad6cde53a66bcf485d1d5b333",
-    "transactionId": "29e69bd9-681c-415e-bd9f-00f99b90662f",
+    "planId": "[DYNAMIC_ID]",
+    "planHash": "[DYNAMIC_HASH]",
+    "transactionId": "[DYNAMIC_ID]",
     "summary": {
       "added": 0,
       "modified": 0,
@@ -8219,11 +8219,11 @@
     "plan": {
       "kind": "full",
       "applySupported": true,
-      "planId": "80116b49-fd1f-4e24-8cfc-17674472896e",
-      "token": "mgrc25g_ClpyNN9skoMmOzadXvA9rQUCBHdZde7ThCQ",
-      "planHash": "7dd029f7e1fc97ef7b8e329d0e00dce3d0570ad01ec99a074898684922075575",
-      "createdAt": "2026-08-06T05:38:30.589Z",
-      "expiresAt": "2026-08-06T05:43:30.589Z",
+      "planId": "[DYNAMIC_ID]",
+      "token": "[REDACTED]",
+      "planHash": "[DYNAMIC_HASH]",
+      "createdAt": "[DYNAMIC_TIMESTAMP]",
+      "expiresAt": "[DYNAMIC_TIMESTAMP]",
       "targets": [
         "mcp-api"
       ],
@@ -8331,11 +8331,11 @@
     "plan": {
       "kind": "full",
       "applySupported": true,
-      "planId": "1bd8fc7e-b9ae-4805-8b89-7fe197b69809",
-      "token": "f58oFsjGU4ILUAJd5wp201_IuPxpqrJj9YGaFobe-6Q",
-      "planHash": "7dd029f7e1fc97ef7b8e329d0e00dce3d0570ad01ec99a074898684922075575",
-      "createdAt": "2026-08-06T05:38:30.610Z",
-      "expiresAt": "2026-08-06T05:43:30.610Z",
+      "planId": "[DYNAMIC_ID]",
+      "token": "[REDACTED]",
+      "planHash": "[DYNAMIC_HASH]",
+      "createdAt": "[DYNAMIC_TIMESTAMP]",
+      "expiresAt": "[DYNAMIC_TIMESTAMP]",
       "targets": [
         "mcp-api"
       ],
@@ -8493,11 +8493,11 @@
     "plan": {
       "kind": "selective",
       "applySupported": true,
-      "planId": "1f23de2e-55d3-404c-b538-9ca6489f9b0e",
-      "token": "Dzldr0_NbUkog-vHrrAMSPq9js4wZXQGGtYYMy4MdWM",
-      "planHash": "398b9de213737c4d88308190756ebb7669d89c8f54a42bfcd3361934cffd3fc4",
-      "createdAt": "2026-08-06T05:38:31.190Z",
-      "expiresAt": "2026-08-06T05:43:31.190Z",
+      "planId": "[DYNAMIC_ID]",
+      "token": "[REDACTED]",
+      "planHash": "[DYNAMIC_HASH]",
+      "createdAt": "[DYNAMIC_TIMESTAMP]",
+      "expiresAt": "[DYNAMIC_TIMESTAMP]",
       "targets": [
         "mcp-api"
       ],
@@ -8617,15 +8617,15 @@
     "selectionHash": "sha256:50878e25be7b5da6b9278ab877fabe93953c1c6976b4f7a20f5f81c11c8947b3",
     "projectionHash": "290e4d0b828169714c4c3bdc8689179579558c1d33f02c972dc47e90e1886a8e",
     "transactionMetrics": {
-      "stagingMs": 33,
-      "commitMs": 68,
+      "stagingMs": "[DYNAMIC_DURATION]",
+      "commitMs": "[DYNAMIC_DURATION]",
       "stagedBytes": 2358,
       "backupBytes": 2389,
       "journalBytes": 1911
     },
-    "planId": "1f23de2e-55d3-404c-b538-9ca6489f9b0e",
-    "planHash": "398b9de213737c4d88308190756ebb7669d89c8f54a42bfcd3361934cffd3fc4",
-    "transactionId": "0eda186f-33af-47d3-9cfb-ee352e1ea0c9",
+    "planId": "[DYNAMIC_ID]",
+    "planHash": "[DYNAMIC_HASH]",
+    "transactionId": "[DYNAMIC_ID]",
     "summary": {
       "added": 0,
       "modified": 1,

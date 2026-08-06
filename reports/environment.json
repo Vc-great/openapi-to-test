@@ -1,5 +1,6 @@
 {
-  "testDate": "2026-08-06T05:38:36.609Z",
+  "reportSchemaVersion": "2.0.0",
+  "testDate": "2026-08-06T06:50:47.304Z",
   "os": "darwin 24.6.0 arm64",
   "node": "v24.8.0",
   "pnpm": "10.33.0",
@@ -7,10 +8,71 @@
   "requestedVersion": "4.0.0-rc.3",
   "installedVersion": "4.0.0-rc.3",
   "distTagsObserved": {
+    "alpha": "3.0.0-alpha.5",
     "latest": "3.2.2",
-    "rc": "4.0.0-rc.3",
-    "evidence": "reports/logs/baseline-dist-tags.log and live Registry query"
+    "rc": "4.0.0-rc.3"
+  },
+  "distTagsEvidence": "reports/evidence/commands/ENV-DIST-TAGS.json",
+  "testHarnessCommit": "0866dd1e4d511bdf5499c5bc0fb46511273cebe2",
+  "gitHead": "0866dd1e4d511bdf5499c5bc0fb46511273cebe2",
+  "gitStatus": [
+    " M .gitignore",
+    " M lifecycle.config.ts",
+    " M package.json",
+    " M pnpm-lock.yaml",
+    " M reports/environment.json",
+    " M reports/generated-code-review.md",
+    " M reports/issue-candidates/P1-init-template-artifact-conflict.md",
+    " D reports/issue-candidates/P1-msw-schema-less-response.md",
+    " M reports/issue-candidates/P1-optional-inline-enum-identifier.md",
+    " M reports/issue-candidates/P1-swr-strict-implicit-any.md",
+    " D reports/issue-candidates/P2-request-header-cookie-omitted.md",
+    " M reports/issue-candidates/P3-init-json-stdout.md",
+    " M reports/mcp-results.json",
+    " M reports/openapi-to-acceptance-report.md",
+    " M reports/results.json",
+    " M reports/snapshots/mcp-calls.json",
+    " M scenarios/generators/consumers/ts-request.ts",
+    " M scripts/acceptance.mjs",
+    " M scripts/inspect-stability.mjs",
+    " M scripts/mcp-acceptance.mjs",
+    " M scripts/remote-security.mjs",
+    " M scripts/report.mjs",
+    " M scripts/verify.mjs",
+    "?? fixtures/isolation/",
+    "?? msw-minimal.config.ts",
+    "?? reports/evidence/",
+    "?? reports/issue-candidates/P2-msw-schema-less-response.md",
+    "?? reports/known-limitations/",
+    "?? reports/typescript-compatibility-matrix.md",
+    "?? scenarios/generators/consumers/ts-request-boundary.ts",
+    "?? scenarios/generators/tsconfig.msw-minimal.json",
+    "?? scenarios/generators/tsconfig.swr-minimal.json",
+    "?? scenarios/generators/tsconfig.ts-request-boundary.json",
+    "?? scripts/lib/",
+    "?? scripts/lifecycle.mjs",
+    "?? scripts/typescript-matrix.mjs",
+    "?? swr-minimal.config.ts",
+    "?? ts-request-boundary.config.ts"
+  ],
+  "gitEvidence": [
+    "reports/evidence/commands/ENV-GIT-HEAD.json",
+    "reports/evidence/commands/ENV-GIT-STATUS.json"
+  ],
+  "gitStartStatus": [],
+  "baselineStartEvidence": "reports/evidence/commands/BASELINE-START.json",
+  "testedPackageIntegrity": {
+    "registry": "sha512-T39rqzs/lQlf2zA740ZWK/bNhX3sS2UTesygCaTYIifo59vCkZtgKZ/fmFL0VduYqv8yBR2ds0jArHt/8MXzKg==",
+    "lockfile": "sha512-T39rqzs/lQlf2zA740ZWK/bNhX3sS2UTesygCaTYIifo59vCkZtgKZ/fmFL0VduYqv8yBR2ds0jArHt/8MXzKg==",
+    "matches": true,
+    "evidence": "reports/evidence/commands/ENV-INTEGRITY.json"
   },
   "lockfileRegistryOnly": true,
-  "gitStartStatus": ""
+  "evidenceCompleteness": {
+    "requiredEvidenceCount": 85,
+    "missingEvidence": [],
+    "complete": true,
+    "compilerVersionsComplete": true,
+    "environmentCommandsComplete": true
+  }
 }

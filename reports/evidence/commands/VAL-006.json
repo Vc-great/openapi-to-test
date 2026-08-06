@@ -1,0 +1,17 @@
+{
+  "id": "VAL-006",
+  "stage": "VAL-006",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "validate",
+    "fixtures/external-refs/missing.yaml",
+    "--json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/external-refs/missing.yaml --json",
+  "exitCode": 4,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 288
+}

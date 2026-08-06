@@ -1,0 +1,26 @@
+{
+  "id": "TSC-MSW-MIN-TS6",
+  "stage": "TSC-MSW-MIN-TS6",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/typescript-baseline/bin/tsc",
+    "-p",
+    "scenarios/generators/tsconfig.msw-minimal.json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.msw-minimal.json",
+  "exitCode": 2,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 1874,
+  "requestedVersion": "6.0.3",
+  "actualVersion": "6.0.3",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
+    "noEmit": true
+  }
+}

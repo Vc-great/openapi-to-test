@@ -22,8 +22,9 @@ such as `users/use-get-user.query.ts` and
 `users/use-create-user.mutation.ts` with different content. Core correctly
 rejects this with `ARTIFACT_PATH_CONFLICT` and exit 1.
 
-Evidence: `init-template.config.ts` and
-`reports/logs/INIT-004.{stdout,stderr}.log`.
+Evidence: `init-template.config.ts`,
+`reports/evidence/commands/INIT-004.json`, and
+`reports/evidence/failures/INIT-004.stderr.txt`.
 
 ## Suggested direction
 

@@ -1,0 +1,21 @@
+{
+  "id": "CFG-001",
+  "stage": "CFG-001",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "generate",
+    "--config",
+    "multi-target.config.ts",
+    "--target",
+    "missing-service",
+    "--dry-run",
+    "--json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config multi-target.config.ts --target missing-service --dry-run --json",
+  "exitCode": 2,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 685
+}

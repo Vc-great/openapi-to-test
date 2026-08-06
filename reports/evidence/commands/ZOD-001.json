@@ -1,0 +1,15 @@
+{
+  "id": "ZOD-001",
+  "stage": "ZOD-001",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "--experimental-strip-types",
+    "scripts/zod-runtime.mjs"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node --experimental-strip-types scripts/zod-runtime.mjs",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 89
+}

@@ -1,0 +1,24 @@
+openapi: 3.0.3
+info:
+  title: TS Request configuration boundary isolation
+  version: 1.0.0
+paths:
+  /users/{userId}:
+    get:
+      operationId: getUser
+      tags: [users]
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: X-Tenant
+          in: header
+          required: true
+          schema: { type: string }
+        - name: session
+          in: cookie
+          schema: { type: string }
+      responses:
+        "204":
+          description: No content

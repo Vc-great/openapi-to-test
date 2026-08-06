@@ -1,0 +1,14 @@
+{
+  "id": "CLI-004",
+  "stage": "CLI-004",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "src/import-cjs.cjs"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node src/import-cjs.cjs",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 372
+}

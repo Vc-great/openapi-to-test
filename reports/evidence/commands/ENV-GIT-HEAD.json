@@ -1,0 +1,15 @@
+{
+  "id": "ENV-GIT-HEAD",
+  "stage": "ENV-GIT-HEAD",
+  "executable": "git",
+  "args": [
+    "rev-parse",
+    "HEAD"
+  ],
+  "cwd": ".",
+  "command": "git rev-parse HEAD",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 7
+}

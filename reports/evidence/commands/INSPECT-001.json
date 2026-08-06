@@ -1,0 +1,14 @@
+{
+  "id": "INSPECT-001",
+  "stage": "INSPECT-001",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "scripts/inspect-stability.mjs"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node scripts/inspect-stability.mjs",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 552
+}

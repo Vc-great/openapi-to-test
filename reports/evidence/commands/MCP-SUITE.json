@@ -1,0 +1,14 @@
+{
+  "id": "MCP-SUITE",
+  "stage": "MCP-SUITE",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "scripts/mcp-acceptance.mjs"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node scripts/mcp-acceptance.mjs",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 3317
+}

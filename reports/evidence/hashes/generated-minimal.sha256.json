@@ -1,0 +1,22 @@
+[
+  {
+    "path": "reports/evidence/generated-minimal/swr-implicit-any.query.ts",
+    "sha256": "99d0fbcfb60262a4de27c194b50755b463b371829e180e5b773028afa368dc9b"
+  },
+  {
+    "path": "reports/evidence/generated-minimal/msw-schema-less.handler.ts",
+    "sha256": "5b4e2a9c6905cf28881562588735c834dbce1369b01374d66af577f93ae59b50"
+  },
+  {
+    "path": "reports/evidence/generated-minimal/request-config-boundary.service.ts",
+    "sha256": "9c0385a94c8f94fe257a1389c2c8b5e918ddfe2df01de4aa93d0a13a0ac0c28c"
+  },
+  {
+    "path": "reports/evidence/generated-minimal/request-config-boundary.types.ts",
+    "sha256": "adc9d05043b7aefd6104e1ad739db4ea9c4e56dd67e350ef9475f0dd0f005c7a"
+  },
+  {
+    "path": "reports/evidence/generated-minimal/request-config-boundary.consumer.ts",
+    "sha256": "4ceaba5ca2499a9533fb31db0009fe05db4689f4e7da22cd900732a6d8d5ec12"
+  }
+]

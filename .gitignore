@@ -7,4 +7,6 @@ coverage/
 .tmp/
 .openapi-to/
 generated/
+!reports/evidence/
+!reports/evidence/**
 scenarios/**/openapi.config.*

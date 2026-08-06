@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "generated/ts-request-boundary/**/*.ts",
+    "consumers/ts-request-boundary.ts",
+    "../../src/utils/request.ts"
+  ]
+}

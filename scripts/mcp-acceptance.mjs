@@ -11,6 +11,36 @@ const config = path.join(root, "mcp.config.ts");
 const output = path.join(root, "scenarios/mcp/generated");
 const results = [];
 const calls = {};
+const redactedKeys = new Set(["token"]);
+const dynamicIdKeys = new Set(["planId", "transactionId"]);
+const dynamicHashKeys = new Set(["planHash", "approvedPlanHash"]);
+const dynamicTimeKeys = new Set(["createdAt", "expiresAt"]);
+const dynamicDurationKeys = new Set(["stagingMs", "commitMs"]);
+
+function sanitizeEvidence(value, key) {
+  if (Array.isArray(value)) return value.map((item) => sanitizeEvidence(item));
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([childKey, childValue]) => [
+        childKey,
+        sanitizeEvidence(childValue, childKey),
+      ]),
+    );
+  }
+  if (typeof value === "string" && /^[{[]/.test(value.trim())) {
+    try {
+      return JSON.stringify(sanitizeEvidence(JSON.parse(value)));
+    } catch {
+      return value;
+    }
+  }
+  if (redactedKeys.has(key)) return "[REDACTED]";
+  if (dynamicIdKeys.has(key)) return "[DYNAMIC_ID]";
+  if (dynamicHashKeys.has(key)) return "[DYNAMIC_HASH]";
+  if (dynamicTimeKeys.has(key)) return "[DYNAMIC_TIMESTAMP]";
+  if (dynamicDurationKeys.has(key)) return "[DYNAMIC_DURATION]";
+  return value;
+}
 
 function record(id, feature, pass, actual, evidence = "reports/snapshots/mcp-calls.json") {
   results.push({
@@ -205,13 +235,15 @@ try {
   await restarted.transport.close();
 }
 
-await writeFile(path.join(root, "reports/snapshots/mcp-calls.json"), `${JSON.stringify(calls, null, 2)}\n`);
+const sanitizedCalls = sanitizeEvidence(calls);
+const sanitizedResults = sanitizeEvidence(results);
+await writeFile(path.join(root, "reports/snapshots/mcp-calls.json"), `${JSON.stringify(sanitizedCalls, null, 2)}\n`);
 await writeFile(path.join(root, "reports/snapshots/mcp-tools.json"), `${JSON.stringify({
-  noConfig: calls.noConfigTools,
-  readOnly: calls.readOnlyTools,
-  write: calls.writeTools,
+  noConfig: sanitizedCalls.noConfigTools,
+  readOnly: sanitizedCalls.readOnlyTools,
+  write: sanitizedCalls.writeTools,
 }, null, 2)}\n`);
-await writeFile(path.join(root, "reports/mcp-results.json"), `${JSON.stringify(results, null, 2)}\n`);
+await writeFile(path.join(root, "reports/mcp-results.json"), `${JSON.stringify(sanitizedResults, null, 2)}\n`);
 
 const failed = results.filter((result) => result.status === "FAIL");
 console.log(JSON.stringify({ total: results.length, passed: results.length - failed.length, failed: failed.length, failures: failed }, null, 2));

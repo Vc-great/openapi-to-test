@@ -20,7 +20,8 @@ Successful init prints human progress only, so stdout is not JSON. Repeated
 init correctly emits a single JSON error document; the defect is limited to
 the successful path.
 
-Evidence: `reports/logs/INIT-003.{stdout,stderr}.log`.
+Evidence: `reports/evidence/commands/INIT-003.json` and
+`reports/evidence/failures/INIT-003.{stdout,stderr}.txt`.
 
 ## Suggested direction
 

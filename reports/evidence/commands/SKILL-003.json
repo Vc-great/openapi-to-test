@@ -1,0 +1,19 @@
+{
+  "id": "SKILL-003",
+  "stage": "SKILL-003",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "skills",
+    "install",
+    "--host",
+    "codex",
+    "--json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js skills install --host codex --json",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 268
+}

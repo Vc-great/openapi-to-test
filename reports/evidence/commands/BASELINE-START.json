@@ -1,0 +1,31 @@
+{
+  "stage": "required pre-change baseline",
+  "cwd": ".",
+  "commands": [
+    {
+      "command": "git status --short",
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "command": "git rev-parse HEAD",
+      "exitCode": 0,
+      "stdout": "0866dd1e4d511bdf5499c5bc0fb46511273cebe2"
+    },
+    {
+      "command": "node --version",
+      "exitCode": 0,
+      "stdout": "v24.8.0"
+    },
+    {
+      "command": "pnpm --version",
+      "exitCode": 0,
+      "stdout": "10.33.0"
+    },
+    {
+      "command": "pnpm exec openapi --version",
+      "exitCode": 0,
+      "stdout": "openapi/4.0.0-rc.3 darwin-arm64 node-v24.8.0"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "CLI-002",
+  "stage": "CLI-002",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "--help"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js --help",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 263
+}

@@ -1,692 +1,2587 @@
 {
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-08-06T06:50:46.350Z",
+  "source": "verify",
+  "testHarnessCommit": "0866dd1e4d511bdf5499c5bc0fb46511273cebe2",
+  "sources": {
+    "acceptance": {
+      "exitCode": 1,
+      "generatedAt": "2026-08-06T06:49:54.736Z",
+      "summary": {
+        "total": 53,
+        "pass": 49,
+        "fail": 3,
+        "knownLimitations": 1,
+        "blocked": 0,
+        "skipped": 0,
+        "failedTestCases": 3,
+        "independentDefects": 3,
+        "independentRootCauses": [
+          {
+            "rootCauseId": "BUG-INIT-JSON-STDOUT",
+            "severity": "P3",
+            "affectedCases": [
+              "INIT-003"
+            ]
+          },
+          {
+            "rootCauseId": "BUG-INIT-PLUGIN-ARTIFACT-CONFLICT",
+            "severity": "P1",
+            "affectedCases": [
+              "INIT-004"
+            ]
+          },
+          {
+            "rootCauseId": "BUG-INLINE-ENUM-CASING",
+            "severity": "P1",
+            "affectedCases": [
+              "REG-001"
+            ]
+          }
+        ]
+      }
+    },
+    "typescript-matrix": {
+      "exitCode": 1,
+      "generatedAt": "2026-08-06T06:50:41.045Z",
+      "summary": {
+        "total": 36,
+        "pass": 12,
+        "fail": 24,
+        "knownLimitations": 0,
+        "blocked": 0,
+        "skipped": 0,
+        "failedTestCases": 24,
+        "independentDefects": 3,
+        "independentRootCauses": [
+          {
+            "rootCauseId": "BUG-INLINE-ENUM-CASING",
+            "severity": "P1",
+            "affectedCases": [
+              "TSC-TS-TYPE-TS56",
+              "TSC-TS-REQUEST-TS56",
+              "TSC-ZOD-TS56",
+              "TSC-SWR-TS56",
+              "TSC-VUE-QUERY-TS56",
+              "TSC-MSW-TS56",
+              "TSC-TS-TYPE-TS6",
+              "TSC-TS-REQUEST-TS6",
+              "TSC-ZOD-TS6",
+              "TSC-SWR-TS6",
+              "TSC-VUE-QUERY-TS6",
+              "TSC-MSW-TS6",
+              "TSC-TS-TYPE-TS7",
+              "TSC-TS-REQUEST-TS7",
+              "TSC-ZOD-TS7",
+              "TSC-SWR-TS7",
+              "TSC-VUE-QUERY-TS7",
+              "TSC-MSW-TS7"
+            ]
+          },
+          {
+            "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
+            "severity": "P1",
+            "affectedCases": [
+              "TSC-SWR-TS56",
+              "TSC-SWR-TS6",
+              "TSC-SWR-TS7",
+              "TSC-SWR-MIN-TS56",
+              "TSC-SWR-MIN-TS6",
+              "TSC-SWR-MIN-TS7"
+            ]
+          },
+          {
+            "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
+            "severity": "P2",
+            "affectedCases": [
+              "TSC-MSW-TS56",
+              "TSC-MSW-TS6",
+              "TSC-MSW-TS7",
+              "TSC-MSW-MIN-TS56",
+              "TSC-MSW-MIN-TS6",
+              "TSC-MSW-MIN-TS7"
+            ]
+          }
+        ]
+      },
+      "matrix": [
+        {
+          "tier": "legacy",
+          "requestedVersion": "5.6.2",
+          "actualVersion": "5.6.2",
+          "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc --version"
+        },
+        {
+          "tier": "baseline",
+          "requestedVersion": "6.0.3",
+          "actualVersion": "6.0.3",
+          "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc --version"
+        },
+        {
+          "tier": "current",
+          "requestedVersion": "7.0.2",
+          "actualVersion": "7.0.2",
+          "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc --version"
+        }
+      ],
+      "compilerOptions": {
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": false,
+        "noEmit": true
+      },
+      "compilerDifferences": [],
+      "dependencies": {
+        "swr": "2.5.0"
+      }
+    },
+    "lifecycle": {
+      "exitCode": 0,
+      "generatedAt": "2026-08-06T06:50:46.338Z",
+      "summary": {
+        "total": 9,
+        "pass": 9,
+        "fail": 0,
+        "knownLimitations": 0,
+        "blocked": 0,
+        "skipped": 0,
+        "failedTestCases": 0,
+        "independentDefects": 0,
+        "independentRootCauses": []
+      }
+    }
+  },
   "summary": {
-    "total": 62,
-    "pass": 52,
-    "fail": 10,
+    "total": 98,
+    "pass": 70,
+    "fail": 27,
+    "knownLimitations": 1,
     "blocked": 0,
-    "skipped": 0
+    "skipped": 0,
+    "failedTestCases": 27,
+    "independentDefects": 5,
+    "independentRootCauses": [
+      {
+        "rootCauseId": "BUG-INIT-JSON-STDOUT",
+        "severity": "P3",
+        "affectedCases": [
+          "INIT-003"
+        ]
+      },
+      {
+        "rootCauseId": "BUG-INIT-PLUGIN-ARTIFACT-CONFLICT",
+        "severity": "P1",
+        "affectedCases": [
+          "INIT-004"
+        ]
+      },
+      {
+        "rootCauseId": "BUG-INLINE-ENUM-CASING",
+        "severity": "P1",
+        "affectedCases": [
+          "REG-001",
+          "TSC-TS-TYPE-TS56",
+          "TSC-TS-REQUEST-TS56",
+          "TSC-ZOD-TS56",
+          "TSC-SWR-TS56",
+          "TSC-VUE-QUERY-TS56",
+          "TSC-MSW-TS56",
+          "TSC-TS-TYPE-TS6",
+          "TSC-TS-REQUEST-TS6",
+          "TSC-ZOD-TS6",
+          "TSC-SWR-TS6",
+          "TSC-VUE-QUERY-TS6",
+          "TSC-MSW-TS6",
+          "TSC-TS-TYPE-TS7",
+          "TSC-TS-REQUEST-TS7",
+          "TSC-ZOD-TS7",
+          "TSC-SWR-TS7",
+          "TSC-VUE-QUERY-TS7",
+          "TSC-MSW-TS7"
+        ]
+      },
+      {
+        "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
+        "severity": "P1",
+        "affectedCases": [
+          "TSC-SWR-TS56",
+          "TSC-SWR-TS6",
+          "TSC-SWR-TS7",
+          "TSC-SWR-MIN-TS56",
+          "TSC-SWR-MIN-TS6",
+          "TSC-SWR-MIN-TS7"
+        ]
+      },
+      {
+        "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
+        "severity": "P2",
+        "affectedCases": [
+          "TSC-MSW-TS56",
+          "TSC-MSW-TS6",
+          "TSC-MSW-TS7",
+          "TSC-MSW-MIN-TS56",
+          "TSC-MSW-MIN-TS6",
+          "TSC-MSW-MIN-TS7"
+        ]
+      }
+    ]
   },
   "cases": [
     {
       "id": "PUB-001",
+      "suite": "cli",
       "feature": "Actual installed version",
-      "command": "node -p \"JSON.parse(require('fs').readFileSync('node_modules/openapi-to/package.json')).version\"",
+      "command": "/usr/local/bin/node -p \"JSON.parse(require('fs').readFileSync('node_modules/openapi-to/package.json')).version\"",
+      "args": [
+        "-p",
+        "JSON.parse(require('fs').readFileSync('node_modules/openapi-to/package.json')).version"
+      ],
       "expected": "4.0.0-rc.3",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/PUB-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/PUB-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "CLI-001",
+      "suite": "cli",
       "feature": "openapi help",
-      "command": "pnpm exec openapi --help",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js --help",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "--help"
+      ],
       "expected": "help succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/CLI-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CLI-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "CLI-002",
-      "feature": "openapi-to help",
-      "command": "pnpm exec openapi-to --help",
-      "expected": "alias help succeeds",
+      "suite": "cli",
+      "feature": "openapi-to alias entry",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js --help",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "--help"
+      ],
+      "expected": "shared alias entry succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/CLI-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CLI-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "CLI-003",
+      "suite": "cli",
       "feature": "ESM import",
-      "command": "node --input-type=module -e \"import('openapi-to').then(m=>{if(typeof m.defineConfig!=='function')process.exit(1)})\"",
+      "command": "/usr/local/bin/node --input-type=module -e \"import('openapi-to').then(m=>{if(typeof m.defineConfig!=='function')process.exit(1)})\"",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "import('openapi-to').then(m=>{if(typeof m.defineConfig!=='function')process.exit(1)})"
+      ],
       "expected": "aggregate ESM exports work",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/CLI-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CLI-003.json"
+      ],
       "notes": ""
     },
     {
       "id": "CLI-004",
+      "suite": "cli",
       "feature": "CommonJS require",
-      "command": "node src/import-cjs.cjs",
+      "command": "/usr/local/bin/node src/import-cjs.cjs",
+      "args": [
+        "src/import-cjs.cjs"
+      ],
       "expected": "aggregate CJS exports work",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/CLI-004.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CLI-004.json"
+      ],
       "notes": ""
     },
     {
       "id": "CLI-005",
+      "suite": "cli",
       "feature": "Published type declarations",
-      "command": "pnpm exec tsc -p tsconfig.api.json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p tsconfig.api.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "tsconfig.api.json"
+      ],
       "expected": "types compile strictly",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/CLI-005.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CLI-005.json"
+      ],
       "notes": ""
     },
     {
       "id": "INIT-003",
+      "suite": "cli",
       "feature": "fresh init JSON stdout contract",
-      "command": "../../node_modules/.bin/openapi init --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js init --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "init",
+        "--json"
+      ],
       "expected": "one parseable JSON document on stdout",
       "actual": "exit 0; JSON.parse(stdout)=false",
       "exitCode": 0,
       "status": "FAIL",
-      "evidence": "reports/logs/INIT-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/INIT-003.json",
+        "reports/evidence/failures/INIT-003.stdout.txt",
+        "reports/evidence/failures/INIT-003.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INIT-JSON-STDOUT",
+      "rootCauseIds": [
+        "BUG-INIT-JSON-STDOUT"
+      ],
+      "severity": "P3",
       "notes": ""
     },
     {
       "id": "INIT-002",
+      "suite": "cli",
       "feature": "CommonJS init extension",
-      "command": "../../node_modules/.bin/openapi init --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js init --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "init",
+        "--json"
+      ],
       "expected": "openapi.config.js using require/module.exports",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/INIT-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/INIT-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "INIT-003B",
+      "suite": "cli",
       "feature": "repeat init JSON error contract",
-      "command": "../../node_modules/.bin/openapi init --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js init --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "init",
+        "--json"
+      ],
       "expected": "one parseable JSON error document on stdout",
       "actual": "exit 1",
       "exitCode": 1,
       "status": "PASS",
-      "evidence": "reports/logs/INIT-003B.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/INIT-003B.json"
+      ],
       "notes": ""
     },
     {
       "id": "INIT-004",
+      "suite": "cli",
       "feature": "Default init template can generate",
-      "command": "pnpm exec openapi generate --config init-template.config.ts --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config init-template.config.ts --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "init-template.config.ts",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "default initialized config completes dry-run",
       "actual": "exit 1",
       "exitCode": 1,
       "status": "FAIL",
-      "evidence": "reports/logs/INIT-004.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/INIT-004.json",
+        "reports/evidence/failures/INIT-004.stdout.txt",
+        "reports/evidence/failures/INIT-004.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INIT-PLUGIN-ARTIFACT-CONFLICT",
+      "rootCauseIds": [
+        "BUG-INIT-PLUGIN-ARTIFACT-CONFLICT"
+      ],
+      "severity": "P1",
       "notes": ""
     },
     {
       "id": "CFG-002",
+      "suite": "cli",
       "feature": "Ambiguous config fail-before-execute",
-      "command": "../../node_modules/.bin/openapi generate --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "OPENAPI_CONFIG_AMBIGUOUS without executing either config",
       "actual": "exit 2",
       "exitCode": 2,
       "status": "PASS",
-      "evidence": "reports/logs/CFG-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CFG-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "CFG-003",
+      "suite": "cli",
       "feature": "Nested config discovery",
-      "command": "../../node_modules/.bin/openapi generate --dry-run --target swr-api --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --dry-run --target swr-api --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--dry-run",
+        "--target",
+        "swr-api",
+        "--json"
+      ],
       "expected": "find root config upward",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/CFG-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CFG-003.json"
+      ],
       "notes": ""
     },
     {
       "id": "INSPECT-001",
+      "suite": "cli",
       "feature": "Inspect byte stability",
-      "command": "node scripts/inspect-stability.mjs",
+      "command": "/usr/local/bin/node scripts/inspect-stability.mjs",
+      "args": [
+        "scripts/inspect-stability.mjs"
+      ],
       "expected": "two outputs byte-identical",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/INSPECT-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/INSPECT-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-001",
+      "suite": "cli",
       "feature": "Swagger 2 validation",
-      "command": "pnpm exec openapi validate fixtures/swagger2/petstore.json --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/swagger2/petstore.json --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/swagger2/petstore.json",
+        "--json"
+      ],
       "expected": "success JSON and conversion diagnostic",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-002",
+      "suite": "cli",
       "feature": "OpenAPI 3.0 validation",
-      "command": "pnpm exec openapi validate fixtures/openapi30/main.yaml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/openapi30/main.yaml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/openapi30/main.yaml",
+        "--json"
+      ],
       "expected": "success JSON",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-003",
+      "suite": "cli",
       "feature": "OpenAPI 3.1 validation",
-      "command": "pnpm exec openapi validate fixtures/openapi31/schema.json --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/openapi31/schema.json --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/openapi31/schema.json",
+        "--json"
+      ],
       "expected": "success JSON",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-003.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-003B",
+      "suite": "cli",
       "feature": "YML extension",
-      "command": "pnpm exec openapi validate fixtures/openapi30/minimal.yml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/openapi30/minimal.yml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/openapi30/minimal.yml",
+        "--json"
+      ],
       "expected": "success JSON",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-003B.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-003B.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-003C",
+      "suite": "cli",
       "feature": "Content/extension mismatch",
-      "command": "pnpm exec openapi validate fixtures/openapi30/mismatch.json --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/openapi30/mismatch.json --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/openapi30/mismatch.json",
+        "--json"
+      ],
       "expected": "content sniffing succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-003C.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-003C.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-004",
+      "suite": "cli",
       "feature": "OpenAPI 3.2 compatible read",
-      "command": "pnpm exec openapi validate fixtures/openapi32/partial.yaml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/openapi32/partial.yaml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/openapi32/partial.yaml",
+        "--json"
+      ],
       "expected": "success with compatibility warning",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-004.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-004.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-005",
+      "suite": "cli",
       "feature": "External/cyclic refs",
-      "command": "pnpm exec openapi validate fixtures/external-refs/root.yaml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/external-refs/root.yaml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/external-refs/root.yaml",
+        "--json"
+      ],
       "expected": "success with cycle warning",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-005.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-005.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-006",
+      "suite": "cli",
       "feature": "Missing ref classification",
-      "command": "pnpm exec openapi validate fixtures/external-refs/missing.yaml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/external-refs/missing.yaml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/external-refs/missing.yaml",
+        "--json"
+      ],
       "expected": "input exit 4 and parseable JSON",
       "actual": "exit 4",
       "exitCode": 4,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-006.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-006.json"
+      ],
       "notes": ""
     },
     {
       "id": "VAL-007",
+      "suite": "cli",
       "feature": "Invalid document classification",
-      "command": "pnpm exec openapi validate fixtures/invalid/not-openapi.yaml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/invalid/not-openapi.yaml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "fixtures/invalid/not-openapi.yaml",
+        "--json"
+      ],
       "expected": "parse/validation exit 3",
       "actual": "exit 3",
       "exitCode": 3,
       "status": "PASS",
-      "evidence": "reports/logs/VAL-007.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/VAL-007.json"
+      ],
       "notes": ""
     },
     {
       "id": "DIFF-001",
+      "suite": "cli",
       "feature": "Breaking diff exit",
-      "command": "pnpm exec openapi diff fixtures/diff/old.yaml fixtures/diff/new.yaml --fail-on-breaking --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js diff fixtures/diff/old.yaml fixtures/diff/new.yaml --fail-on-breaking --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "diff",
+        "fixtures/diff/old.yaml",
+        "fixtures/diff/new.yaml",
+        "--fail-on-breaking",
+        "--json"
+      ],
       "expected": "exit 7 and breaking=true",
       "actual": "exit 7",
       "exitCode": 7,
       "status": "PASS",
-      "evidence": "reports/logs/DIFF-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/DIFF-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "CFG-001",
+      "suite": "cli",
       "feature": "Unknown target",
-      "command": "pnpm exec openapi generate --config multi-target.config.ts --target missing-service --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config multi-target.config.ts --target missing-service --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "multi-target.config.ts",
+        "--target",
+        "missing-service",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "config exit 2",
       "actual": "exit 2",
       "exitCode": 2,
       "status": "PASS",
-      "evidence": "reports/logs/CFG-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/CFG-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "SEC-CLI-001",
+      "suite": "security",
       "feature": "Private remote denied",
-      "command": "pnpm exec openapi validate http://127.0.0.1:9/openapi.yaml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate http://127.0.0.1:9/openapi.yaml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "http://127.0.0.1:9/openapi.yaml",
+        "--json"
+      ],
       "expected": "input exit 4, blocked before connect",
       "actual": "exit 4",
       "exitCode": 4,
       "status": "PASS",
-      "evidence": "reports/logs/SEC-CLI-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SEC-CLI-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "SEC-CLI-002",
+      "suite": "security",
       "feature": "Non-HTTP protocol denied",
-      "command": "pnpm exec openapi validate ftp://example.com/openapi.yaml --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate ftp://example.com/openapi.yaml --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "validate",
+        "ftp://example.com/openapi.yaml",
+        "--json"
+      ],
       "expected": "input exit 4",
       "actual": "exit 4",
       "exitCode": 4,
       "status": "PASS",
-      "evidence": "reports/logs/SEC-CLI-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SEC-CLI-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "SEC-CLI-003",
+      "suite": "security",
       "feature": "Output escape denied",
-      "command": "pnpm exec openapi generate --config escape.config.ts --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config escape.config.ts --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "escape.config.ts",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "config exit 2",
       "actual": "exit 2",
       "exitCode": 2,
       "status": "PASS",
-      "evidence": "reports/logs/SEC-CLI-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SEC-CLI-003.json"
+      ],
       "notes": ""
     },
     {
       "id": "SEC-CLI-004",
+      "suite": "security",
       "feature": "Overlapping output denied",
-      "command": "pnpm exec openapi generate --config overlap.config.ts --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config overlap.config.ts --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "overlap.config.ts",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "config exit 2",
       "actual": "exit 2",
       "exitCode": 2,
       "status": "PASS",
-      "evidence": "reports/logs/SEC-CLI-004.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SEC-CLI-004.json"
+      ],
       "notes": ""
     },
     {
       "id": "SEC-CLI-005",
+      "suite": "security",
       "feature": "Symlink output denied",
-      "command": "pnpm exec openapi generate --config symlink.config.ts --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config symlink.config.ts --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "symlink.config.ts",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "config exit 2",
       "actual": "exit 2",
       "exitCode": 2,
       "status": "PASS",
-      "evidence": "reports/logs/SEC-CLI-005.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SEC-CLI-005.json"
+      ],
       "notes": ""
     },
     {
       "id": "SEC-CLI-006",
+      "suite": "security",
       "feature": "Windows device path denied",
-      "command": "pnpm exec openapi generate --config windows-device.config.ts --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config windows-device.config.ts --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "windows-device.config.ts",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "config exit 2",
       "actual": "exit 2",
       "exitCode": 2,
       "status": "PASS",
-      "evidence": "reports/logs/SEC-CLI-006.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SEC-CLI-006.json"
+      ],
       "notes": ""
     },
     {
       "id": "GEN-001",
+      "suite": "generators",
       "feature": "TS Type generation",
-      "command": "pnpm exec openapi generate --config ts-type.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config ts-type.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "ts-type.config.ts",
+        "--json"
+      ],
       "expected": "generation succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/GEN-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/GEN-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "GEN-002",
+      "suite": "generators",
       "feature": "TS Request generation",
-      "command": "pnpm exec openapi generate --config ts-request.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config ts-request.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "ts-request.config.ts",
+        "--json"
+      ],
       "expected": "generation succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/GEN-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/GEN-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "GEN-003",
+      "suite": "generators",
       "feature": "Zod generation",
-      "command": "pnpm exec openapi generate --config zod.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config zod.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "zod.config.ts",
+        "--json"
+      ],
       "expected": "generation succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/GEN-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/GEN-003.json"
+      ],
       "notes": ""
     },
     {
       "id": "GEN-004",
+      "suite": "generators",
       "feature": "SWR generation",
-      "command": "pnpm exec openapi generate --config openapi.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config openapi.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "openapi.config.ts",
+        "--json"
+      ],
       "expected": "generation succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/GEN-004.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/GEN-004.json"
+      ],
       "notes": ""
     },
     {
       "id": "GEN-005",
+      "suite": "generators",
       "feature": "Vue Query generation",
-      "command": "pnpm exec openapi generate --config vue-query.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config vue-query.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "vue-query.config.ts",
+        "--json"
+      ],
       "expected": "generation succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/GEN-005.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/GEN-005.json"
+      ],
       "notes": ""
     },
     {
       "id": "GEN-006",
+      "suite": "generators",
       "feature": "MSW generation",
-      "command": "pnpm exec openapi generate --config msw.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config msw.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "msw.config.ts",
+        "--json"
+      ],
       "expected": "generation succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/GEN-006.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "TSC-001",
-      "feature": "ts-type strict compilation",
-      "command": "pnpm exec tsc -p scenarios/generators/tsconfig.ts-type.json",
-      "expected": "strict compile with skipLibCheck=false",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
-      "evidence": "reports/logs/TSC-001.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "TSC-002",
-      "feature": "ts-request strict compilation",
-      "command": "pnpm exec tsc -p scenarios/generators/tsconfig.ts-request.json",
-      "expected": "strict compile with skipLibCheck=false",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
-      "evidence": "reports/logs/TSC-002.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "TSC-003",
-      "feature": "zod strict compilation",
-      "command": "pnpm exec tsc -p scenarios/generators/tsconfig.zod.json",
-      "expected": "strict compile with skipLibCheck=false",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
-      "evidence": "reports/logs/TSC-003.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "TSC-004",
-      "feature": "swr strict compilation",
-      "command": "pnpm exec tsc -p scenarios/generators/tsconfig.swr.json",
-      "expected": "strict compile with skipLibCheck=false",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
-      "evidence": "reports/logs/TSC-004.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "TSC-005",
-      "feature": "vue-query strict compilation",
-      "command": "pnpm exec tsc -p scenarios/generators/tsconfig.vue-query.json",
-      "expected": "strict compile with skipLibCheck=false",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
-      "evidence": "reports/logs/TSC-005.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "TSC-006",
-      "feature": "msw strict compilation",
-      "command": "pnpm exec tsc -p scenarios/generators/tsconfig.msw.json",
-      "expected": "strict compile with skipLibCheck=false",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
-      "evidence": "reports/logs/TSC-006.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/GEN-006.json"
+      ],
       "notes": ""
     },
     {
       "id": "GEN-007",
+      "suite": "generators",
       "feature": "OpenAPI 3.1 booleans/ref sibling",
-      "command": "pnpm exec openapi generate --config oas31.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config oas31.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "oas31.config.ts",
+        "--json"
+      ],
       "expected": "generation succeeds",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/GEN-007.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "TSC-007",
-      "feature": "OpenAPI 3.1 strict compilation",
-      "command": "pnpm exec tsc -p scenarios/generators/tsconfig.oas31.json",
-      "expected": "strict compile",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
-      "evidence": "reports/logs/TSC-007.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/GEN-007.json"
+      ],
       "notes": ""
     },
     {
       "id": "ZOD-001",
+      "suite": "regression",
       "feature": "Zod positive/negative runtime",
-      "command": "node --experimental-strip-types scripts/zod-runtime.mjs",
+      "command": "/usr/local/bin/node --experimental-strip-types scripts/zod-runtime.mjs",
+      "args": [
+        "--experimental-strip-types",
+        "scripts/zod-runtime.mjs"
+      ],
       "expected": "positive accepted and negative rejected",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/ZOD-001.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "LIFE-001",
-      "feature": "Dry-run no write",
-      "command": "pnpm exec openapi generate --config lifecycle.config.ts --dry-run --json",
-      "expected": "dry-run succeeds",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
-      "evidence": "reports/logs/LIFE-001.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "LIFE-002",
-      "feature": "Check current output",
-      "command": "LIFECYCLE_INPUT=fixtures/regression/lifecycle-v2.yaml pnpm exec openapi generate --config lifecycle.config.ts --check --json",
-      "expected": "current output succeeds",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
-      "evidence": "reports/logs/LIFE-002.{stdout,stderr}.log",
-      "notes": ""
-    },
-    {
-      "id": "LIFE-003",
-      "feature": "Managed output base",
-      "command": "pnpm exec openapi generate --config managed.config.ts --json",
-      "expected": "writes below .openapi-to with ownership manifest",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
-      "evidence": "reports/logs/LIFE-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/ZOD-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "MULTI-001",
+      "suite": "generators",
       "feature": "Default all targets",
-      "command": "pnpm exec openapi generate --config multi-target.config.ts --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config multi-target.config.ts --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "multi-target.config.ts",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "three targets in config order",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/MULTI-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/MULTI-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "MULTI-002",
+      "suite": "generators",
       "feature": "Repeated target dedupe/order",
-      "command": "pnpm exec openapi generate --config multi-target.config.ts --target payment-service --target user-service --target payment-service --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config multi-target.config.ts --target payment-service --target user-service --target payment-service --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "multi-target.config.ts",
+        "--target",
+        "payment-service",
+        "--target",
+        "user-service",
+        "--target",
+        "payment-service",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "dedupe and config order",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/MULTI-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/MULTI-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "MCP-SUITE",
+      "suite": "mcp",
       "feature": "Official SDK stdio suite",
-      "command": "node scripts/mcp-acceptance.mjs",
+      "command": "/usr/local/bin/node scripts/mcp-acceptance.mjs",
+      "args": [
+        "scripts/mcp-acceptance.mjs"
+      ],
       "expected": "all 3/8/10 and controlled-write cases pass",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/MCP-SUITE.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/MCP-SUITE.json"
+      ],
       "notes": ""
     },
     {
       "id": "SEC-REMOTE",
+      "suite": "security",
       "feature": "Cross-origin header stripping",
-      "command": "node scripts/remote-security.mjs",
+      "command": "/usr/local/bin/node scripts/remote-security.mjs",
+      "args": [
+        "scripts/remote-security.mjs"
+      ],
       "expected": "header stripped and logs redacted",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/SEC-REMOTE.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SEC-REMOTE.json"
+      ],
       "notes": ""
     },
     {
       "id": "PUB-002",
+      "suite": "cli",
       "feature": "Three package bins",
-      "command": "inspect node_modules/.bin",
+      "command": "inspect node_modules/openapi-to/package.json and node_modules/.bin",
+      "args": [],
       "expected": "openapi, openapi-to, openapi-to-mcp exist",
       "actual": "openapi, openapi-to, openapi-to-mcp",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "node_modules/openapi-to/package.json",
+      "evidence": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
       "notes": ""
     },
     {
       "id": "PUB-003",
+      "suite": "cli",
       "feature": "Lockfile registry-only resolution",
       "command": "scan pnpm-lock.yaml",
+      "args": [],
       "expected": "no workspace/file/link/absolute upstream path",
       "actual": "registry-only resolution",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "pnpm-lock.yaml",
+      "evidence": [
+        "pnpm-lock.yaml"
+      ],
       "notes": ""
     },
     {
       "id": "INIT-001",
+      "suite": "cli",
       "feature": "ESM init extension",
       "command": "inspect init output",
+      "args": [],
       "expected": "openapi.config.ts and managed ignore rule",
       "actual": "openapi.config.ts + /.openapi-to/",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/INIT-003.stdout.log",
+      "evidence": [
+        "reports/evidence/commands/INIT-003.json"
+      ],
       "notes": ""
     },
     {
       "id": "REG-001",
+      "suite": "regression",
       "feature": "Optional inline object enum identifier",
       "command": "review generated user.model.ts",
+      "args": [],
       "expected": "declared identifier equals referenced identifier",
       "actual": "references undefined UseroptionalInlineModeEnumValue",
       "exitCode": 0,
       "status": "FAIL",
-      "evidence": "scenarios/generators/generated/ts-type/types/models/user.model.ts",
+      "evidence": [
+        "reports/evidence/generated-minimal/inline-enum-user.model.ts"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
       "notes": ""
     },
     {
       "id": "REG-002",
+      "suite": "regression",
       "feature": "Optional non-required ref",
       "command": "review generated TS and Zod",
+      "args": [],
       "expected": "TS ? and Zod .optional()",
       "actual": "optional in TS and Zod",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "scenarios/generators/generated/zod/zod/models/user.schema.ts",
+      "evidence": [
+        "reports/evidence/generated-minimal/inline-enum-user.model.ts"
+      ],
       "notes": ""
     },
     {
       "id": "SEM-001",
-      "feature": "Parameter required semantics",
-      "command": "review get-user types/service",
-      "expected": "path/header required; query/cookie optional and request carries all",
-      "actual": "types correct; request function drops header/cookie arguments",
+      "suite": "generators",
+      "feature": "TS Request header/cookie configuration boundary",
+      "command": "review generated types, service signature, and strict consumer",
+      "args": [],
+      "expected": "types generated; requestConfig accepts Axios client configuration; no independent header/cookie arguments",
+      "actual": "types=true; requestConfig=true; axiosConfigConsumer=true; independentHeaderCookieArgs=false",
       "exitCode": 0,
-      "status": "FAIL",
-      "evidence": "scenarios/generators/generated/ts-request/users/get-user.service.ts",
+      "status": "KNOWN_LIMITATION",
+      "evidence": [
+        "reports/evidence/generated-minimal/request-config-boundary.types.ts",
+        "reports/evidence/generated-minimal/request-config-boundary.service.ts",
+        "reports/evidence/generated-minimal/request-config-boundary.consumer.ts",
+        "reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS56.json",
+        "reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS6.json",
+        "reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS7.json"
+      ],
+      "notes": "No automatic Cookie serialization or complete header merge precedence is promised."
+    },
+    {
+      "id": "HARNESS-001",
+      "suite": "regression",
+      "feature": "Cross-platform structured process runner",
+      "command": "inspect scripts/lib/process.mjs",
+      "args": [],
+      "expected": "executable/args split, shell=false, PATH/PATHEXT resolution, timeout and separated output",
+      "actual": "structured shell-free runner present",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "scripts/lib/process.mjs"
+      ],
       "notes": ""
     },
     {
       "id": "SKILL-001",
+      "suite": "skills",
       "feature": "Skills dry-run",
-      "command": "pnpm exec openapi skills install --host codex --dry-run --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js skills install --host codex --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "skills",
+        "install",
+        "--host",
+        "codex",
+        "--dry-run",
+        "--json"
+      ],
       "expected": "no writes and exact two skills",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/SKILL-001.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SKILL-001.json"
+      ],
       "notes": ""
     },
     {
       "id": "SKILL-002",
+      "suite": "skills",
       "feature": "Skills install",
-      "command": "pnpm exec openapi skills install --host codex --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js skills install --host codex --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "skills",
+        "install",
+        "--host",
+        "codex",
+        "--json"
+      ],
       "expected": "installs two packaged skills",
       "actual": "exit 0",
       "exitCode": 0,
       "status": "PASS",
-      "evidence": "reports/logs/SKILL-002.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SKILL-002.json"
+      ],
       "notes": ""
     },
     {
       "id": "SKILL-003",
+      "suite": "skills",
       "feature": "No overwrite",
-      "command": "pnpm exec openapi skills install --host codex --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js skills install --host codex --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "skills",
+        "install",
+        "--host",
+        "codex",
+        "--json"
+      ],
       "expected": "existing destinations rejected",
       "actual": "exit 1",
       "exitCode": 1,
       "status": "PASS",
-      "evidence": "reports/logs/SKILL-003.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SKILL-003.json"
+      ],
       "notes": ""
     },
     {
       "id": "SKILL-004",
+      "suite": "skills",
       "feature": "Unsupported host",
-      "command": "pnpm exec openapi skills install --host unknown --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js skills install --host unknown --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "skills",
+        "install",
+        "--host",
+        "unknown",
+        "--json"
+      ],
       "expected": "unsupported Host rejected",
       "actual": "exit 1",
       "exitCode": 1,
       "status": "PASS",
-      "evidence": "reports/logs/SKILL-004.{stdout,stderr}.log",
+      "evidence": [
+        "reports/evidence/commands/SKILL-004.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-ISO-SWR",
+      "suite": "typescript-matrix",
+      "feature": "Generate minimal SWR isolation fixture",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config swr-minimal.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "swr-minimal.config.ts",
+        "--json"
+      ],
+      "expected": "minimal generation succeeds",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-ISO-SWR.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-ISO-MSW",
+      "suite": "typescript-matrix",
+      "feature": "Generate minimal MSW schema-less isolation fixture",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config msw-minimal.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "msw-minimal.config.ts",
+        "--json"
+      ],
+      "expected": "minimal generation succeeds",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-ISO-MSW.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-ISO-TS-REQUEST",
+      "suite": "typescript-matrix",
+      "feature": "Generate TS Request header/cookie boundary fixture",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config ts-request-boundary.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "ts-request-boundary.config.ts",
+        "--json"
+      ],
+      "expected": "minimal generation succeeds",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-ISO-TS-REQUEST.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "TS-VERSION-TS56",
+      "suite": "typescript-matrix",
+      "feature": "TypeScript legacy actual version",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc --version",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "--version"
+      ],
+      "expected": "Version 5.6.2",
+      "actual": "Version 5.6.2",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TS-VERSION-TS56.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "TS-VERSION-TS6",
+      "suite": "typescript-matrix",
+      "feature": "TypeScript baseline actual version",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc --version",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "--version"
+      ],
+      "expected": "Version 6.0.3",
+      "actual": "Version 6.0.3",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TS-VERSION-TS6.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "TS-VERSION-TS7",
+      "suite": "typescript-matrix",
+      "feature": "TypeScript current actual version",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc --version",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "--version"
+      ],
+      "expected": "Version 7.0.2",
+      "actual": "Version 7.0.2",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TS-VERSION-TS7.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "TSC-TS-TYPE-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSType full fixture strict compilation",
+      "plugin": "pluginTSType",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.ts-type.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-type.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-TYPE-TS56.json",
+        "reports/evidence/failures/TSC-TS-TYPE-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-TS-TYPE-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-TS-REQUEST-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSRequest full fixture strict compilation",
+      "plugin": "pluginTSRequest",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.ts-request.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-request.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-REQUEST-TS56.json",
+        "reports/evidence/failures/TSC-TS-REQUEST-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-TS-REQUEST-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-ZOD-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginZod full fixture strict compilation",
+      "plugin": "pluginZod",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.zod.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.zod.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-ZOD-TS56.json",
+        "reports/evidence/failures/TSC-ZOD-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-ZOD-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-SWR-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginSWR full fixture strict compilation",
+      "plugin": "pluginSWR",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.swr.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.swr.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-SWR-TS56.json",
+        "reports/evidence/failures/TSC-SWR-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-SWR-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING",
+        "BUG-SWR-IMPLICIT-ANY"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-VUE-QUERY-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginVueQuery full fixture strict compilation",
+      "plugin": "pluginVueQuery",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.vue-query.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.vue-query.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-VUE-QUERY-TS56.json",
+        "reports/evidence/failures/TSC-VUE-QUERY-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-VUE-QUERY-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-MSW-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginMSW full fixture strict compilation",
+      "plugin": "pluginMSW",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.msw.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.msw.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-MSW-TS56.json",
+        "reports/evidence/failures/TSC-MSW-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-MSW-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING",
+        "BUG-MSW-SCHEMALESS-JSON"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-OAS31-TS56",
+      "suite": "typescript-matrix",
+      "feature": "OpenAPI 3.1 fixture full fixture strict compilation",
+      "plugin": "OpenAPI 3.1 fixture",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.oas31.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.oas31.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TSC-OAS31-TS56.json"
+      ],
+      "rootCauseIds": [],
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-TS-TYPE-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSType full fixture strict compilation",
+      "plugin": "pluginTSType",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.ts-type.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-type.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-TYPE-TS6.json",
+        "reports/evidence/failures/TSC-TS-TYPE-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-TS-TYPE-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-TS-REQUEST-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSRequest full fixture strict compilation",
+      "plugin": "pluginTSRequest",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.ts-request.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-request.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-REQUEST-TS6.json",
+        "reports/evidence/failures/TSC-TS-REQUEST-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-TS-REQUEST-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-ZOD-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginZod full fixture strict compilation",
+      "plugin": "pluginZod",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.zod.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.zod.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-ZOD-TS6.json",
+        "reports/evidence/failures/TSC-ZOD-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-ZOD-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-SWR-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginSWR full fixture strict compilation",
+      "plugin": "pluginSWR",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.swr.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.swr.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-SWR-TS6.json",
+        "reports/evidence/failures/TSC-SWR-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-SWR-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING",
+        "BUG-SWR-IMPLICIT-ANY"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-VUE-QUERY-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginVueQuery full fixture strict compilation",
+      "plugin": "pluginVueQuery",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.vue-query.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.vue-query.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-VUE-QUERY-TS6.json",
+        "reports/evidence/failures/TSC-VUE-QUERY-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-VUE-QUERY-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-MSW-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginMSW full fixture strict compilation",
+      "plugin": "pluginMSW",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.msw.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.msw.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-MSW-TS6.json",
+        "reports/evidence/failures/TSC-MSW-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-MSW-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING",
+        "BUG-MSW-SCHEMALESS-JSON"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-OAS31-TS6",
+      "suite": "typescript-matrix",
+      "feature": "OpenAPI 3.1 fixture full fixture strict compilation",
+      "plugin": "OpenAPI 3.1 fixture",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.oas31.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.oas31.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TSC-OAS31-TS6.json"
+      ],
+      "rootCauseIds": [],
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-TS-TYPE-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSType full fixture strict compilation",
+      "plugin": "pluginTSType",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.ts-type.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-type.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-TYPE-TS7.json",
+        "reports/evidence/failures/TSC-TS-TYPE-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-TS-TYPE-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-TS-REQUEST-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSRequest full fixture strict compilation",
+      "plugin": "pluginTSRequest",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.ts-request.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-request.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-REQUEST-TS7.json",
+        "reports/evidence/failures/TSC-TS-REQUEST-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-TS-REQUEST-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-ZOD-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginZod full fixture strict compilation",
+      "plugin": "pluginZod",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.zod.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.zod.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-ZOD-TS7.json",
+        "reports/evidence/failures/TSC-ZOD-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-ZOD-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-SWR-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginSWR full fixture strict compilation",
+      "plugin": "pluginSWR",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.swr.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.swr.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-SWR-TS7.json",
+        "reports/evidence/failures/TSC-SWR-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-SWR-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING",
+        "BUG-SWR-IMPLICIT-ANY"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-VUE-QUERY-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginVueQuery full fixture strict compilation",
+      "plugin": "pluginVueQuery",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.vue-query.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.vue-query.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-VUE-QUERY-TS7.json",
+        "reports/evidence/failures/TSC-VUE-QUERY-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-VUE-QUERY-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-MSW-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginMSW full fixture strict compilation",
+      "plugin": "pluginMSW",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.msw.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.msw.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-MSW-TS7.json",
+        "reports/evidence/failures/TSC-MSW-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-MSW-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-INLINE-ENUM-CASING",
+      "rootCauseIds": [
+        "BUG-INLINE-ENUM-CASING",
+        "BUG-MSW-SCHEMALESS-JSON"
+      ],
+      "severity": "P1",
+      "rootCauseSeverities": {
+        "BUG-INLINE-ENUM-CASING": "P1",
+        "BUG-SWR-IMPLICIT-ANY": "P1",
+        "BUG-MSW-SCHEMALESS-JSON": "P2"
+      },
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-OAS31-TS7",
+      "suite": "typescript-matrix",
+      "feature": "OpenAPI 3.1 fixture full fixture strict compilation",
+      "plugin": "OpenAPI 3.1 fixture",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.oas31.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.oas31.json"
+      ],
+      "expected": "strict compilation succeeds",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TSC-OAS31-TS7.json"
+      ],
+      "rootCauseIds": [],
+      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+    },
+    {
+      "id": "TSC-SWR-MIN-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginSWR minimal isolation strict compilation",
+      "plugin": "pluginSWR",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.swr-minimal.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.swr-minimal.json"
+      ],
+      "expected": "strict compilation succeeds without the shared inline-enum fixture",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-SWR-MIN-TS56.json",
+        "reports/evidence/failures/TSC-SWR-MIN-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-SWR-MIN-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
+      "rootCauseIds": [
+        "BUG-SWR-IMPLICIT-ANY"
+      ],
+      "severity": "P1",
+      "notes": ""
+    },
+    {
+      "id": "TSC-MSW-MIN-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginMSW minimal isolation strict compilation",
+      "plugin": "pluginMSW",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.msw-minimal.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.msw-minimal.json"
+      ],
+      "expected": "strict compilation succeeds without the shared inline-enum fixture",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-MSW-MIN-TS56.json",
+        "reports/evidence/failures/TSC-MSW-MIN-TS56.stdout.txt",
+        "reports/evidence/failures/TSC-MSW-MIN-TS56.stderr.txt"
+      ],
+      "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
+      "rootCauseIds": [
+        "BUG-MSW-SCHEMALESS-JSON"
+      ],
+      "severity": "P2",
+      "notes": ""
+    },
+    {
+      "id": "TSC-TS-REQUEST-BOUNDARY-TS56",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSRequest requestConfig boundary strict compilation",
+      "plugin": "pluginTSRequest boundary",
+      "compilerTier": "legacy",
+      "requestedVersion": "5.6.2",
+      "actualVersion": "5.6.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.ts-request-boundary.json",
+      "args": [
+        "<workspace>/node_modules/typescript-legacy/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-request-boundary.json"
+      ],
+      "expected": "Axios headers/withCredentials/withXSRFToken consumer compiles strictly",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS56.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "TSC-SWR-MIN-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginSWR minimal isolation strict compilation",
+      "plugin": "pluginSWR",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.swr-minimal.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.swr-minimal.json"
+      ],
+      "expected": "strict compilation succeeds without the shared inline-enum fixture",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-SWR-MIN-TS6.json",
+        "reports/evidence/failures/TSC-SWR-MIN-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-SWR-MIN-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
+      "rootCauseIds": [
+        "BUG-SWR-IMPLICIT-ANY"
+      ],
+      "severity": "P1",
+      "notes": ""
+    },
+    {
+      "id": "TSC-MSW-MIN-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginMSW minimal isolation strict compilation",
+      "plugin": "pluginMSW",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.msw-minimal.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.msw-minimal.json"
+      ],
+      "expected": "strict compilation succeeds without the shared inline-enum fixture",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-MSW-MIN-TS6.json",
+        "reports/evidence/failures/TSC-MSW-MIN-TS6.stdout.txt",
+        "reports/evidence/failures/TSC-MSW-MIN-TS6.stderr.txt"
+      ],
+      "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
+      "rootCauseIds": [
+        "BUG-MSW-SCHEMALESS-JSON"
+      ],
+      "severity": "P2",
+      "notes": ""
+    },
+    {
+      "id": "TSC-TS-REQUEST-BOUNDARY-TS6",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSRequest requestConfig boundary strict compilation",
+      "plugin": "pluginTSRequest boundary",
+      "compilerTier": "baseline",
+      "requestedVersion": "6.0.3",
+      "actualVersion": "6.0.3",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.ts-request-boundary.json",
+      "args": [
+        "<workspace>/node_modules/typescript-baseline/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-request-boundary.json"
+      ],
+      "expected": "Axios headers/withCredentials/withXSRFToken consumer compiles strictly",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS6.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "TSC-SWR-MIN-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginSWR minimal isolation strict compilation",
+      "plugin": "pluginSWR",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.swr-minimal.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.swr-minimal.json"
+      ],
+      "expected": "strict compilation succeeds without the shared inline-enum fixture",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-SWR-MIN-TS7.json",
+        "reports/evidence/failures/TSC-SWR-MIN-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-SWR-MIN-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
+      "rootCauseIds": [
+        "BUG-SWR-IMPLICIT-ANY"
+      ],
+      "severity": "P1",
+      "notes": ""
+    },
+    {
+      "id": "TSC-MSW-MIN-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginMSW minimal isolation strict compilation",
+      "plugin": "pluginMSW",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.msw-minimal.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.msw-minimal.json"
+      ],
+      "expected": "strict compilation succeeds without the shared inline-enum fixture",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/TSC-MSW-MIN-TS7.json",
+        "reports/evidence/failures/TSC-MSW-MIN-TS7.stdout.txt",
+        "reports/evidence/failures/TSC-MSW-MIN-TS7.stderr.txt"
+      ],
+      "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
+      "rootCauseIds": [
+        "BUG-MSW-SCHEMALESS-JSON"
+      ],
+      "severity": "P2",
+      "notes": ""
+    },
+    {
+      "id": "TSC-TS-REQUEST-BOUNDARY-TS7",
+      "suite": "typescript-matrix",
+      "feature": "pluginTSRequest requestConfig boundary strict compilation",
+      "plugin": "pluginTSRequest boundary",
+      "compilerTier": "current",
+      "requestedVersion": "7.0.2",
+      "actualVersion": "7.0.2",
+      "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.ts-request-boundary.json",
+      "args": [
+        "<workspace>/node_modules/typescript-current/bin/tsc",
+        "-p",
+        "scenarios/generators/tsconfig.ts-request-boundary.json"
+      ],
+      "expected": "Axios headers/withCredentials/withXSRFToken consumer compiles strictly",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS7.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-001",
+      "suite": "lifecycle",
+      "feature": "dry-run does not write formal output",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --dry-run --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--dry-run",
+        "--json"
+      ],
+      "expected": "dry-run does not write formal output",
+      "actual": "exit 0; outputExists=false",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-001.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-003",
+      "suite": "lifecycle",
+      "feature": "managed output and ownership manifest are correct",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--json"
+      ],
+      "expected": "managed output and ownership manifest are correct",
+      "actual": "exit 0; managedFilesPresent=true",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-003.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-002",
+      "suite": "lifecycle",
+      "feature": "check succeeds for current output",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --check --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--check",
+        "--json"
+      ],
+      "expected": "check succeeds for current output",
+      "actual": "exit 0; success=true",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-002.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-004",
+      "suite": "lifecycle",
+      "feature": "second generation is byte-stable",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--json"
+      ],
+      "expected": "second generation is byte-stable",
+      "actual": "exit 0; byteStable=true",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-004.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-005",
+      "suite": "lifecycle",
+      "feature": "artificial drift makes check return exit 6",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --check --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--check",
+        "--json"
+      ],
+      "expected": "artificial drift makes check return exit 6",
+      "actual": "exit 6; expected drift exit=6",
+      "exitCode": 6,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-005.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-006",
+      "suite": "lifecycle",
+      "feature": "check does not automatically repair drift",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --check --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--check",
+        "--json"
+      ],
+      "expected": "check does not automatically repair drift",
+      "actual": "exit 6; driftUnchanged=true",
+      "exitCode": 6,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-006.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-007",
+      "suite": "lifecycle",
+      "feature": "clean removes stale managed files",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--json"
+      ],
+      "expected": "clean removes stale managed files",
+      "actual": "exit 0; managedStaleFilesRemoved=true",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-007.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-008",
+      "suite": "lifecycle",
+      "feature": "clean preserves handwritten files",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --check --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--check",
+        "--json"
+      ],
+      "expected": "clean preserves handwritten files",
+      "actual": "exit 0; handwrittenPreserved=true",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-008.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "LIFE-009",
+      "suite": "lifecycle",
+      "feature": "ownership manifest is byte-stable",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "lifecycle.config.ts",
+        "--json"
+      ],
+      "expected": "ownership manifest is byte-stable",
+      "actual": "exit 0; manifestByteStable=true",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/LIFE-009.json",
+        "reports/evidence/hashes/lifecycle.json"
+      ],
       "notes": ""
     }
   ]

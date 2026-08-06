@@ -1,0 +1,16 @@
+{
+  "id": "CLI-005",
+  "stage": "CLI-005",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/typescript-current/bin/tsc",
+    "-p",
+    "tsconfig.api.json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p tsconfig.api.json",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 712
+}

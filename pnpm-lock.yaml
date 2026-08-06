@@ -38,6 +38,15 @@ importers:
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
+      typescript-baseline:
+        specifier: npm:typescript@6.0.3
+        version: typescript@6.0.3
+      typescript-current:
+        specifier: npm:typescript@7.0.2
+        version: typescript@7.0.2
+      typescript-legacy:
+        specifier: npm:typescript@5.6.2
+        version: typescript@5.6.2
       vitest:
         specifier: ^4.1.10
         version: 4.1.10(@types/node@26.1.2)(msw@2.15.0(@types/node@26.1.2)(typescript@7.0.2))(vite@8.2.0(@types/node@26.1.2)(esbuild@0.25.12))
@@ -2315,6 +2324,16 @@ packages:
 
   type@2.7.3:
     resolution: {integrity: sha512-8j+1QmAbPvLZow5Qpi6NCaN8FB60p/6x8/vfNqOk/hC+HuvFZhL4+WfekuhQLiqFZXOgQdrs3B+XxEmCc6b3FQ==}
+
+  typescript@5.6.2:
+    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -4881,6 +4900,10 @@ snapshots:
       mime-types: 3.0.2
 
   type@2.7.3: {}
+
+  typescript@5.6.2: {}
+
+  typescript@6.0.3: {}
 
   typescript@7.0.2:
     optionalDependencies:

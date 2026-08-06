@@ -28,8 +28,8 @@ The import is `UserOptionalInlineModeEnumValue`, but the property uses
 and Zod `.optional()` behavior are otherwise correct.
 
 Evidence:
-`scenarios/generators/generated/ts-type/types/models/user.model.ts` and
-`reports/logs/TSC-001.stderr.log`.
+`reports/evidence/generated-minimal/inline-enum-user.model.ts` and the
+`TSC-TS-TYPE-*` failure evidence under `reports/evidence/failures/`.
 
 ## Suggested direction
 

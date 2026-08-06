@@ -6,9 +6,11 @@
 		"verify": "node scripts/verify.mjs",
 		"test:cli": "node scripts/acceptance.mjs --suite cli",
 		"test:generators": "node scripts/acceptance.mjs --suite generators",
+		"test:typescript-matrix": "node scripts/typescript-matrix.mjs",
 		"test:mcp": "node scripts/mcp-acceptance.mjs",
 		"test:skills": "node scripts/acceptance.mjs --suite skills",
 		"test:security": "node scripts/acceptance.mjs --suite security",
+		"test:lifecycle": "node scripts/lifecycle.mjs",
 		"test:regression": "node scripts/acceptance.mjs --suite regression",
 		"report": "node scripts/report.mjs"
 	},
@@ -23,6 +25,9 @@
 		"react": "^19.2.8",
 		"swr": "^2.5.0",
 		"typescript": "^7.0.2",
+		"typescript-baseline": "npm:typescript@6.0.3",
+		"typescript-current": "npm:typescript@7.0.2",
+		"typescript-legacy": "npm:typescript@5.6.2",
 		"vitest": "^4.1.10",
 		"vue": "^3.5.41",
 		"zod": "^4.4.3"

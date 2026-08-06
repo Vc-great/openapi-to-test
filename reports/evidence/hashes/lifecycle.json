@@ -1,0 +1,156 @@
+{
+  "LIFE-001": {
+    "outputExistsAfterDryRun": false
+  },
+  "LIFE-003": {
+    "expectedFiles": [
+      ".openapi-to-manifest.json",
+      "life/keep-operation.types.ts",
+      "life/remove-operation.types.ts",
+      "types/models/keep.model.ts",
+      "types/models/remove.model.ts"
+    ],
+    "present": true,
+    "tree": {
+      "entries": [
+        {
+          "path": ".openapi-to-manifest.json",
+          "sha256": "de47027ca31433e57444eef2c726e7da0eedefa6c7dba8c5cfea280fe5f239bf"
+        },
+        {
+          "path": "life/keep-operation.types.ts",
+          "sha256": "1ddedd72aa370d48e7f5fa47c170474a9ff0942d87cc10547e8748ec4322359c"
+        },
+        {
+          "path": "life/remove-operation.types.ts",
+          "sha256": "118d1e1c432145dd026547d62e7842ed513d1a5d36b90a1162d8414ca2a813d6"
+        },
+        {
+          "path": "types/enum.model.ts",
+          "sha256": "e9336a1355f1375be33d6f4be086b6806129c13cb736bb6820e985ea1aa0825a"
+        },
+        {
+          "path": "types/models/keep.model.ts",
+          "sha256": "ac3d499680170841d860af85505ea698c446c65ef744e89656f9a4a22c95ded3"
+        },
+        {
+          "path": "types/models/remove.model.ts",
+          "sha256": "7222c2fd4d791ea4373152c5aada6c0a5aefe44b02d9a8330776aee4b1ec5f37"
+        }
+      ],
+      "sha256": "efbc8fccd6107d0cdf98620eb63d667e0474735531f177ac51030f5ed279c7e7"
+    }
+  },
+  "LIFE-004": {
+    "before": {
+      "entries": [
+        {
+          "path": ".openapi-to-manifest.json",
+          "sha256": "de47027ca31433e57444eef2c726e7da0eedefa6c7dba8c5cfea280fe5f239bf"
+        },
+        {
+          "path": "handwritten.txt",
+          "sha256": "d0c66c45c5de446f500d99888d6ca5ba92dc4e5260fd409951885878b8b3b710"
+        },
+        {
+          "path": "life/keep-operation.types.ts",
+          "sha256": "1ddedd72aa370d48e7f5fa47c170474a9ff0942d87cc10547e8748ec4322359c"
+        },
+        {
+          "path": "life/remove-operation.types.ts",
+          "sha256": "118d1e1c432145dd026547d62e7842ed513d1a5d36b90a1162d8414ca2a813d6"
+        },
+        {
+          "path": "types/enum.model.ts",
+          "sha256": "e9336a1355f1375be33d6f4be086b6806129c13cb736bb6820e985ea1aa0825a"
+        },
+        {
+          "path": "types/models/keep.model.ts",
+          "sha256": "ac3d499680170841d860af85505ea698c446c65ef744e89656f9a4a22c95ded3"
+        },
+        {
+          "path": "types/models/remove.model.ts",
+          "sha256": "7222c2fd4d791ea4373152c5aada6c0a5aefe44b02d9a8330776aee4b1ec5f37"
+        }
+      ],
+      "sha256": "6861eaf992095561e3829edc4982cf314bed7df49a12fbc6f331e5f53d4dbb9a"
+    },
+    "after": {
+      "entries": [
+        {
+          "path": ".openapi-to-manifest.json",
+          "sha256": "de47027ca31433e57444eef2c726e7da0eedefa6c7dba8c5cfea280fe5f239bf"
+        },
+        {
+          "path": "handwritten.txt",
+          "sha256": "d0c66c45c5de446f500d99888d6ca5ba92dc4e5260fd409951885878b8b3b710"
+        },
+        {
+          "path": "life/keep-operation.types.ts",
+          "sha256": "1ddedd72aa370d48e7f5fa47c170474a9ff0942d87cc10547e8748ec4322359c"
+        },
+        {
+          "path": "life/remove-operation.types.ts",
+          "sha256": "118d1e1c432145dd026547d62e7842ed513d1a5d36b90a1162d8414ca2a813d6"
+        },
+        {
+          "path": "types/enum.model.ts",
+          "sha256": "e9336a1355f1375be33d6f4be086b6806129c13cb736bb6820e985ea1aa0825a"
+        },
+        {
+          "path": "types/models/keep.model.ts",
+          "sha256": "ac3d499680170841d860af85505ea698c446c65ef744e89656f9a4a22c95ded3"
+        },
+        {
+          "path": "types/models/remove.model.ts",
+          "sha256": "7222c2fd4d791ea4373152c5aada6c0a5aefe44b02d9a8330776aee4b1ec5f37"
+        }
+      ],
+      "sha256": "6861eaf992095561e3829edc4982cf314bed7df49a12fbc6f331e5f53d4dbb9a"
+    }
+  },
+  "LIFE-005": {
+    "driftFile": "types/models/keep.model.ts",
+    "driftHash": "5acd994c485e668133974e7b997b7d94fb2660cf662a74e7b28aae81b209842d"
+  },
+  "LIFE-006": {
+    "before": "5acd994c485e668133974e7b997b7d94fb2660cf662a74e7b28aae81b209842d",
+    "after": "5acd994c485e668133974e7b997b7d94fb2660cf662a74e7b28aae81b209842d"
+  },
+  "LIFE-007": {
+    "managedStaleFilesRemoved": true,
+    "tree": {
+      "entries": [
+        {
+          "path": ".openapi-to-manifest.json",
+          "sha256": "b60e41bac3280e1d388abfbea2ddeca1f6670e24e433d51a6870fc5242973208"
+        },
+        {
+          "path": "handwritten.txt",
+          "sha256": "d0c66c45c5de446f500d99888d6ca5ba92dc4e5260fd409951885878b8b3b710"
+        },
+        {
+          "path": "life/keep-operation.types.ts",
+          "sha256": "1ddedd72aa370d48e7f5fa47c170474a9ff0942d87cc10547e8748ec4322359c"
+        },
+        {
+          "path": "types/enum.model.ts",
+          "sha256": "e9336a1355f1375be33d6f4be086b6806129c13cb736bb6820e985ea1aa0825a"
+        },
+        {
+          "path": "types/models/keep.model.ts",
+          "sha256": "ac3d499680170841d860af85505ea698c446c65ef744e89656f9a4a22c95ded3"
+        }
+      ],
+      "sha256": "8145bbd0fd1875fc1620f47b49b704de5a9fae863040d01b3565203cb8fa2933"
+    }
+  },
+  "LIFE-008": {
+    "handwrittenPreserved": true,
+    "sha256": "d0c66c45c5de446f500d99888d6ca5ba92dc4e5260fd409951885878b8b3b710"
+  },
+  "LIFE-009": {
+    "before": "b60e41bac3280e1d388abfbea2ddeca1f6670e24e433d51a6870fc5242973208",
+    "after": "b60e41bac3280e1d388abfbea2ddeca1f6670e24e433d51a6870fc5242973208"
+  }
+}

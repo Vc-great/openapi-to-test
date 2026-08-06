@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: MSW schema-less response isolation
+  version: 1.0.0
+paths:
+  /schema-less:
+    get:
+      operationId: getSchemaLess
+      tags: [minimal]
+      responses:
+        "200":
+          description: Response intentionally has no schema
+          content:
+            application/json: {}

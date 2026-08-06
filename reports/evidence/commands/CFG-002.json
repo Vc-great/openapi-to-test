@@ -1,0 +1,17 @@
+{
+  "id": "CFG-002",
+  "stage": "CFG-002",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "generate",
+    "--dry-run",
+    "--json"
+  ],
+  "cwd": ".tmp/ambiguous-59941",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --dry-run --json",
+  "exitCode": 2,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 266
+}

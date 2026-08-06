@@ -1,0 +1,17 @@
+{
+  "id": "VAL-007",
+  "stage": "VAL-007",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "validate",
+    "fixtures/invalid/not-openapi.yaml",
+    "--json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js validate fixtures/invalid/not-openapi.yaml --json",
+  "exitCode": 3,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 647
+}

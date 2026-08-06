@@ -1,0 +1,21 @@
+{
+  "id": "LIFE-005",
+  "stage": "LIFE-005",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "generate",
+    "--config",
+    "lifecycle.config.ts",
+    "--check",
+    "--json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config lifecycle.config.ts --check --json",
+  "exitCode": 6,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 486,
+  "input": "fixtures/regression/lifecycle-v1.yaml",
+  "outputDir": ".tmp/lifecycle-60620"
+}

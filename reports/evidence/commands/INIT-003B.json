@@ -1,0 +1,16 @@
+{
+  "id": "INIT-003B",
+  "stage": "INIT-003B",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/openapi-to/bin/openapi.js",
+    "init",
+    "--json"
+  ],
+  "cwd": ".tmp/init-json-59941",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js init --json",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 258
+}

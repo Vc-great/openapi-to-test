@@ -1,0 +1,20 @@
+openapi: 3.0.3
+info:
+  title: SWR implicit-any isolation
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      tags: [health]
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok]
+                properties:
+                  ok:
+                    type: boolean

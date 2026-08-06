@@ -1,0 +1,26 @@
+{
+  "id": "TSC-VUE-QUERY-TS7",
+  "stage": "TSC-VUE-QUERY-TS7",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/typescript-current/bin/tsc",
+    "-p",
+    "scenarios/generators/tsconfig.vue-query.json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/typescript-current/bin/tsc -p scenarios/generators/tsconfig.vue-query.json",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 586,
+  "requestedVersion": "7.0.2",
+  "actualVersion": "7.0.2",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
+    "noEmit": true
+  }
+}

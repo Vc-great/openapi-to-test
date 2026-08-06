@@ -1,0 +1,72 @@
+{
+  "success": false,
+  "command": "generate",
+  "mode": "dry-run",
+  "diagnostics": [
+    {
+      "code": "ARTIFACT_PATH_CONFLICT",
+      "severity": "error",
+      "message": "Multiple plugins generated different content for misc/use-get-schema-less-media.query.ts.",
+      "location": {
+        "source": "misc/use-get-schema-less-media.query.ts"
+      }
+    },
+    {
+      "code": "ARTIFACT_PATH_CONFLICT",
+      "severity": "error",
+      "message": "Multiple plugins generated different content for users/use-create-user.mutation.ts.",
+      "location": {
+        "source": "users/use-create-user.mutation.ts"
+      }
+    },
+    {
+      "code": "ARTIFACT_PATH_CONFLICT",
+      "severity": "error",
+      "message": "Multiple plugins generated different content for users/use-get-user.query.ts.",
+      "location": {
+        "source": "users/use-get-user.query.ts"
+      }
+    },
+    {
+      "code": "OPENAPI_REF_CYCLE",
+      "severity": "warning",
+      "message": "Reference cycle detected at #/components/schemas/TreeNode; the cycle is preserved instead of recursively expanded.",
+      "location": {
+        "source": "file://<workspace>/fixtures/openapi30/main.yaml",
+        "path": [
+          "components",
+          "schemas",
+          "TreeNode",
+          "properties",
+          "children",
+          "items",
+          "$ref"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "errors": 3,
+    "warnings": 1,
+    "infos": 0
+  },
+  "servers": [
+    {
+      "name": "init-template",
+      "source": "fixtures/openapi30/main.yaml",
+      "output": "scenarios/cli/init-template-output",
+      "success": false,
+      "manifest": {
+        "outputRoot": "scenarios/cli/init-template-output",
+        "entries": [],
+        "summary": {
+          "added": 0,
+          "modified": 0,
+          "deleted": 0,
+          "unchanged": 0
+        },
+        "outdated": false
+      }
+    }
+  ]
+}

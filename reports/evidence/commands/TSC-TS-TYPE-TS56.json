@@ -1,0 +1,26 @@
+{
+  "id": "TSC-TS-TYPE-TS56",
+  "stage": "TSC-TS-TYPE-TS56",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "<workspace>/node_modules/typescript-legacy/bin/tsc",
+    "-p",
+    "scenarios/generators/tsconfig.ts-type.json"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node <workspace>/node_modules/typescript-legacy/bin/tsc -p scenarios/generators/tsconfig.ts-type.json",
+  "exitCode": 2,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 1687,
+  "requestedVersion": "5.6.2",
+  "actualVersion": "5.6.2",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
+    "noEmit": true
+  }
+}

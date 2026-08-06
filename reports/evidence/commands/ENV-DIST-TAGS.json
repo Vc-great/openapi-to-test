@@ -1,0 +1,17 @@
+{
+  "id": "ENV-DIST-TAGS",
+  "stage": "ENV-DIST-TAGS",
+  "executable": "pnpm",
+  "args": [
+    "view",
+    "openapi-to",
+    "dist-tags",
+    "--json"
+  ],
+  "cwd": ".",
+  "command": "pnpm view openapi-to dist-tags --json",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 916
+}

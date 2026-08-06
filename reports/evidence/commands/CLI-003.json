@@ -1,0 +1,16 @@
+{
+  "id": "CLI-003",
+  "stage": "CLI-003",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "--input-type=module",
+    "-e",
+    "import('openapi-to').then(m=>{if(typeof m.defineConfig!=='function')process.exit(1)})"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node --input-type=module -e \"import('openapi-to').then(m=>{if(typeof m.defineConfig!=='function')process.exit(1)})\"",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 436
+}
