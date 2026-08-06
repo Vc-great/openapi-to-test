@@ -1,0 +1,12 @@
+openapi: 3.0.3
+info: {title: Lifecycle, version: 2.0.0}
+paths:
+  /keep:
+    get:
+      tags: [life]
+      operationId: keepOperation
+      responses:
+        "200": {description: ok}
+components:
+  schemas:
+    Keep: {type: object, properties: {id: {type: string}}}

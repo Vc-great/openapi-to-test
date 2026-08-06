@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["generated/vue-query/**/*.ts", "consumers/vue-query.ts", "../../src/utils/request.ts"]
+}

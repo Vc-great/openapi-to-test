@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "generator": {
+    "name": "openapi-to",
+    "version": "4.0.0-rc.3"
+  },
+  "files": [
+    {
+      "path": "life/keep-operation.types.ts",
+      "sha256": "1ddedd72aa370d48e7f5fa47c170474a9ff0942d87cc10547e8748ec4322359c",
+      "bytes": 296,
+      "kind": "typescript"
+    },
+    {
+      "path": "types/enum.model.ts",
+      "sha256": "e9336a1355f1375be33d6f4be086b6806129c13cb736bb6820e985ea1aa0825a",
+      "bytes": 135,
+      "kind": "typescript"
+    },
+    {
+      "path": "types/models/keep.model.ts",
+      "sha256": "ac3d499680170841d860af85505ea698c446c65ef744e89656f9a4a22c95ded3",
+      "bytes": 180,
+      "kind": "typescript"
+    }
+  ]
+}

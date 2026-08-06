@@ -1,0 +1,1 @@
+This file is not owned by openapi-to and must survive clean generation.

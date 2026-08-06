@@ -1,0 +1,9 @@
+openapi: 3.0.3
+info: {title: User Service, version: 1.0.0}
+paths:
+  /shared:
+    get:
+      tags: [user]
+      operationId: getShared
+      responses:
+        "200": {description: ok, content: {application/json: {schema: {type: string}}}}

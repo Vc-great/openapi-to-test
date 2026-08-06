@@ -1,0 +1,6512 @@
+{
+  "noConfig": [
+    {
+      "name": "openapi_validate",
+      "title": "Validate OpenAPI",
+      "description": "Use when the question is whether one OpenAPI document is valid or why parsing, references, or validation failed. Does not summarize API shape, compare versions, generate code, or modify files. Parser acceptance does not imply every generator supports every construct; OpenAPI 3.2 is compatible-read with diagnosed generation gaps.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "failOnWarning": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_validate"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string"
+          },
+          "openapiVersion": {
+            "type": "string"
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_inspect",
+      "title": "Inspect OpenAPI",
+      "description": "Use for counts, operations, tags, missing operationIds, security schemes, and compatibility classification of one OpenAPI document. This is structural inspection, not validation or version comparison. Returns a bounded summary, never the full document, and modifies no files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "includeOperations": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_inspect"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string"
+          },
+          "inspection": {
+            "type": "object",
+            "properties": {
+              "openapiVersion": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "apiVersion": {
+                "type": "string"
+              },
+              "pathCount": {
+                "type": "integer"
+              },
+              "operationCount": {
+                "type": "integer"
+              },
+              "schemaCount": {
+                "type": "integer"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "operationCount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "operationCount"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "methods": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "securitySchemes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "missingOperationIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "deprecatedOperations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "externalReferenceCount": {
+                "type": "integer"
+              },
+              "supportClassification": {
+                "type": "object",
+                "properties": {
+                  "complete": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "compatibleRead": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "acceptedNotGenerated": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "unsupported": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "complete",
+                  "compatibleRead",
+                  "acceptedNotGenerated",
+                  "unsupported"
+                ],
+                "additionalProperties": false
+              },
+              "operations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "method": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "operationId": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "deprecated": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "method",
+                    "path",
+                    "tags",
+                    "deprecated"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "pathCount",
+              "operationCount",
+              "schemaCount",
+              "tags",
+              "methods",
+              "securitySchemes",
+              "missingOperationIds",
+              "deprecatedOperations",
+              "externalReferenceCount"
+            ],
+            "additionalProperties": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "operations": {
+                "type": "boolean"
+              },
+              "totalOperations": {
+                "type": "integer"
+              },
+              "returnedOperations": {
+                "type": "integer"
+              },
+              "omittedOperations": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_diff",
+      "title": "Compare OpenAPI Documents",
+      "description": "Use only to compare a before and after OpenAPI document for first-stage breaking, non-breaking, and warning changes. This is not validation, generation freshness, a complete compatibility proof, or a breaking-change oracle. Modifies no files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "after": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "before",
+          "after"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_diff"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "before": {
+            "type": "string"
+          },
+          "after": {
+            "type": "string"
+          },
+          "breaking": {
+            "type": "boolean"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "type": "string",
+                  "enum": [
+                    "breaking",
+                    "non-breaking",
+                    "warning",
+                    "informational"
+                  ]
+                },
+                "code": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "classification",
+                "code",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "breaking": {
+                "type": "integer"
+              },
+              "nonBreaking": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "informational": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "breaking",
+              "nonBreaking",
+              "warnings",
+              "informational"
+            ],
+            "additionalProperties": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "changes": {
+                "type": "boolean"
+              },
+              "totalChanges": {
+                "type": "integer"
+              },
+              "returnedChanges": {
+                "type": "integer"
+              },
+              "omittedChanges": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          },
+          "limitation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ],
+  "readOnly": [
+    {
+      "name": "openapi_validate",
+      "title": "Validate OpenAPI",
+      "description": "Use when the question is whether one OpenAPI document is valid or why parsing, references, or validation failed. Does not summarize API shape, compare versions, generate code, or modify files. Parser acceptance does not imply every generator supports every construct; OpenAPI 3.2 is compatible-read with diagnosed generation gaps.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "failOnWarning": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_validate"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string"
+          },
+          "openapiVersion": {
+            "type": "string"
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_inspect",
+      "title": "Inspect OpenAPI",
+      "description": "Use for counts, operations, tags, missing operationIds, security schemes, and compatibility classification of one OpenAPI document. This is structural inspection, not validation or version comparison. Returns a bounded summary, never the full document, and modifies no files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "includeOperations": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_inspect"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string"
+          },
+          "inspection": {
+            "type": "object",
+            "properties": {
+              "openapiVersion": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "apiVersion": {
+                "type": "string"
+              },
+              "pathCount": {
+                "type": "integer"
+              },
+              "operationCount": {
+                "type": "integer"
+              },
+              "schemaCount": {
+                "type": "integer"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "operationCount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "operationCount"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "methods": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "securitySchemes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "missingOperationIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "deprecatedOperations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "externalReferenceCount": {
+                "type": "integer"
+              },
+              "supportClassification": {
+                "type": "object",
+                "properties": {
+                  "complete": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "compatibleRead": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "acceptedNotGenerated": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "unsupported": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "complete",
+                  "compatibleRead",
+                  "acceptedNotGenerated",
+                  "unsupported"
+                ],
+                "additionalProperties": false
+              },
+              "operations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "method": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "operationId": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "deprecated": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "method",
+                    "path",
+                    "tags",
+                    "deprecated"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "pathCount",
+              "operationCount",
+              "schemaCount",
+              "tags",
+              "methods",
+              "securitySchemes",
+              "missingOperationIds",
+              "deprecatedOperations",
+              "externalReferenceCount"
+            ],
+            "additionalProperties": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "operations": {
+                "type": "boolean"
+              },
+              "totalOperations": {
+                "type": "integer"
+              },
+              "returnedOperations": {
+                "type": "integer"
+              },
+              "omittedOperations": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_diff",
+      "title": "Compare OpenAPI Documents",
+      "description": "Use only to compare a before and after OpenAPI document for first-stage breaking, non-breaking, and warning changes. This is not validation, generation freshness, a complete compatibility proof, or a breaking-change oracle. Modifies no files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "after": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "before",
+          "after"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_diff"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "before": {
+            "type": "string"
+          },
+          "after": {
+            "type": "string"
+          },
+          "breaking": {
+            "type": "boolean"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "type": "string",
+                  "enum": [
+                    "breaking",
+                    "non-breaking",
+                    "warning",
+                    "informational"
+                  ]
+                },
+                "code": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "classification",
+                "code",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "breaking": {
+                "type": "integer"
+              },
+              "nonBreaking": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "informational": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "breaking",
+              "nonBreaking",
+              "warnings",
+              "informational"
+            ],
+            "additionalProperties": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "changes": {
+                "type": "boolean"
+              },
+              "totalChanges": {
+                "type": "integer"
+              },
+              "returnedChanges": {
+                "type": "integer"
+              },
+              "omittedChanges": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          },
+          "limitation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_list_targets",
+      "title": "List Trusted OpenAPI Targets",
+      "description": "Use before operation search when the startup-trusted configuration has multiple targets. Returns only target names, local/remote source type, bounded counts, generation availability, and diagnostic summaries. Never returns source locations, URLs, headers, secrets, configuration bodies, or OpenAPI documents.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_list_targets"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "sourceType": {
+                  "type": "string",
+                  "enum": [
+                    "local",
+                    "remote"
+                  ]
+                },
+                "operationCount": {
+                  "type": "integer"
+                },
+                "schemaCount": {
+                  "type": "integer"
+                },
+                "generationAvailable": {
+                  "type": "boolean"
+                },
+                "catalogAvailable": {
+                  "type": "boolean"
+                },
+                "diagnosticSummary": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "integer"
+                    },
+                    "warnings": {
+                      "type": "integer"
+                    },
+                    "infos": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "errors",
+                    "warnings",
+                    "infos"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "name",
+                "sourceType",
+                "operationCount",
+                "schemaCount",
+                "generationAvailable",
+                "catalogAvailable",
+                "diagnosticSummary"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "$ref": "#/properties/targets/items/properties/diagnosticSummary"
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "targets",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_search_operations",
+      "title": "Search Trusted OpenAPI Operations",
+      "description": "Use to find a small ranked set of operations in one startup-trusted target by operation identity, method/path, tags, parameters, schema names, summary, or description. Returns lightweight summaries only; never returns a full OpenAPI document, full operation object, or schema body, and never generates or writes files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "methods": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            },
+            "maxItems": 20
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 50
+          },
+          "includeDeprecated": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_search_operations"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "target": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "totalMatches": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "operationKey": {
+                  "type": "string"
+                },
+                "operationId": {
+                  "type": "string"
+                },
+                "method": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "summary": {
+                  "type": "string"
+                },
+                "requestSchemaNames": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "responseSchemaNames": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "deprecated": {
+                  "type": "boolean"
+                },
+                "score": {
+                  "type": "number"
+                },
+                "matchReasons": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "operationKey",
+                "method",
+                "path",
+                "tags",
+                "requestSchemaNames",
+                "responseSchemaNames",
+                "deprecated",
+                "score",
+                "matchReasons"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "matches": {
+                "type": "boolean"
+              },
+              "totalMatches": {
+                "type": "integer"
+              },
+              "returnedMatches": {
+                "type": "integer"
+              },
+              "omittedMatches": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "query",
+          "totalMatches",
+          "items",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_get_operation",
+      "title": "Read Trusted OpenAPI Operation Contract",
+      "description": "Use after openapi_search_operations to read one selected operation by stable operationKey. Returns summary or a bounded request/response contract with depth-, count-, property-, example-, and byte-limited related schema summaries. Never returns the full OpenAPI document or components.schemas and never generates or writes files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "operationKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "detail": {
+            "type": "string",
+            "enum": [
+              "summary",
+              "contract"
+            ]
+          },
+          "schemaDepth": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "maxSchemas": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "maxPropertiesPerSchema": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 500
+          },
+          "includeExamples": {
+            "type": "boolean"
+          },
+          "maxBytes": {
+            "type": "integer",
+            "minimum": 1024,
+            "maximum": 1048576
+          }
+        },
+        "required": [
+          "operationKey"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_get_operation"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "target": {
+            "type": "string"
+          },
+          "found": {
+            "type": "boolean"
+          },
+          "detail": {
+            "type": "string",
+            "enum": [
+              "summary",
+              "contract"
+            ]
+          },
+          "operation": {
+            "type": "object",
+            "properties": {
+              "operationKey": {
+                "type": "string"
+              },
+              "operationId": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "summary": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "deprecated": {
+                "type": "boolean"
+              },
+              "requestSchemaNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "responseSchemaNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "in": {
+                          "type": "string",
+                          "enum": [
+                            "path",
+                            "query",
+                            "header",
+                            "cookie"
+                          ]
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              ]
+                            },
+                            "format": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "nullable": {
+                              "type": "boolean"
+                            },
+                            "required": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "enum": {
+                              "type": "array",
+                              "items": {}
+                            },
+                            "properties": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "required": {
+                                    "type": "boolean"
+                                  },
+                                  "schema": {
+                                    "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "required",
+                                  "schema"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "items": {
+                              "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                            },
+                            "allOf": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                              }
+                            },
+                            "oneOf": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                              }
+                            },
+                            "anyOf": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                              }
+                            },
+                            "additionalProperties": {
+                              "anyOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                                }
+                              ]
+                            },
+                            "discriminator": {
+                              "type": "object",
+                              "properties": {
+                                "propertyName": {
+                                  "type": "string"
+                                },
+                                "mapping": {
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "example": {},
+                            "circular": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "example": {}
+                      },
+                      "required": [
+                        "name",
+                        "in",
+                        "required"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "query": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/operation/properties/parameters/properties/path/items"
+                    }
+                  },
+                  "header": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/operation/properties/parameters/properties/path/items"
+                    }
+                  },
+                  "cookie": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/operation/properties/parameters/properties/path/items"
+                    }
+                  }
+                },
+                "required": [
+                  "path",
+                  "query",
+                  "header",
+                  "cookie"
+                ],
+                "additionalProperties": false
+              },
+              "requestBody": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "content": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "contentType": {
+                          "type": "string"
+                        },
+                        "schema": {
+                          "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                        },
+                        "example": {}
+                      },
+                      "required": [
+                        "contentType"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "required",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "responses": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/operation/properties/requestBody/properties/content/items"
+                      }
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "success",
+                    "content"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "securityRequirements": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "schemas": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                }
+              }
+            },
+            "required": [
+              "operationKey",
+              "method",
+              "path",
+              "tags",
+              "deprecated",
+              "requestSchemaNames",
+              "responseSchemaNames"
+            ],
+            "additionalProperties": false
+          },
+          "byteLength": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "contract": {
+                "type": "boolean"
+              },
+              "reasons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "unresolvedSchemaRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "found",
+          "detail",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_generate_dry_run",
+      "title": "Preview OpenAPI Generation",
+      "description": "Use to preview which configured generation artifacts would be added, modified, deleted, or unchanged. Omit scope (or use full) for the existing full preview; after operation search and contract review, use an operations scope with exact operationKeys to preview artifacts from an in-memory projected compilation for exactly one trusted target. Returns bounded summaries and optional bounded text previews; it never writes files, manifests, plans, snapshots, or caches.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 100
+          },
+          "scope": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "full"
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "operations"
+                  },
+                  "operationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 500
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type",
+                  "operationKeys"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "includePreview": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_generate_dry_run"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "mode": {
+            "type": "string",
+            "const": "dry-run"
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "path",
+              "targets"
+            ],
+            "additionalProperties": false
+          },
+          "scope": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "operations"
+              },
+              "requestedOperationKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "resolvedOperationKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "requestedOperationKeys",
+              "resolvedOperationKeys"
+            ],
+            "additionalProperties": false
+          },
+          "projection": {
+            "type": "object",
+            "properties": {
+              "operationCount": {
+                "type": "integer"
+              },
+              "pathCount": {
+                "type": "integer"
+              },
+              "schemaCount": {
+                "type": "integer"
+              },
+              "parameterCount": {
+                "type": "integer"
+              },
+              "requestBodyCount": {
+                "type": "integer"
+              },
+              "responseCount": {
+                "type": "integer"
+              },
+              "headerCount": {
+                "type": "integer"
+              },
+              "securitySchemeCount": {
+                "type": "integer"
+              },
+              "callbackCount": {
+                "type": "integer"
+              },
+              "linkCount": {
+                "type": "integer"
+              },
+              "exampleCount": {
+                "type": "integer"
+              },
+              "projectionHash": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "operationCount",
+              "pathCount",
+              "schemaCount",
+              "parameterCount",
+              "requestBodyCount",
+              "responseCount",
+              "headerCount",
+              "securitySchemeCount",
+              "callbackCount",
+              "linkCount",
+              "exampleCount"
+            ],
+            "additionalProperties": false
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "outputRoot": {
+                  "type": "string"
+                },
+                "manifest": {
+                  "type": "object",
+                  "properties": {
+                    "artifactCount": {
+                      "type": "integer"
+                    },
+                    "totalBytes": {
+                      "type": "integer"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "artifacts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string"
+                          },
+                          "bytes": {
+                            "type": "integer"
+                          },
+                          "sha256": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "added",
+                              "modified",
+                              "deleted",
+                              "unchanged"
+                            ]
+                          },
+                          "preview": {
+                            "type": "string"
+                          },
+                          "previewTruncated": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "kind",
+                          "bytes",
+                          "status"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "artifactCount",
+                    "totalBytes",
+                    "artifacts"
+                  ],
+                  "additionalProperties": false
+                },
+                "summary": {
+                  "type": "object",
+                  "properties": {
+                    "added": {
+                      "type": "integer"
+                    },
+                    "modified": {
+                      "type": "integer"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    },
+                    "unchanged": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "added",
+                    "modified",
+                    "deleted",
+                    "unchanged"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "name",
+                "manifest",
+                "summary"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "artifacts": {
+                "type": "boolean"
+              },
+              "totalArtifacts": {
+                "type": "integer"
+              },
+              "returnedArtifacts": {
+                "type": "integer"
+              },
+              "omittedArtifacts": {
+                "type": "integer"
+              },
+              "previews": {
+                "type": "boolean"
+              },
+              "omittedPreviewBytes": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_check_generation",
+      "title": "Check OpenAPI Generation",
+      "description": "Use for CI/freshness questions: whether current configured generated files are outdated. Unlike dry-run, this focuses on current versus expected hashes and never repairs, writes, or deletes anything. Uses only startup-trusted config.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 100
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_check_generation"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "mode": {
+            "type": "string",
+            "const": "check"
+          },
+          "outdated": {
+            "type": "boolean"
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "outputRoot": {
+                  "type": "string"
+                },
+                "outdated": {
+                  "type": "boolean"
+                },
+                "changes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "added",
+                          "modified",
+                          "deleted"
+                        ]
+                      },
+                      "expectedSha256": {
+                        "type": "string"
+                      },
+                      "actualSha256": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "status"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "summary": {
+                  "type": "object",
+                  "properties": {
+                    "added": {
+                      "type": "integer"
+                    },
+                    "modified": {
+                      "type": "integer"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "added",
+                    "modified",
+                    "deleted"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "name",
+                "outdated",
+                "changes",
+                "summary"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "changes": {
+                "type": "boolean"
+              },
+              "totalChanges": {
+                "type": "integer"
+              },
+              "returnedChanges": {
+                "type": "integer"
+              },
+              "omittedChanges": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ],
+  "write": [
+    {
+      "name": "openapi_validate",
+      "title": "Validate OpenAPI",
+      "description": "Use when the question is whether one OpenAPI document is valid or why parsing, references, or validation failed. Does not summarize API shape, compare versions, generate code, or modify files. Parser acceptance does not imply every generator supports every construct; OpenAPI 3.2 is compatible-read with diagnosed generation gaps.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "failOnWarning": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_validate"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string"
+          },
+          "openapiVersion": {
+            "type": "string"
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_inspect",
+      "title": "Inspect OpenAPI",
+      "description": "Use for counts, operations, tags, missing operationIds, security schemes, and compatibility classification of one OpenAPI document. This is structural inspection, not validation or version comparison. Returns a bounded summary, never the full document, and modifies no files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "includeOperations": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_inspect"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string"
+          },
+          "inspection": {
+            "type": "object",
+            "properties": {
+              "openapiVersion": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "apiVersion": {
+                "type": "string"
+              },
+              "pathCount": {
+                "type": "integer"
+              },
+              "operationCount": {
+                "type": "integer"
+              },
+              "schemaCount": {
+                "type": "integer"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "operationCount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "operationCount"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "methods": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                }
+              },
+              "securitySchemes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "missingOperationIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "deprecatedOperations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "externalReferenceCount": {
+                "type": "integer"
+              },
+              "supportClassification": {
+                "type": "object",
+                "properties": {
+                  "complete": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "compatibleRead": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "acceptedNotGenerated": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "unsupported": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "complete",
+                  "compatibleRead",
+                  "acceptedNotGenerated",
+                  "unsupported"
+                ],
+                "additionalProperties": false
+              },
+              "operations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "method": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "operationId": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "deprecated": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "method",
+                    "path",
+                    "tags",
+                    "deprecated"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "pathCount",
+              "operationCount",
+              "schemaCount",
+              "tags",
+              "methods",
+              "securitySchemes",
+              "missingOperationIds",
+              "deprecatedOperations",
+              "externalReferenceCount"
+            ],
+            "additionalProperties": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "operations": {
+                "type": "boolean"
+              },
+              "totalOperations": {
+                "type": "integer"
+              },
+              "returnedOperations": {
+                "type": "integer"
+              },
+              "omittedOperations": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_diff",
+      "title": "Compare OpenAPI Documents",
+      "description": "Use only to compare a before and after OpenAPI document for first-stage breaking, non-breaking, and warning changes. This is not validation, generation freshness, a complete compatibility proof, or a breaking-change oracle. Modifies no files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "after": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "before",
+          "after"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_diff"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "before": {
+            "type": "string"
+          },
+          "after": {
+            "type": "string"
+          },
+          "breaking": {
+            "type": "boolean"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "type": "string",
+                  "enum": [
+                    "breaking",
+                    "non-breaking",
+                    "warning",
+                    "informational"
+                  ]
+                },
+                "code": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "classification",
+                "code",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "breaking": {
+                "type": "integer"
+              },
+              "nonBreaking": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "informational": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "breaking",
+              "nonBreaking",
+              "warnings",
+              "informational"
+            ],
+            "additionalProperties": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "changes": {
+                "type": "boolean"
+              },
+              "totalChanges": {
+                "type": "integer"
+              },
+              "returnedChanges": {
+                "type": "integer"
+              },
+              "omittedChanges": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          },
+          "limitation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_list_targets",
+      "title": "List Trusted OpenAPI Targets",
+      "description": "Use before operation search when the startup-trusted configuration has multiple targets. Returns only target names, local/remote source type, bounded counts, generation availability, and diagnostic summaries. Never returns source locations, URLs, headers, secrets, configuration bodies, or OpenAPI documents.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_list_targets"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "sourceType": {
+                  "type": "string",
+                  "enum": [
+                    "local",
+                    "remote"
+                  ]
+                },
+                "operationCount": {
+                  "type": "integer"
+                },
+                "schemaCount": {
+                  "type": "integer"
+                },
+                "generationAvailable": {
+                  "type": "boolean"
+                },
+                "catalogAvailable": {
+                  "type": "boolean"
+                },
+                "diagnosticSummary": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "integer"
+                    },
+                    "warnings": {
+                      "type": "integer"
+                    },
+                    "infos": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "errors",
+                    "warnings",
+                    "infos"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "name",
+                "sourceType",
+                "operationCount",
+                "schemaCount",
+                "generationAvailable",
+                "catalogAvailable",
+                "diagnosticSummary"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "$ref": "#/properties/targets/items/properties/diagnosticSummary"
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "targets",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_search_operations",
+      "title": "Search Trusted OpenAPI Operations",
+      "description": "Use to find a small ranked set of operations in one startup-trusted target by operation identity, method/path, tags, parameters, schema names, summary, or description. Returns lightweight summaries only; never returns a full OpenAPI document, full operation object, or schema body, and never generates or writes files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "methods": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            },
+            "maxItems": 20
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 50
+          },
+          "includeDeprecated": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_search_operations"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "target": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "totalMatches": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "operationKey": {
+                  "type": "string"
+                },
+                "operationId": {
+                  "type": "string"
+                },
+                "method": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "summary": {
+                  "type": "string"
+                },
+                "requestSchemaNames": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "responseSchemaNames": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "deprecated": {
+                  "type": "boolean"
+                },
+                "score": {
+                  "type": "number"
+                },
+                "matchReasons": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "operationKey",
+                "method",
+                "path",
+                "tags",
+                "requestSchemaNames",
+                "responseSchemaNames",
+                "deprecated",
+                "score",
+                "matchReasons"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "matches": {
+                "type": "boolean"
+              },
+              "totalMatches": {
+                "type": "integer"
+              },
+              "returnedMatches": {
+                "type": "integer"
+              },
+              "omittedMatches": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "query",
+          "totalMatches",
+          "items",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_get_operation",
+      "title": "Read Trusted OpenAPI Operation Contract",
+      "description": "Use after openapi_search_operations to read one selected operation by stable operationKey. Returns summary or a bounded request/response contract with depth-, count-, property-, example-, and byte-limited related schema summaries. Never returns the full OpenAPI document or components.schemas and never generates or writes files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "operationKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "detail": {
+            "type": "string",
+            "enum": [
+              "summary",
+              "contract"
+            ]
+          },
+          "schemaDepth": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "maxSchemas": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "maxPropertiesPerSchema": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 500
+          },
+          "includeExamples": {
+            "type": "boolean"
+          },
+          "maxBytes": {
+            "type": "integer",
+            "minimum": 1024,
+            "maximum": 1048576
+          }
+        },
+        "required": [
+          "operationKey"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_get_operation"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "target": {
+            "type": "string"
+          },
+          "found": {
+            "type": "boolean"
+          },
+          "detail": {
+            "type": "string",
+            "enum": [
+              "summary",
+              "contract"
+            ]
+          },
+          "operation": {
+            "type": "object",
+            "properties": {
+              "operationKey": {
+                "type": "string"
+              },
+              "operationId": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "summary": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "deprecated": {
+                "type": "boolean"
+              },
+              "requestSchemaNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "responseSchemaNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "in": {
+                          "type": "string",
+                          "enum": [
+                            "path",
+                            "query",
+                            "header",
+                            "cookie"
+                          ]
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              ]
+                            },
+                            "format": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "nullable": {
+                              "type": "boolean"
+                            },
+                            "required": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "enum": {
+                              "type": "array",
+                              "items": {}
+                            },
+                            "properties": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "required": {
+                                    "type": "boolean"
+                                  },
+                                  "schema": {
+                                    "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "required",
+                                  "schema"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "items": {
+                              "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                            },
+                            "allOf": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                              }
+                            },
+                            "oneOf": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                              }
+                            },
+                            "anyOf": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                              }
+                            },
+                            "additionalProperties": {
+                              "anyOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                                }
+                              ]
+                            },
+                            "discriminator": {
+                              "type": "object",
+                              "properties": {
+                                "propertyName": {
+                                  "type": "string"
+                                },
+                                "mapping": {
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "example": {},
+                            "circular": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "example": {}
+                      },
+                      "required": [
+                        "name",
+                        "in",
+                        "required"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "query": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/operation/properties/parameters/properties/path/items"
+                    }
+                  },
+                  "header": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/operation/properties/parameters/properties/path/items"
+                    }
+                  },
+                  "cookie": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/operation/properties/parameters/properties/path/items"
+                    }
+                  }
+                },
+                "required": [
+                  "path",
+                  "query",
+                  "header",
+                  "cookie"
+                ],
+                "additionalProperties": false
+              },
+              "requestBody": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "content": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "contentType": {
+                          "type": "string"
+                        },
+                        "schema": {
+                          "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                        },
+                        "example": {}
+                      },
+                      "required": [
+                        "contentType"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "required",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "responses": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/operation/properties/requestBody/properties/content/items"
+                      }
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "success",
+                    "content"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "securityRequirements": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "schemas": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/operation/properties/parameters/properties/path/items/properties/schema"
+                }
+              }
+            },
+            "required": [
+              "operationKey",
+              "method",
+              "path",
+              "tags",
+              "deprecated",
+              "requestSchemaNames",
+              "responseSchemaNames"
+            ],
+            "additionalProperties": false
+          },
+          "byteLength": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "contract": {
+                "type": "boolean"
+              },
+              "reasons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "unresolvedSchemaRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "found",
+          "detail",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_generate_dry_run",
+      "title": "Preview OpenAPI Generation",
+      "description": "Use to preview which configured generation artifacts would be added, modified, deleted, or unchanged. Omit scope (or use full) for the existing full preview; after operation search and contract review, use an operations scope with exact operationKeys to preview artifacts from an in-memory projected compilation for exactly one trusted target. Returns bounded summaries and optional bounded text previews; it never writes files, manifests, plans, snapshots, or caches.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 100
+          },
+          "scope": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "full"
+                  }
+                },
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "operations"
+                  },
+                  "operationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 500
+                    },
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "type",
+                  "operationKeys"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "includePreview": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_generate_dry_run"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "mode": {
+            "type": "string",
+            "const": "dry-run"
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "path",
+              "targets"
+            ],
+            "additionalProperties": false
+          },
+          "scope": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "operations"
+              },
+              "requestedOperationKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "resolvedOperationKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "requestedOperationKeys",
+              "resolvedOperationKeys"
+            ],
+            "additionalProperties": false
+          },
+          "projection": {
+            "type": "object",
+            "properties": {
+              "operationCount": {
+                "type": "integer"
+              },
+              "pathCount": {
+                "type": "integer"
+              },
+              "schemaCount": {
+                "type": "integer"
+              },
+              "parameterCount": {
+                "type": "integer"
+              },
+              "requestBodyCount": {
+                "type": "integer"
+              },
+              "responseCount": {
+                "type": "integer"
+              },
+              "headerCount": {
+                "type": "integer"
+              },
+              "securitySchemeCount": {
+                "type": "integer"
+              },
+              "callbackCount": {
+                "type": "integer"
+              },
+              "linkCount": {
+                "type": "integer"
+              },
+              "exampleCount": {
+                "type": "integer"
+              },
+              "projectionHash": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "operationCount",
+              "pathCount",
+              "schemaCount",
+              "parameterCount",
+              "requestBodyCount",
+              "responseCount",
+              "headerCount",
+              "securitySchemeCount",
+              "callbackCount",
+              "linkCount",
+              "exampleCount"
+            ],
+            "additionalProperties": false
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "outputRoot": {
+                  "type": "string"
+                },
+                "manifest": {
+                  "type": "object",
+                  "properties": {
+                    "artifactCount": {
+                      "type": "integer"
+                    },
+                    "totalBytes": {
+                      "type": "integer"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "artifacts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string"
+                          },
+                          "bytes": {
+                            "type": "integer"
+                          },
+                          "sha256": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "added",
+                              "modified",
+                              "deleted",
+                              "unchanged"
+                            ]
+                          },
+                          "preview": {
+                            "type": "string"
+                          },
+                          "previewTruncated": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "kind",
+                          "bytes",
+                          "status"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "artifactCount",
+                    "totalBytes",
+                    "artifacts"
+                  ],
+                  "additionalProperties": false
+                },
+                "summary": {
+                  "type": "object",
+                  "properties": {
+                    "added": {
+                      "type": "integer"
+                    },
+                    "modified": {
+                      "type": "integer"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    },
+                    "unchanged": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "added",
+                    "modified",
+                    "deleted",
+                    "unchanged"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "name",
+                "manifest",
+                "summary"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "artifacts": {
+                "type": "boolean"
+              },
+              "totalArtifacts": {
+                "type": "integer"
+              },
+              "returnedArtifacts": {
+                "type": "integer"
+              },
+              "omittedArtifacts": {
+                "type": "integer"
+              },
+              "previews": {
+                "type": "boolean"
+              },
+              "omittedPreviewBytes": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_check_generation",
+      "title": "Check OpenAPI Generation",
+      "description": "Use for CI/freshness questions: whether current configured generated files are outdated. Unlike dry-run, this focuses on current versus expected hashes and never repairs, writes, or deletes anything. Uses only startup-trusted config.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 100
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_check_generation"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "mode": {
+            "type": "string",
+            "const": "check"
+          },
+          "outdated": {
+            "type": "boolean"
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "outputRoot": {
+                  "type": "string"
+                },
+                "outdated": {
+                  "type": "boolean"
+                },
+                "changes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "added",
+                          "modified",
+                          "deleted"
+                        ]
+                      },
+                      "expectedSha256": {
+                        "type": "string"
+                      },
+                      "actualSha256": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "status"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "summary": {
+                  "type": "object",
+                  "properties": {
+                    "added": {
+                      "type": "integer"
+                    },
+                    "modified": {
+                      "type": "integer"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "added",
+                    "modified",
+                    "deleted"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "name",
+                "outdated",
+                "changes",
+                "summary"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "changes": {
+                "type": "boolean"
+              },
+              "totalChanges": {
+                "type": "integer"
+              },
+              "returnedChanges": {
+                "type": "integer"
+              },
+              "omittedChanges": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_prepare_generation",
+      "title": "Prepare Controlled OpenAPI Generation",
+      "description": "Use first when the user wants generated SDK files updated or wants a reviewable write plan. Without selection it preserves the existing full plan/token flow. Selection type add accepts up to 500 exact keys per request and unions them with trusted persisted project selection; type replace accepts up to the complete 5,000-key persisted-selection limit, sets the non-empty desired selection exactly, and may plan managed deletions. Keys are limited to 500 UTF-8 bytes and the desired manifest to 1 MiB. Both generate the complete desired projection and return a bounded applyable plan plus one-time token. Prepare never writes selection, generated files, locks, staging, or ownership manifests. Exactly one trusted target/output root is supported; callers cannot choose paths, config, plugins, cleanup, or content.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 100
+          },
+          "selection": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "add"
+                  },
+                  "operationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 500
+                    },
+                    "maxItems": 500
+                  }
+                },
+                "required": [
+                  "type",
+                  "operationKeys"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "replace"
+                  },
+                  "operationKeys": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/selection/anyOf/0/properties/operationKeys/items"
+                    },
+                    "minItems": 1,
+                    "maxItems": 5000
+                  }
+                },
+                "required": [
+                  "type",
+                  "operationKeys"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "includePreview": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_prepare_generation"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "plan": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "full",
+                  "selective"
+                ]
+              },
+              "applySupported": {
+                "type": "boolean"
+              },
+              "planId": {
+                "type": "string"
+              },
+              "token": {
+                "type": "string"
+              },
+              "planHash": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string"
+              },
+              "expiresAt": {
+                "type": "string"
+              },
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "summary": {
+                "type": "object",
+                "properties": {
+                  "added": {
+                    "type": "integer"
+                  },
+                  "modified": {
+                    "type": "integer"
+                  },
+                  "deleted": {
+                    "type": "integer"
+                  },
+                  "unchanged": {
+                    "type": "integer"
+                  },
+                  "totalBytesAfter": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "added",
+                  "modified",
+                  "deleted",
+                  "unchanged",
+                  "totalBytesAfter"
+                ],
+                "additionalProperties": false
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "outputRoot": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "added",
+                        "modified",
+                        "deleted"
+                      ]
+                    },
+                    "artifactKind": {
+                      "type": "string"
+                    },
+                    "beforeSha256": {
+                      "type": "string"
+                    },
+                    "afterSha256": {
+                      "type": "string"
+                    },
+                    "bytes": {
+                      "type": "integer"
+                    },
+                    "preview": {
+                      "type": "string"
+                    },
+                    "previewTruncated": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "outputRoot",
+                    "path",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "selection": {
+                "type": "object",
+                "properties": {
+                  "mutationType": {
+                    "type": "string",
+                    "enum": [
+                      "add",
+                      "replace"
+                    ]
+                  },
+                  "previousOperationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "requestedOperationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "newlyAddedOperationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "alreadySelectedOperationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "retainedOperationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "removedOperationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "desiredOperationKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "previousSelectionHash": {
+                    "type": "string"
+                  },
+                  "desiredSelectionHash": {
+                    "type": "string"
+                  },
+                  "previousSelectionExists": {
+                    "type": "boolean"
+                  },
+                  "counts": {
+                    "type": "object",
+                    "properties": {
+                      "previous": {
+                        "type": "integer"
+                      },
+                      "requested": {
+                        "type": "integer"
+                      },
+                      "newlyAdded": {
+                        "type": "integer"
+                      },
+                      "alreadySelected": {
+                        "type": "integer"
+                      },
+                      "retained": {
+                        "type": "integer"
+                      },
+                      "removed": {
+                        "type": "integer"
+                      },
+                      "desired": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "previous",
+                      "requested",
+                      "newlyAdded",
+                      "alreadySelected",
+                      "retained",
+                      "removed",
+                      "desired"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "truncated": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "mutationType",
+                  "previousOperationKeys",
+                  "requestedOperationKeys",
+                  "newlyAddedOperationKeys",
+                  "alreadySelectedOperationKeys",
+                  "retainedOperationKeys",
+                  "removedOperationKeys",
+                  "desiredOperationKeys",
+                  "previousSelectionHash",
+                  "desiredSelectionHash",
+                  "previousSelectionExists",
+                  "counts",
+                  "truncated"
+                ],
+                "additionalProperties": false
+              },
+              "projection": {
+                "type": "object",
+                "properties": {
+                  "projectionHash": {
+                    "type": "string"
+                  },
+                  "operationCount": {
+                    "type": "integer"
+                  },
+                  "pathCount": {
+                    "type": "integer"
+                  },
+                  "schemaCount": {
+                    "type": "integer"
+                  },
+                  "parameterCount": {
+                    "type": "integer"
+                  },
+                  "requestBodyCount": {
+                    "type": "integer"
+                  },
+                  "responseCount": {
+                    "type": "integer"
+                  },
+                  "headerCount": {
+                    "type": "integer"
+                  },
+                  "securitySchemeCount": {
+                    "type": "integer"
+                  },
+                  "callbackCount": {
+                    "type": "integer"
+                  },
+                  "linkCount": {
+                    "type": "integer"
+                  },
+                  "exampleCount": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "projectionHash",
+                  "operationCount",
+                  "pathCount",
+                  "schemaCount",
+                  "parameterCount",
+                  "requestBodyCount",
+                  "responseCount",
+                  "headerCount",
+                  "securitySchemeCount",
+                  "callbackCount",
+                  "linkCount",
+                  "exampleCount"
+                ],
+                "additionalProperties": false
+              },
+              "truncated": {
+                "type": "object",
+                "properties": {
+                  "changes": {
+                    "type": "boolean"
+                  },
+                  "returned": {
+                    "type": "integer"
+                  },
+                  "total": {
+                    "type": "integer"
+                  },
+                  "omitted": {
+                    "type": "integer"
+                  },
+                  "selection": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "changes",
+                  "returned",
+                  "total",
+                  "omitted"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "applySupported",
+              "planId",
+              "planHash",
+              "createdAt",
+              "expiresAt",
+              "targets",
+              "summary",
+              "changes",
+              "truncated"
+            ],
+            "additionalProperties": false
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "openapi_apply_generation",
+      "title": "Apply Confirmed OpenAPI Generation Plan",
+      "description": "Use only after the user explicitly confirms one unexpired openapi_prepare_generation result with applySupported true and its exact plan hash/token. Full plans keep the existing transaction path. Selective plans revalidate trusted source, config, selection, projection, complete artifacts, output, and ownership before atomically committing generated artifacts, ownership, and frozen selection state. Callers cannot pass targets, paths, content, force, or safety overrides.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "planId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "token": {
+            "type": "string",
+            "minLength": 32,
+            "maxLength": 256
+          },
+          "approvedPlanHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "planId",
+          "token",
+          "approvedPlanHash"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "type": "number",
+            "const": 1
+          },
+          "tool": {
+            "type": "string",
+            "const": "openapi_apply_generation"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "applied": {
+            "type": "boolean"
+          },
+          "planKind": {
+            "type": "string",
+            "enum": [
+              "full",
+              "selective"
+            ]
+          },
+          "target": {
+            "type": "string"
+          },
+          "selectionApplied": {
+            "type": "boolean"
+          },
+          "selectedOperationCount": {
+            "type": "integer"
+          },
+          "selectionHash": {
+            "type": "string"
+          },
+          "projectionHash": {
+            "type": "string"
+          },
+          "transactionMetrics": {
+            "type": "object",
+            "properties": {
+              "stagingMs": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "commitMs": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "stagedBytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "backupBytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "journalBytes": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "stagingMs",
+              "commitMs",
+              "stagedBytes",
+              "backupBytes",
+              "journalBytes"
+            ],
+            "additionalProperties": false
+          },
+          "planId": {
+            "type": "string"
+          },
+          "planHash": {
+            "type": "string"
+          },
+          "transactionId": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "object",
+            "properties": {
+              "added": {
+                "type": "integer"
+              },
+              "modified": {
+                "type": "integer"
+              },
+              "deleted": {
+                "type": "integer"
+              },
+              "unchanged": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "added",
+              "modified",
+              "deleted",
+              "unchanged"
+            ],
+            "additionalProperties": false
+          },
+          "changedFiles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "added",
+                    "modified"
+                  ]
+                }
+              },
+              "required": [
+                "path"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "deletedFiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rollbackPerformed": {
+            "type": "boolean"
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "number"
+                        ]
+                      }
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "column": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "plugin": {
+                  "type": "string"
+                },
+                "cause": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosticSummary": {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "integer"
+              },
+              "warnings": {
+                "type": "integer"
+              },
+              "infos": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "errors",
+              "warnings",
+              "infos"
+            ],
+            "additionalProperties": false
+          },
+          "truncated": {
+            "type": "object",
+            "properties": {
+              "diagnostics": {
+                "type": "boolean"
+              },
+              "totalDiagnostics": {
+                "type": "integer"
+              },
+              "returnedDiagnostics": {
+                "type": "integer"
+              },
+              "omittedDiagnostics": {
+                "type": "integer"
+              },
+              "changes": {
+                "type": "boolean"
+              },
+              "totalChanges": {
+                "type": "integer"
+              },
+              "returnedChanges": {
+                "type": "integer"
+              },
+              "omittedChanges": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "diagnostics",
+              "totalDiagnostics",
+              "returnedDiagnostics",
+              "omittedDiagnostics"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "tool",
+          "success",
+          "applied",
+          "rollbackPerformed",
+          "diagnostics",
+          "diagnosticSummary",
+          "truncated"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ]
+}

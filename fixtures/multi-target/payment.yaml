@@ -1,0 +1,9 @@
+openapi: 3.0.3
+info: {title: Payment Service, version: 1.0.0}
+paths:
+  /shared:
+    get:
+      tags: [payment]
+      operationId: getShared
+      responses:
+        "204": {description: ok}

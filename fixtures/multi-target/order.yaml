@@ -1,0 +1,9 @@
+openapi: 3.0.3
+info: {title: Order Service, version: 1.0.0}
+paths:
+  /shared:
+    get:
+      tags: [order]
+      operationId: getShared
+      responses:
+        "200": {description: ok, content: {application/json: {schema: {type: integer}}}}

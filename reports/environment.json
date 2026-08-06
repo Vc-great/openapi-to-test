@@ -1,0 +1,16 @@
+{
+  "testDate": "2026-08-06T05:38:36.609Z",
+  "os": "darwin 24.6.0 arm64",
+  "node": "v24.8.0",
+  "pnpm": "10.33.0",
+  "registry": "https://registry.npmjs.org",
+  "requestedVersion": "4.0.0-rc.3",
+  "installedVersion": "4.0.0-rc.3",
+  "distTagsObserved": {
+    "latest": "3.2.2",
+    "rc": "4.0.0-rc.3",
+    "evidence": "reports/logs/baseline-dist-tags.log and live Registry query"
+  },
+  "lockfileRegistryOnly": true,
+  "gitStartStatus": ""
+}

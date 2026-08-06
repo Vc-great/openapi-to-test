@@ -1,0 +1,13 @@
+openapi: 3.0.3
+info: {title: Missing Ref, version: 1.0.0}
+paths:
+  /missing:
+    get:
+      operationId: missingRef
+      responses:
+        "200":
+          description: missing
+          content:
+            application/json:
+              schema:
+                $ref: "./does-not-exist.yaml#/Missing"

@@ -1,0 +1,42 @@
+{
+  "openapi": "3.1.0",
+  "info": {"title": "OAS 3.1 Consumer", "version": "1.0.0"},
+  "paths": {
+    "/items": {
+      "get": {
+        "operationId": "listItems",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {"type": "array", "items": {"$ref": "#/components/schemas/Item"}}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Anything": true,
+      "Never": false,
+      "Item": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {"type": "string"},
+          "nullableName": {"type": ["string", "null"]},
+          "siblingRef": {
+            "$ref": "#/components/schemas/StringValue",
+            "description": "A ref sibling must be preserved"
+          },
+          "anything": {"$ref": "#/components/schemas/Anything"},
+          "never": {"$ref": "#/components/schemas/Never"}
+        }
+      },
+      "StringValue": {"type": "string", "minLength": 1}
+    }
+  }
+}

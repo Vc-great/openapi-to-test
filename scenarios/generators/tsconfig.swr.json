@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["generated/swr/**/*.ts", "consumers/swr.ts", "../../src/utils/request.ts"]
+}

@@ -1,0 +1,30 @@
+{
+	"name": "openapi-to-consumer-acceptance",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"verify": "node scripts/verify.mjs",
+		"test:cli": "node scripts/acceptance.mjs --suite cli",
+		"test:generators": "node scripts/acceptance.mjs --suite generators",
+		"test:mcp": "node scripts/mcp-acceptance.mjs",
+		"test:skills": "node scripts/acceptance.mjs --suite skills",
+		"test:security": "node scripts/acceptance.mjs --suite security",
+		"test:regression": "node scripts/acceptance.mjs --suite regression",
+		"report": "node scripts/report.mjs"
+	},
+	"devDependencies": {
+		"@modelcontextprotocol/sdk": "1.29.0",
+		"@tanstack/vue-query": "^5.101.4",
+		"@types/node": "^26.1.2",
+		"@types/react": "^19.2.18",
+		"axios": "^1.19.0",
+		"msw": "^2.15.0",
+		"openapi-to": "4.0.0-rc.3",
+		"react": "^19.2.8",
+		"swr": "^2.5.0",
+		"typescript": "^7.0.2",
+		"vitest": "^4.1.10",
+		"vue": "^3.5.41",
+		"zod": "^4.4.3"
+	}
+}
