@@ -1,36 +1,49 @@
 {
-	"name": "openapi-to-consumer-acceptance",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"verify": "node scripts/verify.mjs",
-		"test:cli": "node scripts/acceptance.mjs --suite cli",
-		"test:generators": "node scripts/acceptance.mjs --suite generators",
-		"test:typescript-matrix": "node scripts/typescript-matrix.mjs",
-		"test:mcp": "node scripts/mcp-acceptance.mjs",
-		"test:skills": "node scripts/acceptance.mjs --suite skills",
-		"test:security": "node scripts/acceptance.mjs --suite security",
-		"test:lifecycle": "node scripts/lifecycle.mjs",
-		"test:regression": "node scripts/acceptance.mjs --suite regression",
-		"test:verify-integrity": "node --test scripts/__tests__/verify-integrity.test.mjs",
-		"report": "node scripts/report.mjs"
-	},
-	"devDependencies": {
-		"@modelcontextprotocol/sdk": "1.29.0",
-		"@tanstack/vue-query": "^5.101.4",
-		"@types/node": "^26.1.2",
-		"@types/react": "^19.2.18",
-		"axios": "^1.19.0",
-		"msw": "^2.15.0",
-		"openapi-to": "4.0.0-rc.3",
-		"react": "^19.2.8",
-		"swr": "^2.5.0",
-		"typescript": "^7.0.2",
-		"typescript-baseline": "npm:typescript@6.0.3",
-		"typescript-current": "npm:typescript@7.0.2",
-		"typescript-legacy": "npm:typescript@5.6.2",
-		"vitest": "^4.1.10",
-		"vue": "^3.5.41",
-		"zod": "^4.4.3"
-	}
+  "name": "openapi-to-consumer-acceptance",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "node scripts/verify.mjs",
+    "test:cli": "node scripts/acceptance.mjs --suite cli",
+    "test:generators": "node scripts/acceptance.mjs --suite generators",
+    "test:typescript-matrix": "node scripts/typescript-matrix.mjs",
+    "test:mcp": "node scripts/mcp-acceptance.mjs",
+    "test:skills": "node scripts/acceptance.mjs --suite skills",
+    "test:security": "node scripts/acceptance.mjs --suite security",
+    "test:lifecycle": "node scripts/lifecycle.mjs",
+    "test:regression": "node scripts/acceptance.mjs --suite regression",
+    "test:verify-integrity": "node --test scripts/__tests__/verify-integrity.test.mjs",
+    "report": "node scripts/report.mjs"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "@tanstack/vue-query": "^5.101.4",
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.18",
+    "axios": "^1.19.0",
+    "msw": "^2.15.0",
+    "openapi-to": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-4.0.0-rc.3.tgz",
+    "react": "^19.2.8",
+    "swr": "^2.5.0",
+    "typescript": "^7.0.2",
+    "typescript-baseline": "npm:typescript@6.0.3",
+    "typescript-current": "npm:typescript@7.0.2",
+    "typescript-legacy": "npm:typescript@5.6.2",
+    "vitest": "^4.1.10",
+    "vue": "^3.5.41",
+    "zod": "^4.4.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@openapi-to/core": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz",
+      "@openapi-to/cli": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-cli-4.0.0-rc.3.tgz",
+      "@openapi-to/mcp": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-mcp-4.0.0-rc.3.tgz",
+      "@openapi-to/plugin-msw": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-msw-4.0.0-rc.3.tgz",
+      "@openapi-to/plugin-swr": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-swr-4.0.0-rc.3.tgz",
+      "@openapi-to/plugin-ts-request": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz",
+      "@openapi-to/plugin-ts-type": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz",
+      "@openapi-to/plugin-vue-query": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz",
+      "@openapi-to/plugin-zod": "file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-zod-4.0.0-rc.3.tgz"
+    }
+  }
 }
