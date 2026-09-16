@@ -5,15 +5,17 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@openapi-to/core': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz
-  '@openapi-to/cli': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-cli-4.0.0-rc.3.tgz
-  '@openapi-to/mcp': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-mcp-4.0.0-rc.3.tgz
-  '@openapi-to/plugin-msw': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-msw-4.0.0-rc.3.tgz
-  '@openapi-to/plugin-swr': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-swr-4.0.0-rc.3.tgz
-  '@openapi-to/plugin-ts-request': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz
-  '@openapi-to/plugin-ts-type': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz
-  '@openapi-to/plugin-vue-query': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz
-  '@openapi-to/plugin-zod': file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-zod-4.0.0-rc.3.tgz
+  '@openapi-to/cli': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-cli-4.0.0-rc.3.tgz
+  '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz
+  '@openapi-to/mcp': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz
+  '@openapi-to/plugin-msw': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-msw-4.0.0-rc.3.tgz
+  '@openapi-to/plugin-react-query': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-react-query-4.0.0-rc.3.tgz
+  '@openapi-to/plugin-swr': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-swr-4.0.0-rc.3.tgz
+  '@openapi-to/plugin-ts-request': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz
+  '@openapi-to/plugin-ts-type': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz
+  '@openapi-to/plugin-vue-query': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz
+  '@openapi-to/plugin-zod': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-zod-4.0.0-rc.3.tgz
+  openapi-to: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-4.0.0-rc.3.tgz
 
 importers:
 
@@ -21,7 +23,7 @@ importers:
     devDependencies:
       '@modelcontextprotocol/sdk':
         specifier: 1.29.0
-        version: 1.29.0(zod@4.4.3)
+        version: 1.29.0(supports-color@5.5.0)(zod@4.4.3)
       '@tanstack/vue-query':
         specifier: ^5.101.4
         version: 5.101.4(vue@3.5.41(typescript@7.0.2))
@@ -33,13 +35,13 @@ importers:
         version: 19.2.18
       axios:
         specifier: ^1.19.0
-        version: 1.19.0
+        version: 1.19.0(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)
       msw:
         specifier: ^2.15.0
         version: 2.15.0(@types/node@26.1.2)(typescript@7.0.2)
       openapi-to:
-        specifier: file:/var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-4.0.0-rc.3.tgz
-        version: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-4.0.0-rc.3.tgz(typescript@7.0.2)(zod@4.4.3)
+        specifier: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-4.0.0-rc.3.tgz
+        version: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)(zod@4.4.3)
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -356,49 +358,54 @@ packages:
   '@open-draft/until@2.1.0':
     resolution: {integrity: sha512-U69T3ItWHvLwGg5eJ0n3I62nWuE6ilHlmz7zM0npLBRvPRd7e6NYmg54vvRtP5mZG7kZqZCFVdsTWo7BPtBujg==}
 
-  '@openapi-to/cli@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-cli-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-3tWKIs3z7DsMXUnDI/m7mLbChQlFrGnFFwfPO1jz1bKCTPcOtf47sCPkgcCBG/ZduuUw8o+7YYUuys5TC20QDA==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-cli-4.0.0-rc.3.tgz}
+  '@openapi-to/cli@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-cli-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-EuXI/o6yknYXG1oE4rvLX1muGD4ebikJqrDT7xDJ8Atfa7kJUqwFQ6lZCv/iVAXDNj6sONDOAQgwzHUr3JlB1w==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-cli-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
 
-  '@openapi-to/core@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-hbhtlsUNHqttFx91FLxaOSDmzQYxYMTO2AH8LwjZCT6gyX33Dn3Ys22yXpMpiG7mXMFBtxBoZ5QCz76K3DacIQ==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz}
+  '@openapi-to/core@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-JOFJRcDVdzPnbwv5m5cZzWx7mP9ERvhmSZBjLpZg9fJwxMt1SfKC318NMwuTd6Thon6jCrMDY9wrArtm4z1QzQ==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
 
-  '@openapi-to/mcp@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-mcp-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-Jgfu8nZoUi7RRPfjvxYRxOGDy3QNUZztCHpaggR0QcyJncYjOL8uSyVhBGrAAcKraHPx02Tn1LP6IUDIk0QJxA==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-mcp-4.0.0-rc.3.tgz}
+  '@openapi-to/mcp@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-Jgfu8nZoUi7RRPfjvxYRxOGDy3QNUZztCHpaggR0QcyJncYjOL8uSyVhBGrAAcKraHPx02Tn1LP6IUDIk0QJxA==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
     hasBin: true
 
-  '@openapi-to/plugin-msw@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-msw-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-uPxt1Zj8Nmt9aVN3lp6x29HFiYBSwtzL/Jmn29VTp8Ob5k9mjQNjkhJZ8X6H0jkDgjKbLDBb3bUo+pfOwoPBng==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-msw-4.0.0-rc.3.tgz}
+  '@openapi-to/plugin-msw@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-msw-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-uPxt1Zj8Nmt9aVN3lp6x29HFiYBSwtzL/Jmn29VTp8Ob5k9mjQNjkhJZ8X6H0jkDgjKbLDBb3bUo+pfOwoPBng==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-msw-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
 
-  '@openapi-to/plugin-swr@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-swr-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-aYw46rVW9hDsz0spsEhNbb1Z7Sg64Eg7QPv6RfEvNjIH1kVOJuCo/DkSSgq81CDqrfyQ00GxmpuPHQCZ+HNY5A==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-swr-4.0.0-rc.3.tgz}
+  '@openapi-to/plugin-react-query@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-react-query-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-60n7QWU8QKwtJ7u8r46hpjAWSNI9l7D23bVhpiR8Ap3VpaCJy3+lFdHZKLuDa03ypASg99/2mTQL2KjCryIQmQ==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-react-query-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
 
-  '@openapi-to/plugin-ts-request@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-lwzsYZMY+U+GxL65AphaknKFbr2MT67Hsm9jRjrUQXrTGyotY3dy3+snaAoR4907yYTFvapirqMAEcemLRfFgQ==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz}
+  '@openapi-to/plugin-swr@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-swr-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-aYw46rVW9hDsz0spsEhNbb1Z7Sg64Eg7QPv6RfEvNjIH1kVOJuCo/DkSSgq81CDqrfyQ00GxmpuPHQCZ+HNY5A==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-swr-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
 
-  '@openapi-to/plugin-ts-type@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-WZwrmT9TG3Dw5uEmJQamCI8Ub3k0W3EIHghjCdlI7CIOqTOn4iVcj1Qw36uQdiwCBSbdyDqKVTqczYu6C1KByA==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz}
+  '@openapi-to/plugin-ts-request@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-lwzsYZMY+U+GxL65AphaknKFbr2MT67Hsm9jRjrUQXrTGyotY3dy3+snaAoR4907yYTFvapirqMAEcemLRfFgQ==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
 
-  '@openapi-to/plugin-vue-query@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-8jyYRcxU0GmQ1rDgb+3+/AQayNhIRgt7YaQz0GUYQdtVNQM0ys9WAqQ6+cH/QwSqb9sR6sV7KIC3a3etEAwMyw==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz}
+  '@openapi-to/plugin-ts-type@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-WZwrmT9TG3Dw5uEmJQamCI8Ub3k0W3EIHghjCdlI7CIOqTOn4iVcj1Qw36uQdiwCBSbdyDqKVTqczYu6C1KByA==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
 
-  '@openapi-to/plugin-zod@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-zod-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-1zki1dsW8J7DZfuIzCQB7F25r7B670OFcGliDaz8Q1yic1Gjq+dPjZ3wRYn5yBUgVtV8DLtogKMS9EUtuiVIoA==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-zod-4.0.0-rc.3.tgz}
+  '@openapi-to/plugin-vue-query@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-8jyYRcxU0GmQ1rDgb+3+/AQayNhIRgt7YaQz0GUYQdtVNQM0ys9WAqQ6+cH/QwSqb9sR6sV7KIC3a3etEAwMyw==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz}
+    version: 4.0.0-rc.3
+    engines: {node: '>=22'}
+
+  '@openapi-to/plugin-zod@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-zod-4.0.0-rc.3.tgz':
+    resolution: {integrity: sha512-1zki1dsW8J7DZfuIzCQB7F25r7B670OFcGliDaz8Q1yic1Gjq+dPjZ3wRYn5yBUgVtV8DLtogKMS9EUtuiVIoA==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-zod-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
     peerDependencies:
@@ -1605,6 +1612,9 @@ packages:
     resolution: {integrity: sha512-XT9ewWAC43tiAV7xDAPflMkG0qOPn2QjHqlgX8FOqmWa/rxnyYDulF9T0F7tRy1u+TVTmK/M//6VIOye+2zDXg==}
     engines: {node: '>=20'}
 
+  lodash-es@4.18.1:
+    resolution: {integrity: sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==}
+
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
 
@@ -1752,8 +1762,8 @@ packages:
     resolution: {integrity: sha512-VXJjc87FScF88uafS3JllDgvAm+c/Slfz06lorj2uAY34rlUu0Nt+v8wreiImcrgAjjIHp1rXpTDlLOGw29WwQ==}
     engines: {node: '>=18'}
 
-  openapi-to@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-4.0.0-rc.3.tgz:
-    resolution: {integrity: sha512-27Yyz6SXvg5mxWlJLchqIYYxOBUR1zOGfDII7EUzK6gmutHgQQiD8lCoSfuiUjL3D/vkOb8dQO2SlWzK5ovjGw==, tarball: file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-4.0.0-rc.3.tgz}
+  openapi-to@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-4.0.0-rc.3.tgz:
+    resolution: {integrity: sha512-nfH7c8pCH/EDSW+E5UhKwMVdILdJSzGILVdefFSLhw7j4trOFAQOekN2DciwW/BKLb7nyS5UVReEQq3zM35puw==, tarball: file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22', pnpm: '>=10.7.1'}
     hasBin: true
@@ -2560,7 +2570,7 @@ snapshots:
     dependencies:
       jsep: 1.4.0
 
-  '@modelcontextprotocol/sdk@1.29.0(zod@4.4.3)':
+  '@modelcontextprotocol/sdk@1.29.0(supports-color@5.5.0)(zod@4.4.3)':
     dependencies:
       '@hono/node-server': 1.19.17(hono@4.13.0)
       ajv: 8.20.0
@@ -2570,8 +2580,8 @@ snapshots:
       cross-spawn: 7.0.6
       eventsource: 3.0.7
       eventsource-parser: 3.1.0
-      express: 5.2.1
-      express-rate-limit: 8.6.2(express@5.2.1)
+      express: 5.2.1(supports-color@5.5.0)
+      express-rate-limit: 8.6.2(express@5.2.1(supports-color@5.5.0))(supports-color@5.5.0)
       hono: 4.13.0
       jose: 6.2.8
       json-schema-typed: 8.0.2
@@ -2582,7 +2592,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@modelcontextprotocol/sdk@1.30.0(zod@4.6.3)':
+  '@modelcontextprotocol/sdk@1.30.0(supports-color@5.5.0)(zod@4.6.3)':
     dependencies:
       '@hono/node-server': 1.19.17(hono@4.13.0)
       ajv: 8.20.0
@@ -2592,8 +2602,8 @@ snapshots:
       cross-spawn: 7.0.6
       eventsource: 3.0.7
       eventsource-parser: 3.1.0
-      express: 5.2.1
-      express-rate-limit: 8.6.2(express@5.2.1)
+      express: 5.2.1(supports-color@5.5.0)
+      express-rate-limit: 8.6.2(express@5.2.1(supports-color@5.5.0))(supports-color@5.5.0)
       hono: 4.13.0
       jose: 6.2.8
       json-schema-typed: 8.0.2
@@ -2624,9 +2634,9 @@ snapshots:
 
   '@open-draft/until@2.1.0': {}
 
-  '@openapi-to/cli@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-cli-4.0.0-rc.3.tgz(typescript@7.0.2)':
+  '@openapi-to/cli@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-cli-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
       '@types/cli-progress': 3.11.6
       cac: 7.0.0
       cli-progress: 3.12.0
@@ -2642,10 +2652,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@openapi-to/core@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)':
+  '@openapi-to/core@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
       '@types/json-schema': 7.0.15
-      axios: 1.20.0
+      axios: 1.20.0(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)
       bundle-require: 5.1.0(esbuild@0.28.2)
       code-block-writer: 13.0.3
       consola: 3.4.2
@@ -2673,10 +2683,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@openapi-to/mcp@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-mcp-4.0.0-rc.3.tgz(typescript@7.0.2)':
+  '@openapi-to/mcp@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.30.0(zod@4.6.3)
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
+      '@modelcontextprotocol/sdk': 1.30.0(supports-color@5.5.0)(zod@4.6.3)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
       zod: 4.6.3
     transitivePeerDependencies:
       - '@cfworker/json-schema'
@@ -2685,9 +2695,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@openapi-to/plugin-msw@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-msw-4.0.0-rc.3.tgz(typescript@7.0.2)':
+  '@openapi-to/plugin-msw@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-msw-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
       oas: 38.5.3
       ts-morph: 28.0.0
       type-fest: 5.9.0
@@ -2697,9 +2707,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@openapi-to/plugin-swr@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-swr-4.0.0-rc.3.tgz(typescript@7.0.2)':
+  '@openapi-to/plugin-react-query@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-react-query-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      lodash-es: 4.18.1
       oas: 38.5.3
       ts-morph: 28.0.0
     transitivePeerDependencies:
@@ -2708,21 +2719,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@openapi-to/plugin-ts-request@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz(typescript@7.0.2)':
+  '@openapi-to/plugin-swr@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-swr-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
-      oas: 38.5.3
-      ts-morph: 28.0.0
-      type-fest: 5.9.0
-    transitivePeerDependencies:
-      - debug
-      - encoding
-      - supports-color
-      - typescript
-
-  '@openapi-to/plugin-ts-type@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz(typescript@7.0.2)':
-    dependencies:
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
       oas: 38.5.3
       ts-morph: 28.0.0
     transitivePeerDependencies:
@@ -2731,9 +2730,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@openapi-to/plugin-vue-query@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz(typescript@7.0.2)':
+  '@openapi-to/plugin-ts-request@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
       oas: 38.5.3
       ts-morph: 28.0.0
       type-fest: 5.9.0
@@ -2743,9 +2742,32 @@ snapshots:
       - supports-color
       - typescript
 
-  '@openapi-to/plugin-zod@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-zod-4.0.0-rc.3.tgz(typescript@7.0.2)(zod@4.4.3)':
+  '@openapi-to/plugin-ts-type@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
     dependencies:
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      oas: 38.5.3
+      ts-morph: 28.0.0
+    transitivePeerDependencies:
+      - debug
+      - encoding
+      - supports-color
+      - typescript
+
+  '@openapi-to/plugin-vue-query@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)':
+    dependencies:
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      oas: 38.5.3
+      ts-morph: 28.0.0
+      type-fest: 5.9.0
+    transitivePeerDependencies:
+      - debug
+      - encoding
+      - supports-color
+      - typescript
+
+  '@openapi-to/plugin-zod@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-zod-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)(zod@4.4.3)':
+    dependencies:
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
       oas: 38.5.3
       ts-morph: 28.0.0
       zod: 4.4.3
@@ -3062,9 +3084,9 @@ snapshots:
       mime-types: 3.0.2
       negotiator: 1.0.0
 
-  agent-base@6.0.2:
+  agent-base@6.0.2(supports-color@5.5.0):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -3116,21 +3138,21 @@ snapshots:
       stubborn-fs: 2.0.0
       when-exit: 2.1.5
 
-  axios@1.19.0:
+  axios@1.19.0(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0):
     dependencies:
-      follow-redirects: 1.16.0
+      follow-redirects: 1.16.0(debug@4.4.3(supports-color@5.5.0))
       form-data: 4.0.6
-      https-proxy-agent: 5.0.1
+      https-proxy-agent: 5.0.1(supports-color@5.5.0)
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
       - supports-color
 
-  axios@1.20.0:
+  axios@1.20.0(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0):
     dependencies:
-      follow-redirects: 1.16.0
+      follow-redirects: 1.16.0(debug@4.4.3(supports-color@5.5.0))
       form-data: 4.0.6
-      https-proxy-agent: 5.0.1
+      https-proxy-agent: 5.0.1(supports-color@5.5.0)
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
@@ -3138,11 +3160,11 @@ snapshots:
 
   balanced-match@4.0.4: {}
 
-  body-parser@2.3.0:
+  body-parser@2.3.0(supports-color@5.5.0):
     dependencies:
       bytes: 3.1.2
       content-type: 2.0.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@5.5.0)
       http-errors: 2.0.1
       iconv-lite: 0.7.3
       on-finished: 2.4.1
@@ -3342,9 +3364,11 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@5.5.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 5.5.0
 
   deep-extend@0.6.0: {}
 
@@ -3529,28 +3553,28 @@ snapshots:
 
   expect-type@1.4.0: {}
 
-  express-rate-limit@8.6.2(express@5.2.1):
+  express-rate-limit@8.6.2(express@5.2.1(supports-color@5.5.0))(supports-color@5.5.0):
     dependencies:
-      debug: 4.4.3
-      express: 5.2.1
+      debug: 4.4.3(supports-color@5.5.0)
+      express: 5.2.1(supports-color@5.5.0)
       ip-address: 10.4.0
     transitivePeerDependencies:
       - supports-color
 
-  express@5.2.1:
+  express@5.2.1(supports-color@5.5.0):
     dependencies:
       accepts: 2.0.0
-      body-parser: 2.3.0
+      body-parser: 2.3.0(supports-color@5.5.0)
       content-disposition: 1.1.0
       content-type: 1.0.5
       cookie: 0.7.2
       cookie-signature: 1.2.2
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@5.5.0)
       depd: 2.0.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
-      finalhandler: 2.1.1
+      finalhandler: 2.1.1(supports-color@5.5.0)
       fresh: 2.0.0
       http-errors: 2.0.1
       merge-descriptors: 2.0.0
@@ -3561,9 +3585,9 @@ snapshots:
       proxy-addr: 2.0.7
       qs: 6.15.3
       range-parser: 1.3.0
-      router: 2.2.0
-      send: 1.2.1
-      serve-static: 2.2.1
+      router: 2.2.0(supports-color@5.5.0)
+      send: 1.2.1(supports-color@5.5.0)
+      serve-static: 2.2.1(supports-color@5.5.0)
       statuses: 2.0.2
       type-is: 2.1.0
       vary: 1.1.2
@@ -3594,9 +3618,9 @@ snapshots:
     dependencies:
       is-unicode-supported: 2.1.0
 
-  finalhandler@2.1.1:
+  finalhandler@2.1.1(supports-color@5.5.0):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@5.5.0)
       encodeurl: 2.0.0
       escape-html: 1.0.3
       on-finished: 2.4.1
@@ -3614,7 +3638,9 @@ snapshots:
       locate-path: 8.0.0
       unicorn-magic: 0.3.0
 
-  follow-redirects@1.16.0: {}
+  follow-redirects@1.16.0(debug@4.4.3(supports-color@5.5.0)):
+    optionalDependencies:
+      debug: 4.4.3(supports-color@5.5.0)
 
   form-data@4.0.6:
     dependencies:
@@ -3714,10 +3740,10 @@ snapshots:
 
   http2-client@1.3.5: {}
 
-  https-proxy-agent@5.0.1:
+  https-proxy-agent@5.0.1(supports-color@5.5.0):
     dependencies:
-      agent-base: 6.0.2
-      debug: 4.4.3
+      agent-base: 6.0.2(supports-color@5.5.0)
+      debug: 4.4.3(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -3888,6 +3914,8 @@ snapshots:
     dependencies:
       p-locate: 6.0.0
 
+  lodash-es@4.18.1: {}
+
   lodash.camelcase@4.3.0: {}
 
   lodash.isplainobject@4.0.6: {}
@@ -4043,17 +4071,18 @@ snapshots:
     dependencies:
       mimic-function: 5.0.1
 
-  openapi-to@file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-4.0.0-rc.3.tgz(typescript@7.0.2)(zod@4.4.3):
+  openapi-to@file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)(zod@4.4.3):
     dependencies:
-      '@openapi-to/cli': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-cli-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/core': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-core-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/mcp': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-mcp-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/plugin-msw': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-msw-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/plugin-swr': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-swr-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/plugin-ts-request': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/plugin-ts-type': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/plugin-vue-query': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz(typescript@7.0.2)
-      '@openapi-to/plugin-zod': file:../../../../var/folders/sp/9c7jdv3947lbwz2cwp0x9w7c0000gn/T/openapi-to-main-a9e0e3553970.MF1VGL/openapi-to-plugin-zod-4.0.0-rc.3.tgz(typescript@7.0.2)(zod@4.4.3)
+      '@openapi-to/cli': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-cli-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/core': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-core-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/mcp': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/plugin-msw': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-msw-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/plugin-react-query': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-react-query-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/plugin-swr': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-swr-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/plugin-ts-request': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-request-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/plugin-ts-type': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-ts-type-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/plugin-vue-query': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-vue-query-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)
+      '@openapi-to/plugin-zod': file:.openapi-to-local/307af8bdf753f2db16c9266c4ba30fd65d817646/tarballs/openapi-to-plugin-zod-4.0.0-rc.3.tgz(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)(typescript@7.0.2)(zod@4.4.3)
       '@types/update-notifier': 6.0.8
       semver: 7.8.5
       update-notifier: 7.3.1
@@ -4238,9 +4267,9 @@ snapshots:
       '@rolldown/binding-win32-arm64-msvc': 1.2.3
       '@rolldown/binding-win32-x64-msvc': 1.2.3
 
-  router@2.2.0:
+  router@2.2.0(supports-color@5.5.0):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@5.5.0)
       depd: 2.0.0
       is-promise: 4.0.0
       parseurl: 1.3.3
@@ -4254,9 +4283,9 @@ snapshots:
 
   semver@7.8.5: {}
 
-  send@1.2.1:
+  send@1.2.1(supports-color@5.5.0):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@5.5.0)
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
@@ -4270,12 +4299,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  serve-static@2.2.1:
+  serve-static@2.2.1(supports-color@5.5.0):
     dependencies:
       encodeurl: 2.0.0
       escape-html: 1.0.3
       parseurl: 1.3.3
-      send: 1.2.1
+      send: 1.2.1(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
