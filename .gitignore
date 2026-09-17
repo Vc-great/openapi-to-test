@@ -6,6 +6,7 @@ coverage/
 .idea
 .tmp/
 .openapi-to/
+.openapi-to-local/
 generated/
 !reports/evidence/
 !reports/evidence/**
