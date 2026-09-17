@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import {
+  copyFile,
   lstat,
   mkdir,
   mkdtemp,
@@ -25,11 +26,12 @@ import {
   verifyInstalledPackageVersions,
   verifyLockfileLocalArtifacts,
   validateGeneratedWorkspaceYaml,
+  validateLocalSourceState,
   workspaceSourceHead,
 } from "./lib/openapi-to-main.mjs";
 
-const REPOSITORY_URL = "https://github.com/openapi-to/openapi-to.git";
 const REPOSITORY_LABEL = "openapi-to/openapi-to";
+const DEFAULT_SOURCE_ROOT = "/Users/vc/code/openapi-to";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WORKSPACE_FILE = path.join(ROOT, "pnpm-workspace.yaml");
 const LOCK_FILE = path.join(ROOT, "pnpm-lock.yaml");
@@ -160,7 +162,57 @@ function checked(command, args, cwd, category, label, options) {
   return result;
 }
 
-function verifySourceIsolation(protectedReadDirectories, tempRoot, environment, sandboxProfile, protectedFiles, protectedWriteSubpaths, renameProbePath) {
+function localGitEnvironment() {
+  return {
+    GIT_CONFIG_GLOBAL: "/dev/null",
+    GIT_CONFIG_NOSYSTEM: "1",
+    GIT_CONFIG_COUNT: "0",
+  };
+}
+
+async function inspectLocalSource() {
+  const configuredRoot = process.env.OPENAPI_TO_SOURCE_ROOT ?? DEFAULT_SOURCE_ROOT;
+  if (!path.isAbsolute(configuredRoot)) {
+    throw new TaskFailure("Local source failure", `OPENAPI_TO_SOURCE_ROOT must be an absolute path: ${configuredRoot}`);
+  }
+  let entry;
+  try {
+    entry = await lstat(configuredRoot);
+  } catch (error) {
+    throw new TaskFailure("Local source failure", `无法读取本地 source: ${configuredRoot}\n${error.message}`);
+  }
+  if (!entry.isDirectory() || entry.isSymbolicLink()) {
+    throw new TaskFailure("Local source failure", `本地 source 必须是非 symlink 目录: ${configuredRoot}`);
+  }
+  const sourceRoot = await realpath(configuredRoot);
+  const gitOptions = { env: localGitEnvironment() };
+  const gitRoot = checked("git", ["rev-parse", "--show-toplevel"], sourceRoot, "Local source failure", "检查本地 Git 根目录", gitOptions).stdout.trim();
+  if (await realpath(gitRoot) !== sourceRoot) {
+    throw new TaskFailure("Local source failure", `本地 source 不是独立 Git 根目录: ${sourceRoot}`);
+  }
+  const branch = checked("git", ["symbolic-ref", "--quiet", "--short", "HEAD"], sourceRoot, "Local source failure", "检查本地 source 分支", gitOptions).stdout.trim();
+  const status = checked("git", ["status", "--porcelain", "--untracked-files=all"], sourceRoot, "Local source failure", "检查本地 source 工作树", gitOptions).stdout;
+  const head = checked("git", ["rev-parse", "HEAD"], sourceRoot, "Local source failure", "读取本地 source HEAD", gitOptions).stdout.trim();
+  const originResult = run("git", ["rev-parse", "--verify", "refs/remotes/origin/main^{commit}"], sourceRoot, gitOptions);
+  const originMain = originResult.status === 0 ? originResult.stdout.trim() : undefined;
+  let ahead;
+  let behind;
+  if (originMain) {
+    const counts = run("git", ["rev-list", "--left-right", "--count", "HEAD...refs/remotes/origin/main"], sourceRoot, gitOptions);
+    const match = counts.status === 0 ? counts.stdout.trim().match(/^(\d+)\s+(\d+)$/) : undefined;
+    ahead = match ? Number(match[1]) : undefined;
+    behind = match ? Number(match[2]) : undefined;
+  }
+  let state;
+  try {
+    state = validateLocalSourceState({ branch, status, head, originMain, ahead, behind });
+  } catch (error) {
+    throw new TaskFailure("Local source failure", `${error.message}\nSource: ${sourceRoot}`);
+  }
+  return { sourceRoot, ...state };
+}
+
+function verifySourceIsolation(protectedReadDirectories, allowedReadWriteDirectories, tempRoot, environment, sandboxProfile, protectedFiles, protectedWriteSubpaths, renameProbePath) {
   if (process.platform !== "darwin") {
     throw new TaskFailure("Source isolation failure", "当前实现要求 macOS sandbox-exec，以阻止 source build 读取主机 home。未在此平台执行 source code。");
   }
@@ -169,14 +221,17 @@ function verifySourceIsolation(protectedReadDirectories, tempRoot, environment, 
     'const path = require("node:path");',
     'const denied = (error) => error.code === "EPERM" || error.code === "EACCES";',
     'const protectedReadCount = Number(process.argv[1]);',
-    'const fileCount = Number(process.argv[2]);',
-    'const subpathCount = Number(process.argv[3]);',
-    'const root = process.argv[4];',
-    'const renameTarget = process.argv[5];',
-    'const protectedReads = process.argv.slice(6, 6 + protectedReadCount);',
-    'const files = process.argv.slice(6 + protectedReadCount, 6 + protectedReadCount + fileCount);',
-    'const blockedSubpaths = process.argv.slice(6 + protectedReadCount + fileCount, 6 + protectedReadCount + fileCount + subpathCount);',
+    'const allowedCount = Number(process.argv[2]);',
+    'const fileCount = Number(process.argv[3]);',
+    'const subpathCount = Number(process.argv[4]);',
+    'const root = process.argv[5];',
+    'const renameTarget = process.argv[6];',
+    'const protectedReads = process.argv.slice(7, 7 + protectedReadCount);',
+    'const allowedRoots = process.argv.slice(7 + protectedReadCount, 7 + protectedReadCount + allowedCount);',
+    'const files = process.argv.slice(7 + protectedReadCount + allowedCount, 7 + protectedReadCount + allowedCount + fileCount);',
+    'const blockedSubpaths = process.argv.slice(7 + protectedReadCount + allowedCount + fileCount, 7 + protectedReadCount + allowedCount + fileCount + subpathCount);',
     'for (const directory of protectedReads) { try { fs.readdirSync(directory); process.exit(2); } catch (error) { if (!denied(error)) process.exit(1); } }',
+    'for (const directory of allowedRoots) { fs.readdirSync(directory); const marker = path.join(directory, `.openapi-to-isolation-probe-${process.pid}`); fs.writeFileSync(marker, "ok"); fs.unlinkSync(marker); }',
     'for (const filename of files) { try { const fd = fs.openSync(filename, "r+"); fs.closeSync(fd); process.exit(3); } catch (error) { if (!denied(error)) process.exit(1); } try { fs.unlinkSync(filename); process.exit(4); } catch (error) { if (!denied(error)) process.exit(1); } }',
     'const marker = path.join(root, ".isolation-write-probe"); fs.writeFileSync(marker, "ok"); fs.unlinkSync(marker);',
     'for (const directory of blockedSubpaths) { try { const marker = path.join(directory, ".isolation-write-probe"); fs.writeFileSync(marker, "ok"); fs.unlinkSync(marker); process.exit(6); } catch (error) { if (!denied(error)) process.exit(1); } }',
@@ -189,11 +244,13 @@ function verifySourceIsolation(protectedReadDirectories, tempRoot, environment, 
       "-e",
       probeScript,
       String(protectedReadDirectories.length),
+      String(allowedReadWriteDirectories.length),
       String(protectedFiles.length),
       String(protectedWriteSubpaths.length),
       tempRoot,
       renameProbePath,
       ...protectedReadDirectories,
+      ...allowedReadWriteDirectories,
       ...protectedFiles,
       ...protectedWriteSubpaths,
     ],
@@ -217,6 +274,17 @@ function stage(number, message) {
 function isPathInside(parent, candidate) {
   const relative = path.relative(parent, candidate);
   return relative !== "" && !relative.startsWith(`..${path.sep}`) && relative !== ".." && !path.isAbsolute(relative);
+}
+
+function sourceParentPaths(sourceRoot) {
+  const parents = [];
+  const filesystemRoot = path.parse(sourceRoot).root;
+  let current = path.dirname(sourceRoot);
+  while (current && current !== filesystemRoot) {
+    parents.push(current);
+    current = path.dirname(current);
+  }
+  return parents;
 }
 
 async function verifyTemporaryRoot(tempRoot, expectedIdentity) {
@@ -496,6 +564,7 @@ async function preflightConsumerFiles() {
 
 async function prepare() {
   const priorConsumerOwnership = await preflightConsumerFiles();
+  const localSource = await inspectLocalSource();
   let tempRoot;
   let tempRootIdentity;
   let failure;
@@ -513,14 +582,14 @@ async function prepare() {
       if (error instanceof TaskFailure) throw error;
       if (error.code !== "ENOENT") throw error;
     }
-    const sourceRoot = path.join(tempRoot, "source");
+    const sourceRoot = localSource.sourceRoot;
     const emptyNpmrc = path.join(tempRoot, "empty.npmrc");
     const emptyGitConfig = path.join(tempRoot, "empty.gitconfig");
     const sourceHome = path.join(tempRoot, "source-home");
     const sourceSandboxProfile = path.join(tempRoot, "source.sandbox");
     const packSandboxProfile = path.join(tempRoot, "pack.sandbox");
     const sourceNpmCache = path.join(tempRoot, "npm-cache");
-    const sourceCorepackHome = path.join(tempRoot, "corepack-home");
+    const sourceCorepackHome = process.env.COREPACK_HOME ?? path.join(os.homedir(), ".cache", "node", "corepack");
     const temporaryTarballs = path.join(tempRoot, "tarballs");
     const packRunner = path.join(tempRoot, "pack-current-main.mjs");
     const packUtility = path.join(tempRoot, "openapi-to-main.mjs");
@@ -558,6 +627,8 @@ async function prepare() {
       protectedTempRoots,
       protectedWriteSubpaths,
       consumerRootPaths,
+      [sourceRoot, sourceCorepackHome],
+      [...sourceParentPaths(sourceRoot), ...sourceParentPaths(sourceCorepackHome)],
     ), { flag: "wx" });
     await writeFile(packSandboxProfile, createSourceIsolationProfile(
       homeDirectories[0],
@@ -566,6 +637,8 @@ async function prepare() {
       protectedTempRoots,
       [],
       consumerRootPaths,
+      [sourceRoot, sourceCorepackHome],
+      [...sourceParentPaths(sourceRoot), ...sourceParentPaths(sourceCorepackHome)],
     ), { flag: "wx" });
     const packageManagerEnv = {
       NPM_CONFIG_USERCONFIG: emptyNpmrc,
@@ -603,6 +676,7 @@ async function prepare() {
     const packOptions = { ...isolatedOptions, sandboxProfile: packSandboxProfile };
     verifySourceIsolation(
       protectedReadDirectories,
+      [sourceRoot],
       tempRoot,
       sourceEnvironment,
       sourceSandboxProfile,
@@ -612,30 +686,11 @@ async function prepare() {
     );
     await verifyTemporaryRoot(tempRoot, tempRootIdentity);
 
-    stage(1, "获取 openapi-to 当前 main");
-    await checkedSource(
-      "git",
-      ["clone", "--depth", "1", "--branch", "main", REPOSITORY_URL, sourceRoot],
-      tempRoot,
-      "Git clone/fetch failure",
-      "Git clone",
-      { ...isolatedOptions, maxBuffer: 4 * 1024 * 1024 },
-      tempRoot,
-      tempRootIdentity,
-    );
-    const sourceHead = (await checkedSource(
-      "git",
-      ["rev-parse", "HEAD"],
-      sourceRoot,
-      "Git clone/fetch failure",
-      "读取 source HEAD",
-      isolatedOptions,
-      tempRoot,
-      tempRootIdentity,
-    )).stdout.trim();
-    if (!/^[a-f0-9]{40,64}$/i.test(sourceHead)) {
-      throw new TaskFailure("Git clone/fetch failure", `git rev-parse 返回无效 HEAD: ${sourceHead}`);
-    }
+    stage(1, "校验本地 openapi-to main");
+    console.log(`  Source: ${sourceRoot}`);
+    console.log(`  HEAD: ${localSource.head}`);
+    console.log(`  origin/main: ${localSource.originMain} (ahead ${localSource.ahead}, behind ${localSource.behind})`);
+    const sourceHead = localSource.head;
 
     stage(2, "检查 source toolchain");
     let sourcePackage;
@@ -650,9 +705,22 @@ async function prepare() {
     } catch (error) {
       throw new TaskFailure(/Node/.test(error.message) ? "Unsupported Node" : "Unsupported package manager", error.message);
     }
-    stage(3, `安装并构建临时 source（${toolchain.packageManager}）`);
+    stage(3, `安装并构建本地 source（${toolchain.packageManager}）`);
     await checkedSource("corepack", corepackArgs(toolchain.packageManager, ["install", "--frozen-lockfile"]), sourceRoot, "Source install failure", "Source dependency install", isolatedOptions, tempRoot, tempRootIdentity);
     await checkedSource("corepack", corepackArgs(toolchain.packageManager, ["run", "build"]), sourceRoot, "Source build failure", "Source build", isolatedOptions, tempRoot, tempRootIdentity);
+    const postBuildStatus = (await checkedSource(
+      "git",
+      ["status", "--porcelain", "--untracked-files=all"],
+      sourceRoot,
+      "Local source failure",
+      "检查 source 构建后的工作树",
+      isolatedOptions,
+      tempRoot,
+      tempRootIdentity,
+    )).stdout.trim();
+    if (postBuildStatus) {
+      throw new TaskFailure("Local source failure", `source build 修改了 tracked 或未忽略文件，拒绝继续打包：\n${postBuildStatus}`);
+    }
 
     stage(4, "调用 source canonical release helper 打包发布包");
     const packOutput = await checkedSource(
@@ -782,6 +850,7 @@ async function prepare() {
     artifactResult.provenance.consumer = { sourceHead, lockfileSha256: await sha256File(LOCK_FILE) };
     await writeProvenanceFile(artifactResult.destinationRoot, artifactResult.provenance);
     summary = {
+      sourceRoot,
       sourceHead,
       version: packed.find(({ name }) => name === "openapi-to")?.version,
       packageManager: toolchain.packageManager,
@@ -834,6 +903,7 @@ async function prepare() {
   console.log("\nopenapi-to current-main installed successfully\n");
   console.log("Source");
   console.log(`  Repository: ${REPOSITORY_LABEL}`);
+  console.log(`  Path: ${summary.sourceRoot}`);
   console.log(`  HEAD: ${summary.sourceHead}`);
   console.log(`  Version: ${summary.version}`);
   console.log(`  Package manager: ${summary.packageManager}`);

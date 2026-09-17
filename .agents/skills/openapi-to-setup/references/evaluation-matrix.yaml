@@ -1,0 +1,303 @@
+schema_version: 1
+kind: static_skill_evaluation_inputs
+cases:
+  - id: trigger-configure-frontend
+    category: trigger
+    prompt: "在这个前端项目里配置 openapi-to"
+    expected: activate_default_read_only
+  - id: trigger-connect-codex
+    category: trigger
+    prompt: "帮我接入 openapi-to MCP"
+    expected: activate
+  - id: trigger-server-missing
+    category: trigger
+    prompt: "为什么 Codex 里看不到 openapi-to"
+    expected: activate_diagnosis
+  - id: trigger-three-tools
+    category: trigger
+    prompt: "为什么只有 3 个 Tool"
+    expected: activate_diagnosis
+  - id: trigger-read-only
+    category: trigger
+    prompt: "把 openapi-to 配置成只读模式"
+    expected: activate_read_only
+  - id: trigger-write-enabled
+    category: trigger
+    prompt: "启用 openapi-to 的安全生成写入能力"
+    expected: activate_write_enabled
+  - id: trigger-check-config
+    category: trigger
+    prompt: "检查当前项目的 openapi-to 配置是否正确"
+    expected: activate_diagnosis
+  - id: trigger-gitignore
+    category: trigger
+    prompt: "修复缺失的 .openapi-to gitignore"
+    expected: activate_plan_required
+
+  - id: reject-user-delete
+    category: reject
+    prompt: "根据接口实现用户删除功能"
+    expected: handoff_openapi_to_generate
+  - id: reject-order-export
+    category: reject
+    prompt: "搜索订单导出接口"
+    expected: handoff_openapi_to_generate
+  - id: reject-selected-client
+    category: reject
+    prompt: "生成这三个 operation 的客户端代码"
+    expected: handoff_openapi_to_generate
+  - id: reject-monorepo-mcp
+    category: reject
+    prompt: "修改 openapi-to Monorepo 的 MCP Tool"
+    expected: route_repository_workflow
+  - id: reject-upgrade
+    category: reject
+    prompt: "把当前项目的 openapi-to 升级到最新版"
+    expected: do_not_activate_upgrade
+  - id: reject-publish
+    category: reject
+    prompt: "发布 openapi-to 到 npm"
+    expected: do_not_activate
+  - id: reject-other-server
+    category: reject
+    prompt: "配置另一个无关 MCP Server"
+    expected: do_not_activate
+  - id: reject-frontend-layout
+    category: reject
+    prompt: "修改纯前端页面布局"
+    expected: do_not_activate
+
+  - id: degraded-package-missing
+    category: degraded
+    prompt: "项目没有 openapi-to，版本也没有指定"
+    expected: request_exact_version_before_install
+  - id: degraded-package-json-missing
+    category: degraded
+    prompt: "当前目录没有 package.json"
+    expected: block_without_install_plan
+  - id: degraded-package-json-drift-after-approval
+    category: degraded
+    prompt: "批准后 package.json 的其他字段发生变化"
+    expected: invalidate_setup_plan
+  - id: degraded-lockfile-drift-after-approval
+    category: degraded
+    prompt: "批准后锁文件内容发生变化"
+    expected: invalidate_setup_plan
+  - id: degraded-gitignore-drift-after-approval
+    category: degraded
+    prompt: "批准后 .gitignore 的无关内容发生变化"
+    expected: invalidate_setup_plan
+  - id: degraded-multiple-same-manager-lockfiles
+    category: degraded
+    prompt: "项目同时存在 package-lock.json 和 npm-shrinkwrap.json"
+    expected: block_package_manager_conflict
+  - id: degraded-lockfile-too-large
+    category: degraded
+    prompt: "锁文件超过 inspector 的 32 MiB 上限"
+    expected: fail_closed_without_reading_contents
+  - id: degraded-global-only
+    category: degraded
+    prompt: "全局 openapi 命令存在，但项目 manifest 没有依赖"
+    expected: treat_local_package_as_missing
+  - id: degraded-mcp-only
+    category: degraded
+    prompt: "项目只有 @openapi-to/mcp"
+    expected: report_mcp_only_boundary
+  - id: degraded-package-manager-conflict
+    category: degraded
+    prompt: "packageManager 写 pnpm，但只存在 yarn.lock"
+    expected: block_without_guessing
+  - id: degraded-multiple-lockfiles
+    category: degraded
+    prompt: "项目同时存在 pnpm-lock.yaml 和 package-lock.json"
+    expected: block_without_guessing
+  - id: degraded-multiple-configs
+    category: degraded
+    prompt: "根目录同时存在 openapi.config.ts 和 openapi.config.js"
+    expected: block_without_executing_or_selecting
+  - id: degraded-config-missing
+    category: degraded
+    prompt: "项目已经安装 aggregate package，但没有 generation config"
+    expected: plan_existing_init_after_exact_approval
+  - id: degraded-existing-config
+    category: degraded
+    prompt: "已经有一个 openapi.config.ts，重新初始化"
+    expected: refuse_overwrite_and_do_not_init
+  - id: degraded-gitignore-missing
+    category: degraded
+    prompt: "配置已存在，但 .openapi-to 没有被 gitignore"
+    expected: plan_exact_ignore_append_after_approval
+  - id: degraded-codex-missing
+    category: degraded
+    prompt: "项目没有 .codex/config.toml"
+    expected: plan_project_level_codex_file_after_approval
+  - id: degraded-codex-other-server
+    category: degraded
+    prompt: "Codex 配置已有其他 Server，但没有 openapi_to"
+    expected: preserve_existing_bytes_and_plan_exact_append
+  - id: degraded-existing-codex-section
+    category: degraded
+    prompt: "已有 openapi_to section，自动替换成新模板"
+    expected: manual_review_no_rewrite
+  - id: degraded-absolute-codex-path
+    category: degraded
+    prompt: "openapi_to section 使用机器绝对路径"
+    expected: manual_review_required
+  - id: degraded-write-without-prompt
+    category: degraded
+    prompt: "已经有 --allow-write，但没有 Apply prompt"
+    expected: block_write_ready_claim
+  - id: degraded-not-restarted
+    category: degraded
+    prompt: "刚修改 .codex/config.toml，Host 还没重启"
+    expected: restart_required
+  - id: degraded-count-schema-mismatch
+    category: degraded
+    prompt: "Tool 数量是 10，但 Apply inputSchema 不兼容"
+    expected: block_capability_claim
+  - id: degraded-windows
+    category: degraded
+    prompt: "在 Windows Codex 项目中配置只读 MCP"
+    expected: use_cmd_exe_template
+  - id: degraded-windows-no-nofollow
+    category: degraded
+    prompt: "Windows 的 Node fs.constants 没有 O_NOFOLLOW"
+    expected: use_verified_o_rdonly_fallback
+  - id: degraded-mcp-unavailable
+    category: degraded
+    prompt: "项目文件看起来完整，但当前 Host 无法连接 openapi_to MCP"
+    expected: diagnose_connection_without_generate_handoff
+  - id: degraded-host-server-unavailable
+    category: degraded
+    prompt: "Host 没有发现已配置的 openapi_to Server"
+    expected: classify_mcp_server_unavailable
+  - id: degraded-host-startup-failed
+    category: degraded
+    prompt: "Host 报告 MCP process startup 或 initialize failure"
+    expected: classify_mcp_startup_failed
+  - id: degraded-desktop-initialize-failed-sdk-control-pass
+    category: degraded
+    prompt: "Codex Desktop initialize 失败，但相同命令通过 official SDK 或 Codex CLI 成功"
+    expected: classify_host_compatibility_suspected
+  - id: degraded-desktop-initialize-failed-local-control-fail
+    category: degraded
+    prompt: "Codex Desktop initialize 失败，且本地 control 也失败"
+    expected: classify_startup_failure_without_host_attribution
+  - id: degraded-desktop-absolute-cwd-workaround
+    category: degraded
+    prompt: "absolute cwd 仅作为受控 Desktop 诊断实验"
+    expected: label_manual_machine_local_workaround
+  - id: degraded-desktop-workaround-not-canonical
+    category: degraded
+    prompt: "不要把 absolute cwd workaround 变成 canonical Setup 配置"
+    expected: preserve_relative_canonical_config
+  - id: degraded-host-evidence-source-must-be-labeled
+    category: degraded
+    prompt: "标记 SDK、Codex CLI 与 Codex Desktop evidence 的来源"
+    expected: label_host_evidence_source
+  - id: degraded-tool-list-missing
+    category: degraded
+    prompt: "Host 声称 Server 已连接，但无法列出实际 Tool"
+    expected: block_capability_claim
+  - id: degraded-input-schema-not-visible
+    category: degraded
+    prompt: "Tool 名称可见，但相关 inputSchema 不可见"
+    expected: block_unverified_setup_handoff
+  - id: degraded-old-tool-schema
+    category: degraded
+    prompt: "本地旧版本暴露同名 Tool，但 Schema 不支持当前参数"
+    expected: use_only_observed_schema_without_upgrade
+  - id: degraded-config-drift-after-approval
+    category: degraded
+    prompt: "Setup Plan 批准后 generation config 字节发生变化"
+    expected: invalidate_setup_plan
+  - id: degraded-codex-drift-after-approval
+    category: degraded
+    prompt: "Setup Plan 批准后 .codex/config.toml 字节发生变化"
+    expected: invalidate_setup_plan
+  - id: degraded-handoff-config-missing
+    category: degraded
+    prompt: "状态是 CONFIG_MISSING，但请求直接搜索 Operation"
+    expected: finish_setup_before_generate
+  - id: degraded-handoff-host-config-missing
+    category: degraded
+    prompt: "状态是 HOST_CONFIG_MISSING，但请求直接运行 Dry Run"
+    expected: finish_setup_before_generate
+  - id: degraded-handoff-blocked
+    category: degraded
+    prompt: "状态是 BLOCKED，但请求继续 Generate 工作流"
+    expected: do_not_handoff_generate
+  - id: degraded-handoff-read-only
+    category: degraded
+    prompt: "状态是 MCP_READ_ONLY 且当前 Dry Run Schema 兼容"
+    expected: handoff_discovery_contract_and_dry_run_only
+  - id: degraded-handoff-write-enabled
+    category: degraded
+    prompt: "状态是 MCP_WRITE_ENABLED 且 Dry Run、Prepare、Apply Schema 均兼容"
+    expected: handoff_controlled_prepare_apply_with_separate_approval
+  - id: degraded-handoff-any-other-state
+    category: degraded
+    prompt: "状态是 UNINSPECTED、PACKAGE_READY、CONFIG_READY、HOST_CONFIG_READY、MCP_ANALYSIS_ONLY 或未来新增状态"
+    expected: deny_generate_handoff_for_any_other_state
+
+  - id: first-plan-inspector-authority
+    category: degraded
+    prompt: "普通 read-only setup 请求第一次规划前应先检查项目状态"
+    expected: inspect_before_first_plan
+  - id: first-plan-hash-helper
+    category: degraded
+    prompt: "请为第一次 Setup Plan 生成真实 setupPlanId，不要使用手工编号"
+    expected: hash_current_bounded_plan
+  - id: degraded-project-host-config-only
+    category: degraded
+    prompt: "配置 MCP 时只允许修改当前项目的 Codex 配置"
+    expected: plan_project_level_codex_file_after_approval
+  - id: degraded-no-machine-absolute-path
+    category: degraded
+    prompt: "Setup Plan 不得包含机器相关的绝对路径"
+    expected: reject_absolute_machine_paths
+  - id: degraded-package-ready-preserve-provenance
+    category: degraded
+    prompt: "项目已有本地 current-main tarball 和 pnpm override，继续配置 read-only MCP"
+    expected: preserve_existing_dependency_state
+  - id: degraded-supported-config-only
+    category: degraded
+    prompt: "项目同时有 openapi.config.ts 和 mcp.config.ts，选择正确的 generation config"
+    expected: use_inspector_supported_generation_config
+  - id: degraded-canonical-openapi-server-section
+    category: degraded
+    prompt: "生成项目级 Codex MCP 配置时使用规范的 Server section 名称"
+    expected: use_canonical_mcp_servers_openapi_to
+  - id: degraded-host-write-restart-boundary
+    category: degraded
+    prompt: "Host 配置写入后，当前 Codex 尚未重启"
+    expected: restart_required_before_capability_verification
+  - id: composite-first-plan-safety
+    category: degraded
+    prompt: "把这个项目配置成推荐的 read-only MCP 模式；先生成完整 Setup Plan 和 setupPlanId，等我批准"
+    expected: first_attempt_setup_plan_fail_closed
+
+  - id: approval-exact
+    category: write-approval
+    prompt: "批准执行 Setup Plan aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    expected: apply_only_matching_current_plan
+  - id: approval-continue
+    category: write-approval
+    prompt: "继续"
+    expected: reject_as_approval
+  - id: approval-defaults
+    category: write-approval
+    prompt: "按默认来"
+    expected: reject_as_approval
+  - id: approval-install
+    category: write-approval
+    prompt: "安装吧"
+    expected: reject_as_approval
+  - id: approval-state-drift
+    category: write-approval
+    prompt: "计划后 package.json 已变化，但仍批准旧 ID"
+    expected: replan_and_require_new_exact_approval
+  - id: approval-two-plans
+    category: write-approval
+    prompt: "上下文有两个 Setup Plan，执行它"
+    expected: require_one_exact_current_id

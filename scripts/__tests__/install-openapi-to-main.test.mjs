@@ -10,6 +10,7 @@ import {
   readInstalledPackageManager,
   satisfiesEngineRange,
   validateGeneratedWorkspaceYaml,
+  validateLocalSourceState,
   verifyLockfileLocalArtifacts,
   validatePriorArtifactProvenance,
   workspaceSourceHead,
@@ -66,6 +67,8 @@ test("source isolation blocks host home reads and writes", () => {
     ["/private/var/folders/example/T"],
     ["/private/var/folders/example/T/tarballs"],
     ["/workspace/openapi-to-test"],
+    ["/Users/example/code/openapi-to"],
+    ["/Users", "/Users/example", "/Users/example/code"],
   );
   assert.match(profile, /\(deny file-read\* \(subpath "\/Users\/example"\)\)/);
   assert.match(profile, /\(deny file-write\* \(subpath "\/Users\/example"\)\)/);
@@ -76,7 +79,44 @@ test("source isolation blocks host home reads and writes", () => {
   assert.match(profile, /\(deny file-write\* \(subpath "\/private\/var\/folders\/example\/T\/tarballs"\)\)/);
   assert.match(profile, /\(deny file-read\* \(subpath "\/workspace\/openapi-to-test"\)\)/);
   assert.match(profile, /\(deny file-write\* \(subpath "\/workspace\/openapi-to-test"\)\)/);
+  assert.match(profile, /\(allow file-read\* \(subpath "\/Users\/example\/code\/openapi-to"\)\)/);
+  assert.match(profile, /\(allow file-write\* \(subpath "\/Users\/example\/code\/openapi-to"\)\)/);
+  assert.match(profile, /\(allow file-read-metadata \(literal "\/Users\/example\/code"\)\)/);
   assert.throws(() => createSourceIsolationProfile("relative/home"), /absolute host home directory/);
+});
+
+test("local source must be a clean main branch equal to the local origin/main ref", () => {
+  assert.deepEqual(
+    validateLocalSourceState({
+      branch: "main",
+      status: "",
+      head: head,
+      originMain: head,
+      ahead: 0,
+      behind: 0,
+    }),
+    { branch: "main", head, originMain: head, ahead: 0, behind: 0 },
+  );
+  assert.throws(
+    () => validateLocalSourceState({ branch: "feature/local", status: "", head, originMain: head, ahead: 0, behind: 0 }),
+    /must be on main/,
+  );
+  assert.throws(
+    () => validateLocalSourceState({ branch: "main", status: " M package.json", head, originMain: head, ahead: 0, behind: 0 }),
+    /worktree is not clean/,
+  );
+  assert.throws(
+    () => validateLocalSourceState({ branch: "main", status: "", head, originMain: undefined, ahead: undefined, behind: undefined }),
+    /origin\/main is unavailable/,
+  );
+  assert.throws(
+    () => validateLocalSourceState({ branch: "main", status: "", head, originMain: "a".repeat(40), ahead: 1, behind: 0 }),
+    /ahead 1, behind 0/,
+  );
+  assert.throws(
+    () => validateLocalSourceState({ branch: "main", status: "", head, originMain: "b".repeat(40), ahead: 0, behind: 1 }),
+    /ahead 0, behind 1/,
+  );
 });
 
 test("engine range comparisons support source constraints and reject unknown syntax", () => {

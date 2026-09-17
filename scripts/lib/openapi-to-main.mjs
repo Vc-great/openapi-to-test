@@ -140,6 +140,33 @@ export function inspectSourceToolchain(packageJson, nodeVersion) {
   return { packageManager: declaration, pnpmVersion, engines };
 }
 
+export function validateLocalSourceState({ branch, status, head, originMain, ahead, behind }) {
+  if (branch !== "main") {
+    throw new Error(`Local source must be on main; found ${branch || "detached HEAD"}.`);
+  }
+  if (typeof status !== "string" || status.trim() !== "") {
+    throw new Error("Local source worktree is not clean; commit or remove local changes before packing.");
+  }
+  if (!SHA_PATTERN.test(head ?? "")) {
+    throw new Error(`Local source HEAD is invalid: ${head ?? "<missing>"}.`);
+  }
+  if (!SHA_PATTERN.test(originMain ?? "")) {
+    throw new Error("Local source origin/main is unavailable; update the local remote-tracking reference before packing.");
+  }
+  const aheadCount = Number(ahead);
+  const behindCount = Number(behind);
+  if (!Number.isSafeInteger(aheadCount) || !Number.isSafeInteger(behindCount) || aheadCount !== 0 || behindCount !== 0 || head !== originMain) {
+    throw new Error(`Local source HEAD is not equal to origin/main (ahead ${Number.isSafeInteger(aheadCount) ? aheadCount : "?"}, behind ${Number.isSafeInteger(behindCount) ? behindCount : "?"}).`);
+  }
+  return {
+    branch,
+    head,
+    originMain,
+    ahead: aheadCount,
+    behind: behindCount,
+  };
+}
+
 export function createSourceIsolationProfile(
   homeDirectory,
   protectedFiles = [],
@@ -147,6 +174,8 @@ export function createSourceIsolationProfile(
   protectedDirectories = [],
   protectedWriteSubpaths = [],
   protectedReadWriteSubpaths = [],
+  allowedReadWriteSubpaths = [],
+  allowedReadMetadataPaths = [],
 ) {
   const homeDirectories = [homeDirectory, ...homeAliases];
   if (homeDirectories.some((directory) => typeof directory !== "string" || !path.isAbsolute(directory))) {
@@ -164,6 +193,12 @@ export function createSourceIsolationProfile(
   if (!Array.isArray(protectedReadWriteSubpaths) || protectedReadWriteSubpaths.some((subpath) => typeof subpath !== "string" || !path.isAbsolute(subpath))) {
     throw new Error("Source isolation protected read/write subpaths must be absolute paths.");
   }
+  if (!Array.isArray(allowedReadWriteSubpaths) || allowedReadWriteSubpaths.some((subpath) => typeof subpath !== "string" || !path.isAbsolute(subpath))) {
+    throw new Error("Source isolation allowed read/write subpaths must be absolute paths.");
+  }
+  if (!Array.isArray(allowedReadMetadataPaths) || allowedReadMetadataPaths.some((filename) => typeof filename !== "string" || !path.isAbsolute(filename))) {
+    throw new Error("Source isolation allowed metadata paths must be absolute paths.");
+  }
   const escapePath = (value) => path.resolve(value).replaceAll("\\", "\\\\").replaceAll('"', '\\"');
   const escapedHomes = [...new Set(homeDirectories.map(escapePath))];
   return [
@@ -173,6 +208,11 @@ export function createSourceIsolationProfile(
       `(deny file-read* (subpath "${home}"))`,
       `(deny file-write* (subpath "${home}"))`,
     ]),
+    ...[...new Set(allowedReadWriteSubpaths.map(escapePath))].flatMap((subpath) => [
+      `(allow file-read* (subpath "${subpath}"))`,
+      `(allow file-write* (subpath "${subpath}"))`,
+    ]),
+    ...[...new Set(allowedReadMetadataPaths.map(escapePath))].map((filename) => `(allow file-read-metadata (literal "${filename}"))`),
     ...[...new Set(protectedReadWriteSubpaths.map(escapePath))].flatMap((subpath) => [
       `(deny file-read* (subpath "${subpath}"))`,
       `(deny file-write* (subpath "${subpath}"))`,
