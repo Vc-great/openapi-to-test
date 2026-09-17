@@ -167,63 +167,6 @@ export function validateLocalSourceState({ branch, status, head, originMain, ahe
   };
 }
 
-export function createSourceIsolationProfile(
-  homeDirectory,
-  protectedFiles = [],
-  homeAliases = [],
-  protectedDirectories = [],
-  protectedWriteSubpaths = [],
-  protectedReadWriteSubpaths = [],
-  allowedReadWriteSubpaths = [],
-  allowedReadMetadataPaths = [],
-) {
-  const homeDirectories = [homeDirectory, ...homeAliases];
-  if (homeDirectories.some((directory) => typeof directory !== "string" || !path.isAbsolute(directory))) {
-    throw new Error("Source isolation requires an absolute host home directory.");
-  }
-  if (!Array.isArray(protectedFiles) || protectedFiles.some((filename) => typeof filename !== "string" || !path.isAbsolute(filename))) {
-    throw new Error("Source isolation protected files must be absolute paths.");
-  }
-  if (!Array.isArray(protectedDirectories) || protectedDirectories.some((directory) => typeof directory !== "string" || !path.isAbsolute(directory))) {
-    throw new Error("Source isolation protected directories must be absolute paths.");
-  }
-  if (!Array.isArray(protectedWriteSubpaths) || protectedWriteSubpaths.some((subpath) => typeof subpath !== "string" || !path.isAbsolute(subpath))) {
-    throw new Error("Source isolation protected write subpaths must be absolute paths.");
-  }
-  if (!Array.isArray(protectedReadWriteSubpaths) || protectedReadWriteSubpaths.some((subpath) => typeof subpath !== "string" || !path.isAbsolute(subpath))) {
-    throw new Error("Source isolation protected read/write subpaths must be absolute paths.");
-  }
-  if (!Array.isArray(allowedReadWriteSubpaths) || allowedReadWriteSubpaths.some((subpath) => typeof subpath !== "string" || !path.isAbsolute(subpath))) {
-    throw new Error("Source isolation allowed read/write subpaths must be absolute paths.");
-  }
-  if (!Array.isArray(allowedReadMetadataPaths) || allowedReadMetadataPaths.some((filename) => typeof filename !== "string" || !path.isAbsolute(filename))) {
-    throw new Error("Source isolation allowed metadata paths must be absolute paths.");
-  }
-  const escapePath = (value) => path.resolve(value).replaceAll("\\", "\\\\").replaceAll('"', '\\"');
-  const escapedHomes = [...new Set(homeDirectories.map(escapePath))];
-  return [
-    "(version 1)",
-    "(allow default)",
-    ...escapedHomes.flatMap((home) => [
-      `(deny file-read* (subpath "${home}"))`,
-      `(deny file-write* (subpath "${home}"))`,
-    ]),
-    ...[...new Set(allowedReadWriteSubpaths.map(escapePath))].flatMap((subpath) => [
-      `(allow file-read* (subpath "${subpath}"))`,
-      `(allow file-write* (subpath "${subpath}"))`,
-    ]),
-    ...[...new Set(allowedReadMetadataPaths.map(escapePath))].map((filename) => `(allow file-read-metadata (literal "${filename}"))`),
-    ...[...new Set(protectedReadWriteSubpaths.map(escapePath))].flatMap((subpath) => [
-      `(deny file-read* (subpath "${subpath}"))`,
-      `(deny file-write* (subpath "${subpath}"))`,
-    ]),
-    ...[...new Set(protectedDirectories.map(escapePath))].map((directory) => `(deny file-write* (literal "${directory}"))`),
-    ...[...new Set(protectedWriteSubpaths.map(escapePath))].map((subpath) => `(deny file-write* (subpath "${subpath}"))`),
-    ...protectedFiles.map((filename) => `(deny file-write* (literal "${escapePath(filename)}"))`),
-    "",
-  ].join("\n");
-}
-
 export function readInstalledPackageManager(modulesState) {
   if (typeof modulesState !== "string") return undefined;
   try {

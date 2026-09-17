@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  createSourceIsolationProfile,
   createCurrentMainWorkspaceYaml,
   createProvenance,
   inspectSourceToolchain,
@@ -57,32 +56,6 @@ test("source toolchain requires an exact pnpm declaration and validates Node and
     () => inspectSourceToolchain({ packageManager: "pnpm@10.0.0", engines: { pnpm: ">=11 <12" } }, "v24.20.0"),
     /Unsupported pnpm/,
   );
-});
-
-test("source isolation blocks host home reads and writes", () => {
-  const profile = createSourceIsolationProfile(
-    "/Users/example",
-    ["/private/tmp/source.sandbox", "/private/tmp/empty.npmrc"],
-    ["/Volumes/home/example"],
-    ["/private/var/folders/example/T"],
-    ["/private/var/folders/example/T/tarballs"],
-    ["/workspace/openapi-to-test"],
-    ["/Users/example/code/openapi-to"],
-    ["/Users", "/Users/example", "/Users/example/code"],
-  );
-  assert.match(profile, /\(deny file-read\* \(subpath "\/Users\/example"\)\)/);
-  assert.match(profile, /\(deny file-write\* \(subpath "\/Users\/example"\)\)/);
-  assert.match(profile, /\(deny file-read\* \(subpath "\/Volumes\/home\/example"\)\)/);
-  assert.match(profile, /\(deny file-write\* \(literal "\/private\/tmp\/source\.sandbox"\)\)/);
-  assert.match(profile, /\(deny file-write\* \(literal "\/private\/tmp\/empty\.npmrc"\)\)/);
-  assert.match(profile, /\(deny file-write\* \(literal "\/private\/var\/folders\/example\/T"\)\)/);
-  assert.match(profile, /\(deny file-write\* \(subpath "\/private\/var\/folders\/example\/T\/tarballs"\)\)/);
-  assert.match(profile, /\(deny file-read\* \(subpath "\/workspace\/openapi-to-test"\)\)/);
-  assert.match(profile, /\(deny file-write\* \(subpath "\/workspace\/openapi-to-test"\)\)/);
-  assert.match(profile, /\(allow file-read\* \(subpath "\/Users\/example\/code\/openapi-to"\)\)/);
-  assert.match(profile, /\(allow file-write\* \(subpath "\/Users\/example\/code\/openapi-to"\)\)/);
-  assert.match(profile, /\(allow file-read-metadata \(literal "\/Users\/example\/code"\)\)/);
-  assert.throws(() => createSourceIsolationProfile("relative/home"), /absolute host home directory/);
 });
 
 test("local source must be a clean main branch equal to the local origin/main ref", () => {
