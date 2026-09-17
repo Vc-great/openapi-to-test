@@ -9,6 +9,6 @@ args = [
   "--config",
   "openapi.config.ts"
 ]
-cwd = "."
+cwd = "/Users/vc/code/openapi-to-test"
 startup_timeout_sec = 10
 tool_timeout_sec = 60
