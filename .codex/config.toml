@@ -1,0 +1,14 @@
+[mcp_servers.openapi_to]
+command = "pnpm"
+args = [
+  "exec",
+  "--",
+  "openapi-to-mcp",
+  "--workspace-root",
+  ".",
+  "--config",
+  "openapi.config.ts"
+]
+cwd = "/Users/vc/code/openapi-to-test"
+startup_timeout_sec = 10
+tool_timeout_sec = 60

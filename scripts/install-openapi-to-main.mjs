@@ -753,8 +753,8 @@ async function prepare() {
   console.log("\nArtifacts");
   console.log(`  ${summary.artifactRelative}/`);
   console.log("\nNext steps");
-  console.log("  pnpm exec openapi skills install --host codex --dry-run");
-  console.log("  pnpm exec openapi skills install --host codex");
+  console.log("  pnpm exec openapi setup --host codex --scope project --dry-run");
+  console.log("  pnpm exec openapi setup --host codex --scope project");
   console.log("\n完成人工 Skill 安装测试后，在 openapi-to-test 中打开一个 Fresh Codex Session。");
 }
 

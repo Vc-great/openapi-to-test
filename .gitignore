@@ -11,3 +11,5 @@ generated/
 !reports/evidence/
 !reports/evidence/**
 scenarios/**/openapi.config.*
+# https://github.com/Vc-great/openapi-to
+/.openapi-to/
