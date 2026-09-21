@@ -369,7 +369,7 @@ packages:
     engines: {node: '>=22'}
 
   '@openapi-to/mcp@file:.openapi-to-local/2132fa7eabf46f8f483803429e0680d6d029400e/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz':
-    resolution: {integrity: sha512-iXMR18gmSL+HvasAuCRFAujNIOLcrX107M+72H91UXolOfwRnElQCOznRJ2JMnD8pt/iE9zYMkvwO9FQ4EQcqg==, tarball: file:.openapi-to-local/2132fa7eabf46f8f483803429e0680d6d029400e/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz}
+    resolution: {integrity: sha512-zYKeNqCuEyUiT/AUezQPs+hzwwnG59V8HbJr+CBrkCncigP8gN1uZKQxfuCTPboq8HMoSOuID30gDgLTC9E5Tg==, tarball: file:.openapi-to-local/2132fa7eabf46f8f483803429e0680d6d029400e/tarballs/openapi-to-mcp-4.0.0-rc.3.tgz}
     version: 4.0.0-rc.3
     engines: {node: '>=22'}
     hasBin: true
