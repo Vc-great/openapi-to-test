@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "generated/react-query/**/*.ts",
+    "consumers/react-query.ts",
+    "../../src/utils/request.ts",
+    "../../src/types/react-query.d.ts"
+  ]
+}

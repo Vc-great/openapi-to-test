@@ -15,7 +15,7 @@ export default function getSchemaLessHandler(data?: GetSchemaLessResponse) {
   return http.get(
     '/schema-less',
     (info) => {
-      return HttpResponse.json(data, {
+      return HttpResponse.json(data as import("msw").JsonBodyType, {
         status: 200,
       });
     },

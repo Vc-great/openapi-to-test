@@ -7,8 +7,8 @@
   ],
   "cwd": ".",
   "command": "/usr/local/bin/node scripts/remote-security.mjs",
-  "exitCode": 0,
+  "exitCode": 77,
   "signal": null,
   "timedOut": false,
-  "durationMs": 539
+  "durationMs": 49
 }

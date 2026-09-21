@@ -6,13 +6,13 @@
     "<workspace>/node_modules/openapi-to/bin/openapi.js",
     "generate",
     "--config",
-    "openapi.config.ts",
+    "swr.config.ts",
     "--json"
   ],
   "cwd": ".",
-  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config openapi.config.ts --json",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config swr.config.ts --json",
   "exitCode": 0,
   "signal": null,
   "timedOut": false,
-  "durationMs": 655
+  "durationMs": 666
 }

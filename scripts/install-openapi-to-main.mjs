@@ -24,6 +24,8 @@ import {
   validatePriorArtifactProvenance,
   verifyInstalledPackageVersions,
   verifyLockfileLocalArtifacts,
+  canBootstrapGeneratedWorkspace,
+  isFreshCloneGeneratedWorkspaceCandidate,
   validateGeneratedWorkspaceYaml,
   validateLocalSourceState,
   workspaceSourceHead,
@@ -401,9 +403,39 @@ async function verifyArtifactFiles({ destinationRoot, provenance, sourceHead, pa
   }
 }
 
-async function writeWorkspaceYaml(contents) {
+async function assertWorkspaceUnchanged(expectedContents, { requireTrackedClean = false } = {}) {
+  if (expectedContents === undefined) return;
+  let workspaceStat;
+  let currentContents;
+  try {
+    workspaceStat = await lstat(WORKSPACE_FILE);
+    currentContents = await readFile(WORKSPACE_FILE, "utf8");
+  } catch (error) {
+    throw new TaskFailure(
+      "Consumer workspace conflict",
+      `pnpm-workspace.yaml 在安装期间不可读，未覆盖：${error.message}`,
+    );
+  }
+  const status = gitStatus(WORKSPACE_FILE);
+  const trackedClean = requireTrackedClean && isTrackedClean(WORKSPACE_FILE, status);
+  if (
+    !workspaceStat.isFile()
+    || workspaceStat.isSymbolicLink()
+    || currentContents !== expectedContents
+    || (requireTrackedClean && !trackedClean)
+  ) {
+    throw new TaskFailure(
+      "Consumer workspace conflict",
+      "pnpm-workspace.yaml 在安装期间发生变化或不再是 clean tracked file，未覆盖。",
+    );
+  }
+}
+
+async function writeWorkspaceYaml(contents, expectedExistingContents) {
+  await assertWorkspaceUnchanged(expectedExistingContents);
   const temporaryPath = `${WORKSPACE_FILE}.tmp-${process.pid}`;
   await writeFile(temporaryPath, contents, { flag: "wx" });
+  await assertWorkspaceUnchanged(expectedExistingContents);
   await rename(temporaryPath, WORKSPACE_FILE);
 }
 
@@ -411,9 +443,18 @@ function gitStatus(pathspec) {
   return checked("git", ["status", "--porcelain", "--", pathspec], ROOT, "Consumer workspace conflict", `检查 ${pathspec} 工作树状态`).stdout.trim();
 }
 
+function isTrackedClean(pathspec, status = gitStatus(pathspec)) {
+  if (status) return false;
+  const relativePath = path.relative(ROOT, pathspec).split(path.sep).join("/");
+  const result = run("git", ["ls-files", "--error-unmatch", "--", relativePath], ROOT, { env: localGitEnvironment() });
+  return result.status === 0 && result.stdout.trim() === relativePath;
+}
+
 async function preflightConsumerFiles() {
   let workspaceHead;
   let workspaceProvenance;
+  let bootstrapWorkspace;
+  let priorWorkspaceContents;
   try {
     const workspaceStat = await lstat(WORKSPACE_FILE);
     if (!workspaceStat.isFile() || workspaceStat.isSymbolicLink()) {
@@ -425,6 +466,7 @@ async function preflightConsumerFiles() {
   }
   try {
     const existingWorkspace = await readFile(WORKSPACE_FILE, "utf8");
+    priorWorkspaceContents = existingWorkspace;
     if (!isGeneratedWorkspaceYaml(existingWorkspace)) {
       throw new TaskFailure(
         "Consumer workspace conflict",
@@ -434,20 +476,30 @@ async function preflightConsumerFiles() {
     const existingHead = workspaceSourceHead(existingWorkspace);
     const previousProvenance = await readPriorProvenance(path.join(ARTIFACT_ROOT, existingHead), existingHead);
     if (!previousProvenance) {
-      throw new TaskFailure(
-        "Consumer workspace conflict",
-        "pnpm-workspace.yaml 带有生成标记，但对应 provenance 缺失；为保护 workspace settings，未覆盖。",
-      );
+      if (!isFreshCloneGeneratedWorkspaceCandidate({
+        contents: existingWorkspace,
+        provenance: previousProvenance,
+        tracked: isTrackedClean(WORKSPACE_FILE),
+        status: gitStatus(WORKSPACE_FILE),
+      })) {
+        throw new TaskFailure(
+          "Consumer workspace conflict",
+          "pnpm-workspace.yaml 带有生成标记，但对应 provenance 缺失且不是 fresh-clone committed workspace；为保护 workspace settings，未覆盖。",
+        );
+      }
+      bootstrapWorkspace = existingWorkspace;
     }
     workspaceHead = existingHead;
     workspaceProvenance = previousProvenance;
-    try {
-      validateGeneratedWorkspaceYaml(existingWorkspace, previousProvenance.packages);
-    } catch (error) {
-      throw new TaskFailure(
-        "Consumer workspace conflict",
-        `pnpm-workspace.yaml 已偏离此前生成的 local overrides 或含未知 settings，未覆盖：${error.message}`,
-      );
+    if (previousProvenance) {
+      try {
+        validateGeneratedWorkspaceYaml(existingWorkspace, previousProvenance.packages);
+      } catch (error) {
+        throw new TaskFailure(
+          "Consumer workspace conflict",
+          `pnpm-workspace.yaml 已偏离此前生成的 local overrides 或含未知 settings，未覆盖：${error.message}`,
+        );
+      }
     }
   } catch (error) {
     if (error instanceof TaskFailure) throw error;
@@ -464,7 +516,11 @@ async function preflightConsumerFiles() {
     if (error.code !== "ENOENT") throw error;
   }
   const status = gitStatus("pnpm-lock.yaml");
-  if (!status) return workspaceProvenance?.consumer;
+  if (!status) return {
+    priorConsumerOwnership: workspaceProvenance?.consumer,
+    bootstrapWorkspace,
+    priorWorkspaceContents,
+  };
   const workspace = await readFile(WORKSPACE_FILE, "utf8").catch(() => "");
   const previousHead = workspaceSourceHead(workspace);
   const lock = await readFile(LOCK_FILE, "utf8").catch(() => "");
@@ -489,11 +545,15 @@ async function preflightConsumerFiles() {
       "pnpm-lock.yaml 与此前成功安装记录不一致或缺少 ownership hash；为保护用户内容，已停止安装。",
     );
   }
-  return previousProvenance.consumer;
+  return {
+    priorConsumerOwnership: previousProvenance.consumer,
+    bootstrapWorkspace,
+    priorWorkspaceContents,
+  };
 }
 
 async function prepare() {
-  const priorConsumerOwnership = await preflightConsumerFiles();
+  const { priorConsumerOwnership, bootstrapWorkspace, priorWorkspaceContents } = await preflightConsumerFiles();
   const localSource = await inspectLocalSource();
   let tempRoot;
   let tempRootIdentity;
@@ -628,6 +688,18 @@ async function prepare() {
     if (new Set(packed.map(({ name }) => name)).size !== packed.length) {
       throw new TaskFailure("Pack failure", "Canonical helper 返回重复 package name。");
     }
+    if (bootstrapWorkspace !== undefined && !canBootstrapGeneratedWorkspace({
+      contents: bootstrapWorkspace,
+      provenance: undefined,
+      tracked: true,
+      status: "",
+      canonicalContents: workspace.yaml,
+    })) {
+      throw new TaskFailure(
+        "Consumer workspace conflict",
+        "committed generated pnpm-workspace.yaml does not match the canonical workspace for the current source; provenance is missing, so it was not overwritten.",
+      );
+    }
 
     const artifactResult = await materializeArtifacts({
       packed,
@@ -640,7 +712,11 @@ async function prepare() {
     });
 
     stage(5, "为 Consumer 写入本地 tarball overrides");
-    await writeWorkspaceYaml(workspace.yaml);
+    if (bootstrapWorkspace !== undefined) {
+      await assertWorkspaceUnchanged(bootstrapWorkspace, { requireTrackedClean: true });
+    } else {
+      await writeWorkspaceYaml(workspace.yaml, priorWorkspaceContents);
+    }
 
     // The local tarballs are regenerated for each source build. pnpm otherwise
     // keeps the old integrity for the same file specifier and rejects the

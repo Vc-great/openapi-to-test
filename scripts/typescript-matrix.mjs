@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
@@ -49,6 +49,7 @@ const strictOptions = {
 };
 
 async function recordCommand(definition, extra = {}) {
+  await clearFailureEvidence(definition.id);
   const actual = await runProcess({
     executable: definition.executable,
     args: definition.args,
@@ -84,6 +85,13 @@ async function recordCommand(definition, extra = {}) {
   };
   results.push(item);
   return { actual, item };
+}
+
+async function clearFailureEvidence(id) {
+  await Promise.all(["stdout", "stderr"].map((suffix) => rm(
+    path.join(root, "reports/evidence/failures", `${id}.${suffix}.txt`),
+    { force: true },
+  )));
 }
 
 const generationDefinitions = [
@@ -136,6 +144,7 @@ function classifyFullFailure(plugin, outputText) {
 for (const compiler of compilers) {
   for (const scenario of fullScenarios) {
     const id = `TSC-${scenario.key}-${compiler.key}`;
+    await clearFailureEvidence(id);
     const run = await runProcess({
       executable: process.execPath,
       args: [compiler.entry, "-p", scenario.config],

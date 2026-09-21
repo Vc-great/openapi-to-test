@@ -14,7 +14,7 @@ export interface UserModel {
   address?: AddressModel;
   optionalInline?: {
     count: number;
-    mode?: UseroptionalInlineModeEnumValue;
+    mode?: UserOptionalInlineModeEnumValue;
   };
   tags?: Array<string>;
   metadata?: {

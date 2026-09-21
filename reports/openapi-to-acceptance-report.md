@@ -2,34 +2,34 @@
 
 ## 总体结论
 
-本次共执行 98 个结构化用例，27 个测试用例失败，对应 5 个独立根因；Known Limitation 为 1 个。仍建议保持 RC，不将当前版本提升为稳定推荐。
+本次共执行 99 个结构化用例，7 个测试用例失败，对应 7 个独立根因；Known Limitation 为 1 个。仍建议保持 RC，不将当前版本提升为稳定推荐。
 
 ## 报告与环境证据
 
 - Report schema version：2.0.0
-- Run ID：454c4b2c-c8ac-428e-947e-8812fce1655b
-- Test harness commit：ad97c11e77d7e16fc21d47009fc3d94bed2de224
+- Run ID：5b9070a2-e906-4e11-8869-a102d7d7b876
+- Test harness commit：c416a088d0c6dd91d59a6531a9fccc5b91998d4f
 - Baseline branch：main
-- Baseline Git HEAD：ad97c11e77d7e16fc21d47009fc3d94bed2de224
-- Baseline working tree status：110 条变更
-- Verify startedAt：2026-08-06T08:10:48.338Z
-- Results generatedAt：2026-08-06T08:11:55.078Z
-- Report generatedAt：2026-08-06T08:11:56.800Z
-- Current report-time Git HEAD：ad97c11e77d7e16fc21d47009fc3d94bed2de224
-- Current report-time working tree status：112 条变更
+- Baseline Git HEAD：c416a088d0c6dd91d59a6531a9fccc5b91998d4f
+- Baseline working tree status：192 条变更
+- Verify startedAt：2026-09-18T15:24:11.667Z
+- Results generatedAt：2026-09-18T15:26:28.768Z
+- Report generatedAt：2026-09-18T15:27:39.249Z
+- Current report-time Git HEAD：c416a088d0c6dd91d59a6531a9fccc5b91998d4f
+- Current report-time working tree status：192 条变更
 - Tested package：openapi-to@4.0.0-rc.3
-- Tested package integrity：registry 与 lockfile 一致
-- Node：v24.8.0
+- Tested package integrity：未能证明一致
+- Node：v24.20.0
 - pnpm：10.33.0
 - npm Registry：https://registry.npmjs.org
-- dist-tags：{"alpha":"3.0.0-alpha.5","latest":"3.2.2","rc":"4.0.0-rc.3"}
-- Evidence completeness：COMPLETE
+- dist-tags：NO_EVIDENCE
+- Evidence completeness：INCOMPLETE（missing=0）
 
 ## 测试统计
 
 | Total | PASS | FAIL | KNOWN_LIMITATION | BLOCKED | SKIPPED | 独立缺陷 |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 98 | 70 | 27 | 1 | 0 | 0 | 5 |
+| 99 | 90 | 7 | 1 | 1 | 0 | 7 |
 
 ## TypeScript matrix
 
@@ -39,12 +39,12 @@
 
 | Plugin / fixture | TS legacy | TS baseline | TS current |
 | --- | --- | --- | --- |
-| pluginTSType | FAIL | FAIL | FAIL |
-| pluginTSRequest | FAIL | FAIL | FAIL |
-| pluginZod | FAIL | FAIL | FAIL |
-| pluginSWR | FAIL | FAIL | FAIL |
-| pluginVueQuery | FAIL | FAIL | FAIL |
-| pluginMSW | FAIL | FAIL | FAIL |
+| pluginTSType | PASS | PASS | PASS |
+| pluginTSRequest | PASS | PASS | PASS |
+| pluginZod | PASS | PASS | PASS |
+| pluginSWR | PASS | PASS | PASS |
+| pluginVueQuery | PASS | PASS | PASS |
+| pluginMSW | PASS | PASS | PASS |
 | OpenAPI 3.1 fixture | PASS | PASS | PASS |
 | pluginTSRequest boundary | PASS | PASS | PASS |
 
@@ -54,14 +54,14 @@
 
 | 能力 | 聚合状态 | 证据用例 |
 | --- | --- | --- |
-| npm package / bin / ESM / CJS / declarations | PASS | PUB-001, CLI-003, CLI-004, CLI-005, PUB-002, PUB-003 |
+| npm package / bin / ESM / CJS / declarations | FAIL | PUB-001, CLI-003, CLI-004, CLI-005, PUB-002, PUB-003 |
 | CLI validation / inspect / diff | PASS | INSPECT-001, VAL-001, VAL-002, VAL-003, VAL-003B, VAL-003C, VAL-004, VAL-005, VAL-006, VAL-007, DIFF-001 |
 | six plugin generation | PASS | GEN-001, GEN-002, GEN-003, GEN-004, GEN-005, GEN-006, GEN-007 |
-| TypeScript compatibility matrix | FAIL | GEN-ISO-SWR, GEN-ISO-MSW, GEN-ISO-TS-REQUEST, TS-VERSION-TS56, TS-VERSION-TS6, TS-VERSION-TS7, TSC-TS-TYPE-TS56, TSC-TS-REQUEST-TS56, TSC-ZOD-TS56, TSC-SWR-TS56, TSC-VUE-QUERY-TS56, TSC-MSW-TS56, TSC-OAS31-TS56, TSC-TS-TYPE-TS6, TSC-TS-REQUEST-TS6, TSC-ZOD-TS6, TSC-SWR-TS6, TSC-VUE-QUERY-TS6, TSC-MSW-TS6, TSC-OAS31-TS6, TSC-TS-TYPE-TS7, TSC-TS-REQUEST-TS7, TSC-ZOD-TS7, TSC-SWR-TS7, TSC-VUE-QUERY-TS7, TSC-MSW-TS7, TSC-OAS31-TS7, TSC-SWR-MIN-TS56, TSC-MSW-MIN-TS56, TSC-TS-REQUEST-BOUNDARY-TS56, TSC-SWR-MIN-TS6, TSC-MSW-MIN-TS6, TSC-TS-REQUEST-BOUNDARY-TS6, TSC-SWR-MIN-TS7, TSC-MSW-MIN-TS7, TSC-TS-REQUEST-BOUNDARY-TS7 |
+| TypeScript compatibility matrix | PASS | GEN-ISO-SWR, GEN-ISO-MSW, GEN-ISO-TS-REQUEST, TS-VERSION-TS56, TS-VERSION-TS6, TS-VERSION-TS7, TSC-TS-TYPE-TS56, TSC-TS-REQUEST-TS56, TSC-ZOD-TS56, TSC-SWR-TS56, TSC-VUE-QUERY-TS56, TSC-MSW-TS56, TSC-OAS31-TS56, TSC-TS-TYPE-TS6, TSC-TS-REQUEST-TS6, TSC-ZOD-TS6, TSC-SWR-TS6, TSC-VUE-QUERY-TS6, TSC-MSW-TS6, TSC-OAS31-TS6, TSC-TS-TYPE-TS7, TSC-TS-REQUEST-TS7, TSC-ZOD-TS7, TSC-SWR-TS7, TSC-VUE-QUERY-TS7, TSC-MSW-TS7, TSC-OAS31-TS7, TSC-SWR-MIN-TS56, TSC-MSW-MIN-TS56, TSC-TS-REQUEST-BOUNDARY-TS56, TSC-SWR-MIN-TS6, TSC-MSW-MIN-TS6, TSC-TS-REQUEST-BOUNDARY-TS6, TSC-SWR-MIN-TS7, TSC-MSW-MIN-TS7, TSC-TS-REQUEST-BOUNDARY-TS7 |
 | lifecycle | PASS | LIFE-001, LIFE-003, LIFE-002, LIFE-004, LIFE-005, LIFE-006, LIFE-007, LIFE-008, LIFE-009 |
 | MCP | PASS | MCP-SUITE |
-| Skills | PASS | SKILL-001, SKILL-002, SKILL-003, SKILL-004 |
-| security boundaries | PASS | SEC-CLI-001, SEC-CLI-002, SEC-CLI-003, SEC-CLI-004, SEC-CLI-005, SEC-CLI-006, SEC-REMOTE |
+| Skills | FAIL | SKILL-001, SKILL-002, SKILL-003, SKILL-004 |
+| security boundaries | BLOCKED | SEC-CLI-001, SEC-CLI-002, SEC-CLI-003, SEC-CLI-004, SEC-CLI-005, SEC-CLI-006, SEC-REMOTE |
 | cross-platform harness implementation | PASS | HARNESS-001 |
 
 ## Independent root causes
@@ -70,11 +70,13 @@
 
 | rootCauseId | Severity | 影响用例 |
 | --- | --- | --- |
-| BUG-INIT-JSON-STDOUT | P3 | INIT-003 |
 | BUG-INIT-PLUGIN-ARTIFACT-CONFLICT | P1 | INIT-004 |
-| BUG-INLINE-ENUM-CASING | P1 | REG-001, TSC-TS-TYPE-TS56, TSC-TS-REQUEST-TS56, TSC-ZOD-TS56, TSC-SWR-TS56, TSC-VUE-QUERY-TS56, TSC-MSW-TS56, TSC-TS-TYPE-TS6, TSC-TS-REQUEST-TS6, TSC-ZOD-TS6, TSC-SWR-TS6, TSC-VUE-QUERY-TS6, TSC-MSW-TS6, TSC-TS-TYPE-TS7, TSC-TS-REQUEST-TS7, TSC-ZOD-TS7, TSC-SWR-TS7, TSC-VUE-QUERY-TS7, TSC-MSW-TS7 |
-| BUG-SWR-IMPLICIT-ANY | P1 | TSC-SWR-TS56, TSC-SWR-TS6, TSC-SWR-TS7, TSC-SWR-MIN-TS56, TSC-SWR-MIN-TS6, TSC-SWR-MIN-TS7 |
-| BUG-MSW-SCHEMALESS-JSON | P2 | TSC-MSW-TS56, TSC-MSW-TS6, TSC-MSW-TS7, TSC-MSW-MIN-TS56, TSC-MSW-MIN-TS6, TSC-MSW-MIN-TS7 |
+| HARNESS-CFG-003 | HARNESS | CFG-003 |
+| HARNESS-PUB-003 | HARNESS | PUB-003 |
+| HARNESS-SKILL-001 | HARNESS | SKILL-001 |
+| HARNESS-SKILL-002 | HARNESS | SKILL-002 |
+| HARNESS-SKILL-003 | HARNESS | SKILL-003 |
+| HARNESS-HARNESS-REPORT-GENERATION | HARNESS | HARNESS-REPORT-GENERATION |
 
 ## Known limitations
 
@@ -102,12 +104,12 @@
 | CLI-003 | ESM import | PASS | 0 | reports/evidence/commands/CLI-003.json |
 | CLI-004 | CommonJS require | PASS | 0 | reports/evidence/commands/CLI-004.json |
 | CLI-005 | Published type declarations | PASS | 0 | reports/evidence/commands/CLI-005.json |
-| INIT-003 | fresh init JSON stdout contract | FAIL | 0 | reports/evidence/commands/INIT-003.json<br>reports/evidence/failures/INIT-003.stdout.txt<br>reports/evidence/failures/INIT-003.stderr.txt |
+| INIT-003 | fresh init JSON stdout contract | PASS | 0 | reports/evidence/commands/INIT-003.json |
 | INIT-002 | CommonJS init extension | PASS | 0 | reports/evidence/commands/INIT-002.json |
 | INIT-003B | repeat init JSON error contract | PASS | 1 | reports/evidence/commands/INIT-003B.json |
 | INIT-004 | Default init template can generate | FAIL | 1 | reports/evidence/commands/INIT-004.json<br>reports/evidence/failures/INIT-004.stdout.txt<br>reports/evidence/failures/INIT-004.stderr.txt |
 | CFG-002 | Ambiguous config fail-before-execute | PASS | 2 | reports/evidence/commands/CFG-002.json |
-| CFG-003 | Nested config discovery | PASS | 0 | reports/evidence/commands/CFG-003.json |
+| CFG-003 | Nested config discovery | FAIL | 2 | reports/evidence/commands/CFG-003.json<br>reports/evidence/failures/CFG-003.stdout.txt<br>reports/evidence/failures/CFG-003.stderr.txt |
 | INSPECT-001 | Inspect byte stability | PASS | 0 | reports/evidence/commands/INSPECT-001.json |
 | VAL-001 | Swagger 2 validation | PASS | 0 | reports/evidence/commands/VAL-001.json |
 | VAL-002 | OpenAPI 3.0 validation | PASS | 0 | reports/evidence/commands/VAL-002.json |
@@ -137,17 +139,17 @@
 | MULTI-001 | Default all targets | PASS | 0 | reports/evidence/commands/MULTI-001.json |
 | MULTI-002 | Repeated target dedupe/order | PASS | 0 | reports/evidence/commands/MULTI-002.json |
 | MCP-SUITE | Official SDK stdio suite | PASS | 0 | reports/evidence/commands/MCP-SUITE.json |
-| SEC-REMOTE | Cross-origin header stripping | PASS | 0 | reports/evidence/commands/SEC-REMOTE.json |
+| SEC-REMOTE | Cross-origin header stripping | BLOCKED | 77 | reports/evidence/commands/SEC-REMOTE.json<br>reports/evidence/failures/SEC-REMOTE.stdout.txt<br>reports/evidence/failures/SEC-REMOTE.stderr.txt |
 | PUB-002 | Three package bins | PASS | 0 | package.json<br>pnpm-lock.yaml |
-| PUB-003 | Lockfile registry-only resolution | PASS | 0 | pnpm-lock.yaml |
+| PUB-003 | Lockfile registry-only resolution | FAIL | 0 | pnpm-lock.yaml |
 | INIT-001 | ESM init extension | PASS | 0 | reports/evidence/commands/INIT-003.json |
-| REG-001 | Optional inline object enum identifier | FAIL | 0 | reports/evidence/generated-minimal/inline-enum-user.model.ts |
+| REG-001 | Optional inline object enum identifier | PASS | 0 | reports/evidence/generated-minimal/inline-enum-user.model.ts |
 | REG-002 | Optional non-required ref | PASS | 0 | reports/evidence/generated-minimal/inline-enum-user.model.ts |
 | SEM-001 | TS Request header/cookie configuration boundary | KNOWN_LIMITATION | 0 | reports/evidence/generated-minimal/request-config-boundary.types.ts<br>reports/evidence/generated-minimal/request-config-boundary.service.ts<br>reports/evidence/generated-minimal/request-config-boundary.consumer.ts<br>reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS56.json<br>reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS6.json<br>reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS7.json |
 | HARNESS-001 | Cross-platform structured process runner | PASS | 0 | scripts/lib/process.mjs |
-| SKILL-001 | Skills dry-run | PASS | 0 | reports/evidence/commands/SKILL-001.json |
-| SKILL-002 | Skills install | PASS | 0 | reports/evidence/commands/SKILL-002.json |
-| SKILL-003 | No overwrite | PASS | 1 | reports/evidence/commands/SKILL-003.json |
+| SKILL-001 | Skills dry-run | FAIL | 1 | reports/evidence/commands/SKILL-001.json<br>reports/evidence/failures/SKILL-001.stdout.txt<br>reports/evidence/failures/SKILL-001.stderr.txt |
+| SKILL-002 | Skills install | FAIL | 1 | reports/evidence/commands/SKILL-002.json<br>reports/evidence/failures/SKILL-002.stdout.txt<br>reports/evidence/failures/SKILL-002.stderr.txt |
+| SKILL-003 | No overwrite | FAIL | 1 | reports/evidence/commands/SKILL-003.json<br>reports/evidence/failures/SKILL-003.stdout.txt<br>reports/evidence/failures/SKILL-003.stderr.txt |
 | SKILL-004 | Unsupported host | PASS | 1 | reports/evidence/commands/SKILL-004.json |
 | GEN-ISO-SWR | Generate minimal SWR isolation fixture | PASS | 0 | reports/evidence/commands/GEN-ISO-SWR.json |
 | GEN-ISO-MSW | Generate minimal MSW schema-less isolation fixture | PASS | 0 | reports/evidence/commands/GEN-ISO-MSW.json |
@@ -155,35 +157,35 @@
 | TS-VERSION-TS56 | TypeScript legacy actual version | PASS | 0 | reports/evidence/commands/TS-VERSION-TS56.json |
 | TS-VERSION-TS6 | TypeScript baseline actual version | PASS | 0 | reports/evidence/commands/TS-VERSION-TS6.json |
 | TS-VERSION-TS7 | TypeScript current actual version | PASS | 0 | reports/evidence/commands/TS-VERSION-TS7.json |
-| TSC-TS-TYPE-TS56 | pluginTSType full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-TS-TYPE-TS56.json<br>reports/evidence/failures/TSC-TS-TYPE-TS56.stdout.txt<br>reports/evidence/failures/TSC-TS-TYPE-TS56.stderr.txt |
-| TSC-TS-REQUEST-TS56 | pluginTSRequest full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-TS-REQUEST-TS56.json<br>reports/evidence/failures/TSC-TS-REQUEST-TS56.stdout.txt<br>reports/evidence/failures/TSC-TS-REQUEST-TS56.stderr.txt |
-| TSC-ZOD-TS56 | pluginZod full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-ZOD-TS56.json<br>reports/evidence/failures/TSC-ZOD-TS56.stdout.txt<br>reports/evidence/failures/TSC-ZOD-TS56.stderr.txt |
-| TSC-SWR-TS56 | pluginSWR full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-SWR-TS56.json<br>reports/evidence/failures/TSC-SWR-TS56.stdout.txt<br>reports/evidence/failures/TSC-SWR-TS56.stderr.txt |
-| TSC-VUE-QUERY-TS56 | pluginVueQuery full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-VUE-QUERY-TS56.json<br>reports/evidence/failures/TSC-VUE-QUERY-TS56.stdout.txt<br>reports/evidence/failures/TSC-VUE-QUERY-TS56.stderr.txt |
-| TSC-MSW-TS56 | pluginMSW full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-MSW-TS56.json<br>reports/evidence/failures/TSC-MSW-TS56.stdout.txt<br>reports/evidence/failures/TSC-MSW-TS56.stderr.txt |
+| TSC-TS-TYPE-TS56 | pluginTSType full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-TYPE-TS56.json |
+| TSC-TS-REQUEST-TS56 | pluginTSRequest full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-REQUEST-TS56.json |
+| TSC-ZOD-TS56 | pluginZod full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-ZOD-TS56.json |
+| TSC-SWR-TS56 | pluginSWR full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-SWR-TS56.json |
+| TSC-VUE-QUERY-TS56 | pluginVueQuery full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-VUE-QUERY-TS56.json |
+| TSC-MSW-TS56 | pluginMSW full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-MSW-TS56.json |
 | TSC-OAS31-TS56 | OpenAPI 3.1 fixture full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-OAS31-TS56.json |
-| TSC-TS-TYPE-TS6 | pluginTSType full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-TS-TYPE-TS6.json<br>reports/evidence/failures/TSC-TS-TYPE-TS6.stdout.txt<br>reports/evidence/failures/TSC-TS-TYPE-TS6.stderr.txt |
-| TSC-TS-REQUEST-TS6 | pluginTSRequest full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-TS-REQUEST-TS6.json<br>reports/evidence/failures/TSC-TS-REQUEST-TS6.stdout.txt<br>reports/evidence/failures/TSC-TS-REQUEST-TS6.stderr.txt |
-| TSC-ZOD-TS6 | pluginZod full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-ZOD-TS6.json<br>reports/evidence/failures/TSC-ZOD-TS6.stdout.txt<br>reports/evidence/failures/TSC-ZOD-TS6.stderr.txt |
-| TSC-SWR-TS6 | pluginSWR full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-SWR-TS6.json<br>reports/evidence/failures/TSC-SWR-TS6.stdout.txt<br>reports/evidence/failures/TSC-SWR-TS6.stderr.txt |
-| TSC-VUE-QUERY-TS6 | pluginVueQuery full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-VUE-QUERY-TS6.json<br>reports/evidence/failures/TSC-VUE-QUERY-TS6.stdout.txt<br>reports/evidence/failures/TSC-VUE-QUERY-TS6.stderr.txt |
-| TSC-MSW-TS6 | pluginMSW full fixture strict compilation | FAIL | 2 | reports/evidence/commands/TSC-MSW-TS6.json<br>reports/evidence/failures/TSC-MSW-TS6.stdout.txt<br>reports/evidence/failures/TSC-MSW-TS6.stderr.txt |
+| TSC-TS-TYPE-TS6 | pluginTSType full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-TYPE-TS6.json |
+| TSC-TS-REQUEST-TS6 | pluginTSRequest full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-REQUEST-TS6.json |
+| TSC-ZOD-TS6 | pluginZod full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-ZOD-TS6.json |
+| TSC-SWR-TS6 | pluginSWR full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-SWR-TS6.json |
+| TSC-VUE-QUERY-TS6 | pluginVueQuery full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-VUE-QUERY-TS6.json |
+| TSC-MSW-TS6 | pluginMSW full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-MSW-TS6.json |
 | TSC-OAS31-TS6 | OpenAPI 3.1 fixture full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-OAS31-TS6.json |
-| TSC-TS-TYPE-TS7 | pluginTSType full fixture strict compilation | FAIL | 1 | reports/evidence/commands/TSC-TS-TYPE-TS7.json<br>reports/evidence/failures/TSC-TS-TYPE-TS7.stdout.txt<br>reports/evidence/failures/TSC-TS-TYPE-TS7.stderr.txt |
-| TSC-TS-REQUEST-TS7 | pluginTSRequest full fixture strict compilation | FAIL | 1 | reports/evidence/commands/TSC-TS-REQUEST-TS7.json<br>reports/evidence/failures/TSC-TS-REQUEST-TS7.stdout.txt<br>reports/evidence/failures/TSC-TS-REQUEST-TS7.stderr.txt |
-| TSC-ZOD-TS7 | pluginZod full fixture strict compilation | FAIL | 1 | reports/evidence/commands/TSC-ZOD-TS7.json<br>reports/evidence/failures/TSC-ZOD-TS7.stdout.txt<br>reports/evidence/failures/TSC-ZOD-TS7.stderr.txt |
-| TSC-SWR-TS7 | pluginSWR full fixture strict compilation | FAIL | 1 | reports/evidence/commands/TSC-SWR-TS7.json<br>reports/evidence/failures/TSC-SWR-TS7.stdout.txt<br>reports/evidence/failures/TSC-SWR-TS7.stderr.txt |
-| TSC-VUE-QUERY-TS7 | pluginVueQuery full fixture strict compilation | FAIL | 1 | reports/evidence/commands/TSC-VUE-QUERY-TS7.json<br>reports/evidence/failures/TSC-VUE-QUERY-TS7.stdout.txt<br>reports/evidence/failures/TSC-VUE-QUERY-TS7.stderr.txt |
-| TSC-MSW-TS7 | pluginMSW full fixture strict compilation | FAIL | 1 | reports/evidence/commands/TSC-MSW-TS7.json<br>reports/evidence/failures/TSC-MSW-TS7.stdout.txt<br>reports/evidence/failures/TSC-MSW-TS7.stderr.txt |
+| TSC-TS-TYPE-TS7 | pluginTSType full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-TYPE-TS7.json |
+| TSC-TS-REQUEST-TS7 | pluginTSRequest full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-REQUEST-TS7.json |
+| TSC-ZOD-TS7 | pluginZod full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-ZOD-TS7.json |
+| TSC-SWR-TS7 | pluginSWR full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-SWR-TS7.json |
+| TSC-VUE-QUERY-TS7 | pluginVueQuery full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-VUE-QUERY-TS7.json |
+| TSC-MSW-TS7 | pluginMSW full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-MSW-TS7.json |
 | TSC-OAS31-TS7 | OpenAPI 3.1 fixture full fixture strict compilation | PASS | 0 | reports/evidence/commands/TSC-OAS31-TS7.json |
-| TSC-SWR-MIN-TS56 | pluginSWR minimal isolation strict compilation | FAIL | 2 | reports/evidence/commands/TSC-SWR-MIN-TS56.json<br>reports/evidence/failures/TSC-SWR-MIN-TS56.stdout.txt<br>reports/evidence/failures/TSC-SWR-MIN-TS56.stderr.txt |
-| TSC-MSW-MIN-TS56 | pluginMSW minimal isolation strict compilation | FAIL | 2 | reports/evidence/commands/TSC-MSW-MIN-TS56.json<br>reports/evidence/failures/TSC-MSW-MIN-TS56.stdout.txt<br>reports/evidence/failures/TSC-MSW-MIN-TS56.stderr.txt |
+| TSC-SWR-MIN-TS56 | pluginSWR minimal isolation strict compilation | PASS | 0 | reports/evidence/commands/TSC-SWR-MIN-TS56.json |
+| TSC-MSW-MIN-TS56 | pluginMSW minimal isolation strict compilation | PASS | 0 | reports/evidence/commands/TSC-MSW-MIN-TS56.json |
 | TSC-TS-REQUEST-BOUNDARY-TS56 | pluginTSRequest requestConfig boundary strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS56.json |
-| TSC-SWR-MIN-TS6 | pluginSWR minimal isolation strict compilation | FAIL | 2 | reports/evidence/commands/TSC-SWR-MIN-TS6.json<br>reports/evidence/failures/TSC-SWR-MIN-TS6.stdout.txt<br>reports/evidence/failures/TSC-SWR-MIN-TS6.stderr.txt |
-| TSC-MSW-MIN-TS6 | pluginMSW minimal isolation strict compilation | FAIL | 2 | reports/evidence/commands/TSC-MSW-MIN-TS6.json<br>reports/evidence/failures/TSC-MSW-MIN-TS6.stdout.txt<br>reports/evidence/failures/TSC-MSW-MIN-TS6.stderr.txt |
+| TSC-SWR-MIN-TS6 | pluginSWR minimal isolation strict compilation | PASS | 0 | reports/evidence/commands/TSC-SWR-MIN-TS6.json |
+| TSC-MSW-MIN-TS6 | pluginMSW minimal isolation strict compilation | PASS | 0 | reports/evidence/commands/TSC-MSW-MIN-TS6.json |
 | TSC-TS-REQUEST-BOUNDARY-TS6 | pluginTSRequest requestConfig boundary strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS6.json |
-| TSC-SWR-MIN-TS7 | pluginSWR minimal isolation strict compilation | FAIL | 1 | reports/evidence/commands/TSC-SWR-MIN-TS7.json<br>reports/evidence/failures/TSC-SWR-MIN-TS7.stdout.txt<br>reports/evidence/failures/TSC-SWR-MIN-TS7.stderr.txt |
-| TSC-MSW-MIN-TS7 | pluginMSW minimal isolation strict compilation | FAIL | 1 | reports/evidence/commands/TSC-MSW-MIN-TS7.json<br>reports/evidence/failures/TSC-MSW-MIN-TS7.stdout.txt<br>reports/evidence/failures/TSC-MSW-MIN-TS7.stderr.txt |
+| TSC-SWR-MIN-TS7 | pluginSWR minimal isolation strict compilation | PASS | 0 | reports/evidence/commands/TSC-SWR-MIN-TS7.json |
+| TSC-MSW-MIN-TS7 | pluginMSW minimal isolation strict compilation | PASS | 0 | reports/evidence/commands/TSC-MSW-MIN-TS7.json |
 | TSC-TS-REQUEST-BOUNDARY-TS7 | pluginTSRequest requestConfig boundary strict compilation | PASS | 0 | reports/evidence/commands/TSC-TS-REQUEST-BOUNDARY-TS7.json |
 | LIFE-001 | dry-run does not write formal output | PASS | 0 | reports/evidence/commands/LIFE-001.json<br>reports/evidence/hashes/lifecycle.json |
 | LIFE-003 | managed output and ownership manifest are correct | PASS | 0 | reports/evidence/commands/LIFE-003.json<br>reports/evidence/hashes/lifecycle.json |
@@ -194,3 +196,4 @@
 | LIFE-007 | clean removes stale managed files | PASS | 0 | reports/evidence/commands/LIFE-007.json<br>reports/evidence/hashes/lifecycle.json |
 | LIFE-008 | clean preserves handwritten files | PASS | 0 | reports/evidence/commands/LIFE-008.json<br>reports/evidence/hashes/lifecycle.json |
 | LIFE-009 | ownership manifest is byte-stable | PASS | 0 | reports/evidence/commands/LIFE-009.json<br>reports/evidence/hashes/lifecycle.json |
+| HARNESS-REPORT-GENERATION | result-driven report generation | FAIL | 1 | reports/evidence/commands/HARNESS-REPORT-GENERATION.json |

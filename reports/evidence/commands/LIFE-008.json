@@ -15,7 +15,7 @@
   "exitCode": 0,
   "signal": null,
   "timedOut": false,
-  "durationMs": 467,
+  "durationMs": 533,
   "input": "fixtures/regression/lifecycle-v2.yaml",
-  "outputDir": ".tmp/lifecycle-68885"
+  "outputDir": ".tmp/lifecycle-58616"
 }

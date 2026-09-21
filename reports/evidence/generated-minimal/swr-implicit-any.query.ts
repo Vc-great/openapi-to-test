@@ -5,6 +5,7 @@
  */
 
 import useSWR from "swr";
+import type { Fetcher, SWRConfiguration } from "swr";
 import type { GetHealthResponse, GetHealthResponseError } from "./get-health.types.ts";
 import { getHealthService } from "./get-health.service.ts";
 export const getHealthQueryKey = () => [{ url: '/health', method: 'get' }] as const;
@@ -12,7 +13,7 @@ export type GetHealthQueryKey = ReturnType<typeof getHealthQueryKey>;
 
 /** */
 export function useGetHealthQuery(options?: {
-  query?: Parameters<typeof useSWR<GetHealthResponse, GetHealthQueryKey | null, any>>[2];
+  query?: SWRConfiguration<GetHealthResponse, GetHealthResponseError, Fetcher<GetHealthResponse, GetHealthQueryKey>>;
   shouldFetch?: boolean;
 }) {
 
@@ -25,7 +26,7 @@ export function useGetHealthQuery(options?: {
     GetHealthQueryKey | null
   >(shouldFetch ? queryKey : null, {
     ...queryOptions,
-    fetcher: async (_url) => {
+    fetcher: async () => {
       return getHealthService();
     }
   });

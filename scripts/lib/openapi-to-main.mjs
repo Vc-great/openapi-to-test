@@ -191,6 +191,19 @@ export function isGeneratedWorkspaceYaml(contents) {
   return workspaceSourceHead(contents) !== undefined;
 }
 
+export function isFreshCloneGeneratedWorkspaceCandidate({ contents, provenance, tracked, status }) {
+  return isGeneratedWorkspaceYaml(contents)
+    && provenance === undefined
+    && tracked === true
+    && status === "";
+}
+
+export function canBootstrapGeneratedWorkspace({ contents, provenance, tracked, status, canonicalContents }) {
+  return isFreshCloneGeneratedWorkspaceCandidate({ contents, provenance, tracked, status })
+    && typeof canonicalContents === "string"
+    && contents === canonicalContents;
+}
+
 function parseGeneratedScalar(value) {
   if (value.startsWith('"')) return JSON.parse(value);
   if (value.startsWith("'")) return value.slice(1, -1).replaceAll("''", "'");

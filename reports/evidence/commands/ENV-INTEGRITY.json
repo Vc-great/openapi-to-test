@@ -10,8 +10,8 @@
   ],
   "cwd": ".",
   "command": "pnpm view openapi-to@4.0.0-rc.3 dist.integrity --json",
-  "exitCode": 0,
+  "exitCode": 1,
   "signal": null,
   "timedOut": false,
-  "durationMs": 1201
+  "durationMs": 70425
 }

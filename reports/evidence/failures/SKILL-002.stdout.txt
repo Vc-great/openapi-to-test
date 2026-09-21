@@ -1,0 +1,16 @@
+{
+  "success": false,
+  "command": "skills install",
+  "diagnostics": [
+    {
+      "code": "SKILLS_SCOPE_REQUIRED",
+      "severity": "error",
+      "message": "`--scope` is required; choose `--scope project` or `--scope user`."
+    }
+  ],
+  "summary": {
+    "errors": 1,
+    "warnings": 0,
+    "infos": 0
+  }
+}

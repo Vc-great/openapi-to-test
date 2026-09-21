@@ -1,6 +1,5 @@
 import {
 defineConfig,
-pluginSWR, 
 pluginTSRequest,
 pluginTSType, 
 pluginZod
@@ -10,7 +9,7 @@ export default  defineConfig({
 servers:[
   {
     input: {
-      path:'https://petstore.swagger.io/v2/swagger.json'  //api documentation url
+      path:'fixtures/openapi30/main.yaml'
     },
     output:{
        dir:'server'
@@ -18,9 +17,6 @@ servers:[
   }
 ],
   plugins:[
-    pluginSWR(),
-    // SWR and Vue Query are alternative query plugins that emit the same paths.
-    // Import pluginVueQuery and replace pluginSWR() when using Vue Query.
     pluginZod(),
     pluginTSType(),
     pluginTSRequest({

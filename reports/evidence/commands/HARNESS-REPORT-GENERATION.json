@@ -1,0 +1,14 @@
+{
+  "id": "HARNESS-REPORT-GENERATION",
+  "stage": "verify:report",
+  "executable": "/usr/local/bin/node",
+  "args": [
+    "scripts/report.mjs"
+  ],
+  "cwd": ".",
+  "command": "/usr/local/bin/node scripts/report.mjs",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 70493
+}

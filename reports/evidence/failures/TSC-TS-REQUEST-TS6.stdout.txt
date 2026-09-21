@@ -1,1 +1,0 @@
-scenarios/generators/generated/ts-request/types/models/user.model.ts(17,12): error TS2552: Cannot find name 'UseroptionalInlineModeEnumValue'. Did you mean 'UserOptionalInlineModeEnumValue'?

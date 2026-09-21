@@ -1,0 +1,18 @@
+{
+  "success": false,
+  "command": "generate",
+  "diagnostics": [
+    {
+      "code": "CONFIG_TARGET_UNKNOWN",
+      "severity": "error",
+      "message": "Unknown configured target: swr-api.",
+      "hint": "Available targets: server1."
+    }
+  ],
+  "summary": {
+    "errors": 1,
+    "warnings": 0,
+    "infos": 0
+  },
+  "servers": []
+}

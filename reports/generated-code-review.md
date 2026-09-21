@@ -4,12 +4,12 @@
 
 | Plugin | TS legacy | TS baseline | TS current |
 | --- | --- | --- | --- |
-| pluginTSType | FAIL | FAIL | FAIL |
-| pluginTSRequest | FAIL | FAIL | FAIL |
-| pluginZod | FAIL | FAIL | FAIL |
-| pluginSWR | FAIL | FAIL | FAIL |
-| pluginVueQuery | FAIL | FAIL | FAIL |
-| pluginMSW | FAIL | FAIL | FAIL |
+| pluginTSType | PASS | PASS | PASS |
+| pluginTSRequest | PASS | PASS | PASS |
+| pluginZod | PASS | PASS | PASS |
+| pluginSWR | PASS | PASS | PASS |
+| pluginVueQuery | PASS | PASS | PASS |
+| pluginMSW | PASS | PASS | PASS |
 | OpenAPI 3.1 fixture | PASS | PASS | PASS |
 | pluginTSRequest boundary | PASS | PASS | PASS |
 

@@ -1,0 +1,5 @@
+{
+  "blocked": true,
+  "reason": "host policy denied loopback listen",
+  "code": "EPERM"
+}

@@ -1,1 +1,0 @@
-scenarios/generators/generated/swr-minimal/health/use-get-health.query.ts(28,21): error TS7006: Parameter '_url' implicitly has an 'any' type.

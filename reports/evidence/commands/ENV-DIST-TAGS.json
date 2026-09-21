@@ -10,8 +10,8 @@
   ],
   "cwd": ".",
   "command": "pnpm view openapi-to dist-tags --json",
-  "exitCode": 0,
+  "exitCode": 1,
   "signal": null,
   "timedOut": false,
-  "durationMs": 1684
+  "durationMs": 70427
 }

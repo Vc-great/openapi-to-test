@@ -8,10 +8,10 @@
     "--dry-run",
     "--json"
   ],
-  "cwd": ".tmp/ambiguous-68360",
+  "cwd": ".tmp/ambiguous-58374",
   "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --dry-run --json",
   "exitCode": 2,
   "signal": null,
   "timedOut": false,
-  "durationMs": 252
+  "durationMs": 237
 }

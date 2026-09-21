@@ -9,10 +9,10 @@
   ],
   "cwd": ".",
   "command": "/usr/local/bin/node <workspace>/node_modules/typescript-baseline/bin/tsc -p scenarios/generators/tsconfig.msw.json",
-  "exitCode": 2,
+  "exitCode": 0,
   "signal": null,
   "timedOut": false,
-  "durationMs": 1987,
+  "durationMs": 1812,
   "requestedVersion": "6.0.3",
   "actualVersion": "6.0.3",
   "compilerOptions": {

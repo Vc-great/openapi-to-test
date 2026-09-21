@@ -1,16 +1,16 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-06T08:11:55.078Z",
+  "generatedAt": "2026-09-18T15:26:28.768Z",
   "source": "verify",
-  "runId": "454c4b2c-c8ac-428e-947e-8812fce1655b",
-  "verifyStartedAt": "2026-08-06T08:10:48.338Z",
-  "startedAt": "2026-08-06T08:10:48.338Z",
-  "testHarnessCommit": "ad97c11e77d7e16fc21d47009fc3d94bed2de224",
+  "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
+  "verifyStartedAt": "2026-09-18T15:24:11.667Z",
+  "startedAt": "2026-09-18T15:24:11.667Z",
+  "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
   "baseline": {
     "branch": "main",
-    "gitHead": "ad97c11e77d7e16fc21d47009fc3d94bed2de224",
+    "gitHead": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
     "gitStatus": [
-      "M package.json",
+      "M openapi.config.ts",
       " M reports/environment.json",
       " M reports/evidence/commands/BASELINE-START.json",
       " M reports/evidence/commands/CFG-001.json",
@@ -23,6 +23,7 @@
       " M reports/evidence/commands/CLI-005.json",
       " M reports/evidence/commands/DIFF-001.json",
       " M reports/evidence/commands/ENV-DIST-TAGS.json",
+      " M reports/evidence/commands/ENV-GIT-HEAD.json",
       " M reports/evidence/commands/ENV-GIT-STATUS.json",
       " M reports/evidence/commands/ENV-INTEGRITY.json",
       " M reports/evidence/commands/ENV-PNPM.json",
@@ -77,6 +78,7 @@
       " M reports/evidence/commands/TSC-MSW-TS7.json",
       " M reports/evidence/commands/TSC-OAS31-TS56.json",
       " M reports/evidence/commands/TSC-OAS31-TS6.json",
+      " M reports/evidence/commands/TSC-OAS31-TS7.json",
       " M reports/evidence/commands/TSC-SWR-MIN-TS56.json",
       " M reports/evidence/commands/TSC-SWR-MIN-TS6.json",
       " M reports/evidence/commands/TSC-SWR-MIN-TS7.json",
@@ -98,6 +100,7 @@
       " M reports/evidence/commands/TSC-ZOD-TS56.json",
       " M reports/evidence/commands/TSC-ZOD-TS6.json",
       " M reports/evidence/commands/TSC-ZOD-TS7.json",
+      " M reports/evidence/commands/VAL-001.json",
       " M reports/evidence/commands/VAL-002.json",
       " M reports/evidence/commands/VAL-003.json",
       " M reports/evidence/commands/VAL-003B.json",
@@ -107,53 +110,125 @@
       " M reports/evidence/commands/VAL-006.json",
       " M reports/evidence/commands/VAL-007.json",
       " M reports/evidence/commands/ZOD-001.json",
-      " M reports/evidence/failures/INIT-003.stderr.txt",
+      " D reports/evidence/failures/TSC-MSW-MIN-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-MSW-MIN-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-MSW-MIN-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-MSW-MIN-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-MSW-MIN-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-MSW-MIN-TS7.stdout.txt",
+      " D reports/evidence/failures/TSC-MSW-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-MSW-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-MSW-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-MSW-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-MSW-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-MSW-TS7.stdout.txt",
+      " D reports/evidence/failures/TSC-SWR-MIN-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-SWR-MIN-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-SWR-MIN-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-SWR-MIN-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-SWR-MIN-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-SWR-MIN-TS7.stdout.txt",
+      " D reports/evidence/failures/TSC-SWR-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-SWR-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-SWR-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-SWR-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-SWR-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-SWR-TS7.stdout.txt",
+      " D reports/evidence/failures/TSC-TS-REQUEST-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-TS-REQUEST-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-TS-REQUEST-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-TS-REQUEST-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-TS-REQUEST-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-TS-REQUEST-TS7.stdout.txt",
+      " D reports/evidence/failures/TSC-TS-TYPE-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-TS-TYPE-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-TS-TYPE-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-TS-TYPE-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-TS-TYPE-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-TS-TYPE-TS7.stdout.txt",
+      " D reports/evidence/failures/TSC-VUE-QUERY-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-VUE-QUERY-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-VUE-QUERY-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-VUE-QUERY-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-VUE-QUERY-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-VUE-QUERY-TS7.stdout.txt",
+      " D reports/evidence/failures/TSC-ZOD-TS56.stderr.txt",
+      " D reports/evidence/failures/TSC-ZOD-TS56.stdout.txt",
+      " D reports/evidence/failures/TSC-ZOD-TS6.stderr.txt",
+      " D reports/evidence/failures/TSC-ZOD-TS6.stdout.txt",
+      " D reports/evidence/failures/TSC-ZOD-TS7.stderr.txt",
+      " D reports/evidence/failures/TSC-ZOD-TS7.stdout.txt",
+      " M reports/evidence/generated-minimal/inline-enum-user.model.ts",
+      " M reports/evidence/generated-minimal/msw-schema-less.handler.ts",
+      " M reports/evidence/generated-minimal/swr-implicit-any.query.ts",
+      " M reports/evidence/hashes/generated-minimal.sha256.json",
+      " M reports/evidence/runs/latest/baseline.json",
+      " M reports/generated-code-review.md",
       " M reports/openapi-to-acceptance-report.md",
       " M reports/results.json",
+      " M reports/snapshots/mcp-calls.json",
+      " M reports/snapshots/mcp-tools.json",
+      " M reports/typescript-compatibility-matrix.md",
+      " M scripts/__tests__/install-openapi-to-main.test.mjs",
       " M scripts/acceptance.mjs",
-      " M scripts/lib/results.mjs",
-      " M scripts/lifecycle.mjs",
-      " M scripts/report.mjs",
+      " M scripts/install-openapi-to-main.mjs",
+      " M scripts/lib/openapi-to-main.mjs",
       " M scripts/typescript-matrix.mjs",
-      " M scripts/verify.mjs",
+      "?? .gitattributes",
+      "?? controlled-remote.config.ts",
+      "?? docs/openapi-to-natural-language-acceptance-2026-09-18-rerun-2.md",
+      "?? docs/openapi-to-natural-language-acceptance-2026-09-18-rerun.md",
+      "?? docs/openapi-to-natural-language-acceptance-2026-09-18.md",
+      "?? fixtures/acceptance/",
+      "?? prompt-injection.config.ts",
+      "?? public-remote.config.ts",
+      "?? react-query.config.ts",
+      "?? reports/evidence/commands/HARNESS-REPORT-GENERATION.json",
+      "?? reports/evidence/failures/CFG-003.stderr.txt",
+      "?? reports/evidence/failures/CFG-003.stdout.txt",
       "?? reports/evidence/failures/SEC-REMOTE.stderr.txt",
       "?? reports/evidence/failures/SEC-REMOTE.stdout.txt",
-      "?? reports/evidence/runs/",
-      "?? scripts/__tests__/"
+      "?? reports/evidence/failures/SKILL-001.stderr.txt",
+      "?? reports/evidence/failures/SKILL-001.stdout.txt",
+      "?? reports/evidence/failures/SKILL-002.stderr.txt",
+      "?? reports/evidence/failures/SKILL-002.stdout.txt",
+      "?? reports/evidence/failures/SKILL-003.stderr.txt",
+      "?? reports/evidence/failures/SKILL-003.stdout.txt",
+      "?? scenarios/generators/consumers/react-query.ts",
+      "?? scenarios/generators/tsconfig.react-query.json",
+      "?? scripts/controlled-remote-rerun.mjs",
+      "?? scripts/local-rerun-crosscheck.mjs",
+      "?? scripts/prompt-injection-rerun.mjs",
+      "?? scripts/public-remote-rerun.mjs",
+      "?? src/types/",
+      "?? swr.config.ts"
     ],
-    "startedAt": "2026-08-06T08:10:48.338Z",
+    "startedAt": "2026-09-18T15:24:11.667Z",
     "evidence": "reports/evidence/runs/latest/baseline.json"
   },
   "sources": {
     "acceptance": {
-      "runId": "454c4b2c-c8ac-428e-947e-8812fce1655b",
-      "testHarnessCommit": "ad97c11e77d7e16fc21d47009fc3d94bed2de224",
+      "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
+      "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
       "source": "acceptance",
-      "output": "<workspace>/.tmp/verify-454c4b2c-c8ac-428e-947e-8812fce1655b/acceptance.json",
+      "output": "<workspace>/.tmp/verify-5b9070a2-e906-4e11-8869-a102d7d7b876/acceptance.json",
       "exitCode": 1,
       "signal": null,
       "timedOut": false,
       "fragmentIdentityValid": true,
       "exitCodeConsistent": true,
-      "generatedAt": "2026-08-06T08:11:08.368Z",
-      "startedAt": "2026-08-06T08:10:49.191Z",
+      "generatedAt": "2026-09-18T15:24:32.523Z",
+      "startedAt": "2026-09-18T15:24:12.621Z",
       "summary": {
         "total": 53,
-        "pass": 49,
-        "fail": 3,
+        "pass": 45,
+        "fail": 6,
         "knownLimitations": 1,
-        "blocked": 0,
+        "blocked": 1,
         "skipped": 0,
-        "failedTestCases": 3,
-        "independentDefects": 3,
+        "failedTestCases": 6,
+        "independentDefects": 6,
         "independentRootCauses": [
-          {
-            "rootCauseId": "BUG-INIT-JSON-STDOUT",
-            "severity": "P3",
-            "affectedCases": [
-              "INIT-003"
-            ]
-          },
           {
             "rootCauseId": "BUG-INIT-PLUGIN-ARTIFACT-CONFLICT",
             "severity": "P1",
@@ -162,86 +237,65 @@
             ]
           },
           {
-            "rootCauseId": "BUG-INLINE-ENUM-CASING",
-            "severity": "P1",
+            "rootCauseId": "HARNESS-CFG-003",
+            "severity": "HARNESS",
             "affectedCases": [
-              "REG-001"
+              "CFG-003"
+            ]
+          },
+          {
+            "rootCauseId": "HARNESS-PUB-003",
+            "severity": "HARNESS",
+            "affectedCases": [
+              "PUB-003"
+            ]
+          },
+          {
+            "rootCauseId": "HARNESS-SKILL-001",
+            "severity": "HARNESS",
+            "affectedCases": [
+              "SKILL-001"
+            ]
+          },
+          {
+            "rootCauseId": "HARNESS-SKILL-002",
+            "severity": "HARNESS",
+            "affectedCases": [
+              "SKILL-002"
+            ]
+          },
+          {
+            "rootCauseId": "HARNESS-SKILL-003",
+            "severity": "HARNESS",
+            "affectedCases": [
+              "SKILL-003"
             ]
           }
         ]
       }
     },
     "typescript-matrix": {
-      "runId": "454c4b2c-c8ac-428e-947e-8812fce1655b",
-      "testHarnessCommit": "ad97c11e77d7e16fc21d47009fc3d94bed2de224",
+      "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
+      "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
       "source": "typescript-matrix",
-      "output": "<workspace>/.tmp/verify-454c4b2c-c8ac-428e-947e-8812fce1655b/typescript-matrix.json",
-      "exitCode": 1,
+      "output": "<workspace>/.tmp/verify-5b9070a2-e906-4e11-8869-a102d7d7b876/typescript-matrix.json",
+      "exitCode": 0,
       "signal": null,
       "timedOut": false,
       "fragmentIdentityValid": true,
       "exitCodeConsistent": true,
-      "generatedAt": "2026-08-06T08:11:50.334Z",
-      "startedAt": "2026-08-06T08:11:08.404Z",
+      "generatedAt": "2026-09-18T15:25:12.912Z",
+      "startedAt": "2026-09-18T15:24:32.560Z",
       "summary": {
         "total": 36,
-        "pass": 12,
-        "fail": 24,
+        "pass": 36,
+        "fail": 0,
         "knownLimitations": 0,
         "blocked": 0,
         "skipped": 0,
-        "failedTestCases": 24,
-        "independentDefects": 3,
-        "independentRootCauses": [
-          {
-            "rootCauseId": "BUG-INLINE-ENUM-CASING",
-            "severity": "P1",
-            "affectedCases": [
-              "TSC-TS-TYPE-TS56",
-              "TSC-TS-REQUEST-TS56",
-              "TSC-ZOD-TS56",
-              "TSC-SWR-TS56",
-              "TSC-VUE-QUERY-TS56",
-              "TSC-MSW-TS56",
-              "TSC-TS-TYPE-TS6",
-              "TSC-TS-REQUEST-TS6",
-              "TSC-ZOD-TS6",
-              "TSC-SWR-TS6",
-              "TSC-VUE-QUERY-TS6",
-              "TSC-MSW-TS6",
-              "TSC-TS-TYPE-TS7",
-              "TSC-TS-REQUEST-TS7",
-              "TSC-ZOD-TS7",
-              "TSC-SWR-TS7",
-              "TSC-VUE-QUERY-TS7",
-              "TSC-MSW-TS7"
-            ]
-          },
-          {
-            "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
-            "severity": "P1",
-            "affectedCases": [
-              "TSC-SWR-TS56",
-              "TSC-SWR-TS6",
-              "TSC-SWR-TS7",
-              "TSC-SWR-MIN-TS56",
-              "TSC-SWR-MIN-TS6",
-              "TSC-SWR-MIN-TS7"
-            ]
-          },
-          {
-            "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
-            "severity": "P2",
-            "affectedCases": [
-              "TSC-MSW-TS56",
-              "TSC-MSW-TS6",
-              "TSC-MSW-TS7",
-              "TSC-MSW-MIN-TS56",
-              "TSC-MSW-MIN-TS6",
-              "TSC-MSW-MIN-TS7"
-            ]
-          }
-        ]
+        "failedTestCases": 0,
+        "independentDefects": 0,
+        "independentRootCauses": []
       },
       "matrix": [
         {
@@ -277,17 +331,17 @@
       }
     },
     "lifecycle": {
-      "runId": "454c4b2c-c8ac-428e-947e-8812fce1655b",
-      "testHarnessCommit": "ad97c11e77d7e16fc21d47009fc3d94bed2de224",
+      "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
+      "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
       "source": "lifecycle",
-      "output": "<workspace>/.tmp/verify-454c4b2c-c8ac-428e-947e-8812fce1655b/lifecycle.json",
+      "output": "<workspace>/.tmp/verify-5b9070a2-e906-4e11-8869-a102d7d7b876/lifecycle.json",
       "exitCode": 0,
       "signal": null,
       "timedOut": false,
       "fragmentIdentityValid": true,
       "exitCodeConsistent": true,
-      "generatedAt": "2026-08-06T08:11:55.074Z",
-      "startedAt": "2026-08-06T08:11:50.369Z",
+      "generatedAt": "2026-09-18T15:25:18.268Z",
+      "startedAt": "2026-09-18T15:25:12.953Z",
       "summary": {
         "total": 9,
         "pass": 9,
@@ -302,7 +356,7 @@
     }
   },
   "evidenceCompleteness": {
-    "complete": true,
+    "complete": false,
     "missingEvidence": [],
     "fragmentIdentityComplete": true,
     "suiteExitCodesConsistent": true,
@@ -312,22 +366,15 @@
     "testHarnessCommitMatchesBaseline": true
   },
   "summary": {
-    "total": 98,
-    "pass": 70,
-    "fail": 27,
+    "total": 99,
+    "pass": 90,
+    "fail": 7,
     "knownLimitations": 1,
-    "blocked": 0,
+    "blocked": 1,
     "skipped": 0,
-    "failedTestCases": 27,
-    "independentDefects": 5,
+    "failedTestCases": 7,
+    "independentDefects": 7,
     "independentRootCauses": [
-      {
-        "rootCauseId": "BUG-INIT-JSON-STDOUT",
-        "severity": "P3",
-        "affectedCases": [
-          "INIT-003"
-        ]
-      },
       {
         "rootCauseId": "BUG-INIT-PLUGIN-ARTIFACT-CONFLICT",
         "severity": "P1",
@@ -336,52 +383,45 @@
         ]
       },
       {
-        "rootCauseId": "BUG-INLINE-ENUM-CASING",
-        "severity": "P1",
+        "rootCauseId": "HARNESS-CFG-003",
+        "severity": "HARNESS",
         "affectedCases": [
-          "REG-001",
-          "TSC-TS-TYPE-TS56",
-          "TSC-TS-REQUEST-TS56",
-          "TSC-ZOD-TS56",
-          "TSC-SWR-TS56",
-          "TSC-VUE-QUERY-TS56",
-          "TSC-MSW-TS56",
-          "TSC-TS-TYPE-TS6",
-          "TSC-TS-REQUEST-TS6",
-          "TSC-ZOD-TS6",
-          "TSC-SWR-TS6",
-          "TSC-VUE-QUERY-TS6",
-          "TSC-MSW-TS6",
-          "TSC-TS-TYPE-TS7",
-          "TSC-TS-REQUEST-TS7",
-          "TSC-ZOD-TS7",
-          "TSC-SWR-TS7",
-          "TSC-VUE-QUERY-TS7",
-          "TSC-MSW-TS7"
+          "CFG-003"
         ]
       },
       {
-        "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
-        "severity": "P1",
+        "rootCauseId": "HARNESS-PUB-003",
+        "severity": "HARNESS",
         "affectedCases": [
-          "TSC-SWR-TS56",
-          "TSC-SWR-TS6",
-          "TSC-SWR-TS7",
-          "TSC-SWR-MIN-TS56",
-          "TSC-SWR-MIN-TS6",
-          "TSC-SWR-MIN-TS7"
+          "PUB-003"
         ]
       },
       {
-        "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
-        "severity": "P2",
+        "rootCauseId": "HARNESS-SKILL-001",
+        "severity": "HARNESS",
         "affectedCases": [
-          "TSC-MSW-TS56",
-          "TSC-MSW-TS6",
-          "TSC-MSW-TS7",
-          "TSC-MSW-MIN-TS56",
-          "TSC-MSW-MIN-TS6",
-          "TSC-MSW-MIN-TS7"
+          "SKILL-001"
+        ]
+      },
+      {
+        "rootCauseId": "HARNESS-SKILL-002",
+        "severity": "HARNESS",
+        "affectedCases": [
+          "SKILL-002"
+        ]
+      },
+      {
+        "rootCauseId": "HARNESS-SKILL-003",
+        "severity": "HARNESS",
+        "affectedCases": [
+          "SKILL-003"
+        ]
+      },
+      {
+        "rootCauseId": "HARNESS-HARNESS-REPORT-GENERATION",
+        "severity": "HARNESS",
+        "affectedCases": [
+          "HARNESS-REPORT-GENERATION"
         ]
       }
     ]
@@ -507,19 +547,12 @@
         "--json"
       ],
       "expected": "one parseable JSON document on stdout",
-      "actual": "exit 0; JSON.parse(stdout)=false",
+      "actual": "exit 0; JSON.parse(stdout)=true",
       "exitCode": 0,
-      "status": "FAIL",
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/INIT-003.json",
-        "reports/evidence/failures/INIT-003.stdout.txt",
-        "reports/evidence/failures/INIT-003.stderr.txt"
+        "reports/evidence/commands/INIT-003.json"
       ],
-      "rootCauseId": "BUG-INIT-JSON-STDOUT",
-      "rootCauseIds": [
-        "BUG-INIT-JSON-STDOUT"
-      ],
-      "severity": "P3",
       "notes": ""
     },
     {
@@ -623,12 +656,19 @@
         "--json"
       ],
       "expected": "find root config upward",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
+      "actual": "exit 2",
+      "exitCode": 2,
+      "status": "FAIL",
       "evidence": [
-        "reports/evidence/commands/CFG-003.json"
+        "reports/evidence/commands/CFG-003.json",
+        "reports/evidence/failures/CFG-003.stdout.txt",
+        "reports/evidence/failures/CFG-003.stderr.txt"
       ],
+      "rootCauseId": "HARNESS-CFG-003",
+      "rootCauseIds": [
+        "HARNESS-CFG-003"
+      ],
+      "severity": "HARNESS",
       "notes": ""
     },
     {
@@ -1069,12 +1109,12 @@
       "id": "GEN-004",
       "suite": "generators",
       "feature": "SWR generation",
-      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config openapi.config.ts --json",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config swr.config.ts --json",
       "args": [
         "<workspace>/node_modules/openapi-to/bin/openapi.js",
         "generate",
         "--config",
-        "openapi.config.ts",
+        "swr.config.ts",
         "--json"
       ],
       "expected": "generation succeeds",
@@ -1243,11 +1283,13 @@
         "scripts/remote-security.mjs"
       ],
       "expected": "header stripped and logs redacted",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
+      "actual": "exit 77",
+      "exitCode": 77,
+      "status": "BLOCKED",
       "evidence": [
-        "reports/evidence/commands/SEC-REMOTE.json"
+        "reports/evidence/commands/SEC-REMOTE.json",
+        "reports/evidence/failures/SEC-REMOTE.stdout.txt",
+        "reports/evidence/failures/SEC-REMOTE.stderr.txt"
       ],
       "notes": ""
     },
@@ -1274,12 +1316,17 @@
       "command": "scan pnpm-lock.yaml",
       "args": [],
       "expected": "no workspace/file/link/absolute upstream path",
-      "actual": "registry-only resolution",
+      "actual": "local resolution found",
       "exitCode": 0,
-      "status": "PASS",
+      "status": "FAIL",
       "evidence": [
         "pnpm-lock.yaml"
       ],
+      "rootCauseId": "HARNESS-PUB-003",
+      "rootCauseIds": [
+        "HARNESS-PUB-003"
+      ],
+      "severity": "HARNESS",
       "notes": ""
     },
     {
@@ -1304,17 +1351,12 @@
       "command": "review generated user.model.ts",
       "args": [],
       "expected": "declared identifier equals referenced identifier",
-      "actual": "references undefined UseroptionalInlineModeEnumValue",
+      "actual": "identifier consistent",
       "exitCode": 0,
-      "status": "FAIL",
+      "status": "PASS",
       "evidence": [
         "reports/evidence/generated-minimal/inline-enum-user.model.ts"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
       "notes": ""
     },
     {
@@ -1382,12 +1424,19 @@
         "--json"
       ],
       "expected": "no writes and exact two skills",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
       "evidence": [
-        "reports/evidence/commands/SKILL-001.json"
+        "reports/evidence/commands/SKILL-001.json",
+        "reports/evidence/failures/SKILL-001.stdout.txt",
+        "reports/evidence/failures/SKILL-001.stderr.txt"
       ],
+      "rootCauseId": "HARNESS-SKILL-001",
+      "rootCauseIds": [
+        "HARNESS-SKILL-001"
+      ],
+      "severity": "HARNESS",
       "notes": ""
     },
     {
@@ -1404,12 +1453,19 @@
         "--json"
       ],
       "expected": "installs two packaged skills",
-      "actual": "exit 0",
-      "exitCode": 0,
-      "status": "PASS",
+      "actual": "exit 1",
+      "exitCode": 1,
+      "status": "FAIL",
       "evidence": [
-        "reports/evidence/commands/SKILL-002.json"
+        "reports/evidence/commands/SKILL-002.json",
+        "reports/evidence/failures/SKILL-002.stdout.txt",
+        "reports/evidence/failures/SKILL-002.stderr.txt"
       ],
+      "rootCauseId": "HARNESS-SKILL-002",
+      "rootCauseIds": [
+        "HARNESS-SKILL-002"
+      ],
+      "severity": "HARNESS",
       "notes": ""
     },
     {
@@ -1428,10 +1484,17 @@
       "expected": "existing destinations rejected",
       "actual": "exit 1",
       "exitCode": 1,
-      "status": "PASS",
+      "status": "FAIL",
       "evidence": [
-        "reports/evidence/commands/SKILL-003.json"
+        "reports/evidence/commands/SKILL-003.json",
+        "reports/evidence/failures/SKILL-003.stdout.txt",
+        "reports/evidence/failures/SKILL-003.stderr.txt"
       ],
+      "rootCauseId": "HARNESS-SKILL-003",
+      "rootCauseIds": [
+        "HARNESS-SKILL-003"
+      ],
+      "severity": "HARNESS",
       "notes": ""
     },
     {
@@ -1597,24 +1660,13 @@
         "scenarios/generators/tsconfig.ts-type.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-TS-TYPE-TS56.json",
-        "reports/evidence/failures/TSC-TS-TYPE-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-TS-TYPE-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-TS-TYPE-TS56.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1632,24 +1684,13 @@
         "scenarios/generators/tsconfig.ts-request.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-TS-REQUEST-TS56.json",
-        "reports/evidence/failures/TSC-TS-REQUEST-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-TS-REQUEST-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-TS-REQUEST-TS56.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1667,24 +1708,13 @@
         "scenarios/generators/tsconfig.zod.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-ZOD-TS56.json",
-        "reports/evidence/failures/TSC-ZOD-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-ZOD-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-ZOD-TS56.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1702,25 +1732,13 @@
         "scenarios/generators/tsconfig.swr.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-SWR-TS56.json",
-        "reports/evidence/failures/TSC-SWR-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-SWR-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-SWR-TS56.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING",
-        "BUG-SWR-IMPLICIT-ANY"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1738,24 +1756,13 @@
         "scenarios/generators/tsconfig.vue-query.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-VUE-QUERY-TS56.json",
-        "reports/evidence/failures/TSC-VUE-QUERY-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-VUE-QUERY-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-VUE-QUERY-TS56.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1773,25 +1780,13 @@
         "scenarios/generators/tsconfig.msw.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-MSW-TS56.json",
-        "reports/evidence/failures/TSC-MSW-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-MSW-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-MSW-TS56.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING",
-        "BUG-MSW-SCHEMALESS-JSON"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1833,24 +1828,13 @@
         "scenarios/generators/tsconfig.ts-type.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-TS-TYPE-TS6.json",
-        "reports/evidence/failures/TSC-TS-TYPE-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-TS-TYPE-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-TS-TYPE-TS6.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1868,24 +1852,13 @@
         "scenarios/generators/tsconfig.ts-request.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-TS-REQUEST-TS6.json",
-        "reports/evidence/failures/TSC-TS-REQUEST-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-TS-REQUEST-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-TS-REQUEST-TS6.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1903,24 +1876,13 @@
         "scenarios/generators/tsconfig.zod.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-ZOD-TS6.json",
-        "reports/evidence/failures/TSC-ZOD-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-ZOD-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-ZOD-TS6.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1938,25 +1900,13 @@
         "scenarios/generators/tsconfig.swr.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-SWR-TS6.json",
-        "reports/evidence/failures/TSC-SWR-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-SWR-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-SWR-TS6.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING",
-        "BUG-SWR-IMPLICIT-ANY"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -1974,24 +1924,13 @@
         "scenarios/generators/tsconfig.vue-query.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-VUE-QUERY-TS6.json",
-        "reports/evidence/failures/TSC-VUE-QUERY-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-VUE-QUERY-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-VUE-QUERY-TS6.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2009,25 +1948,13 @@
         "scenarios/generators/tsconfig.msw.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-MSW-TS6.json",
-        "reports/evidence/failures/TSC-MSW-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-MSW-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-MSW-TS6.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING",
-        "BUG-MSW-SCHEMALESS-JSON"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2069,24 +1996,13 @@
         "scenarios/generators/tsconfig.ts-type.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-TS-TYPE-TS7.json",
-        "reports/evidence/failures/TSC-TS-TYPE-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-TS-TYPE-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-TS-TYPE-TS7.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2104,24 +2020,13 @@
         "scenarios/generators/tsconfig.ts-request.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-TS-REQUEST-TS7.json",
-        "reports/evidence/failures/TSC-TS-REQUEST-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-TS-REQUEST-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-TS-REQUEST-TS7.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2139,24 +2044,13 @@
         "scenarios/generators/tsconfig.zod.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-ZOD-TS7.json",
-        "reports/evidence/failures/TSC-ZOD-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-ZOD-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-ZOD-TS7.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2174,25 +2068,13 @@
         "scenarios/generators/tsconfig.swr.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-SWR-TS7.json",
-        "reports/evidence/failures/TSC-SWR-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-SWR-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-SWR-TS7.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING",
-        "BUG-SWR-IMPLICIT-ANY"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2210,24 +2092,13 @@
         "scenarios/generators/tsconfig.vue-query.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-VUE-QUERY-TS7.json",
-        "reports/evidence/failures/TSC-VUE-QUERY-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-VUE-QUERY-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-VUE-QUERY-TS7.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2245,25 +2116,13 @@
         "scenarios/generators/tsconfig.msw.json"
       ],
       "expected": "strict compilation succeeds",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-MSW-TS7.json",
-        "reports/evidence/failures/TSC-MSW-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-MSW-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-MSW-TS7.json"
       ],
-      "rootCauseId": "BUG-INLINE-ENUM-CASING",
-      "rootCauseIds": [
-        "BUG-INLINE-ENUM-CASING",
-        "BUG-MSW-SCHEMALESS-JSON"
-      ],
-      "severity": "P1",
-      "rootCauseSeverities": {
-        "BUG-INLINE-ENUM-CASING": "P1",
-        "BUG-SWR-IMPLICIT-ANY": "P1",
-        "BUG-MSW-SCHEMALESS-JSON": "P2"
-      },
+      "rootCauseIds": [],
       "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
     },
     {
@@ -2305,19 +2164,12 @@
         "scenarios/generators/tsconfig.swr-minimal.json"
       ],
       "expected": "strict compilation succeeds without the shared inline-enum fixture",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-SWR-MIN-TS56.json",
-        "reports/evidence/failures/TSC-SWR-MIN-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-SWR-MIN-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-SWR-MIN-TS56.json"
       ],
-      "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
-      "rootCauseIds": [
-        "BUG-SWR-IMPLICIT-ANY"
-      ],
-      "severity": "P1",
       "notes": ""
     },
     {
@@ -2335,19 +2187,12 @@
         "scenarios/generators/tsconfig.msw-minimal.json"
       ],
       "expected": "strict compilation succeeds without the shared inline-enum fixture",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-MSW-MIN-TS56.json",
-        "reports/evidence/failures/TSC-MSW-MIN-TS56.stdout.txt",
-        "reports/evidence/failures/TSC-MSW-MIN-TS56.stderr.txt"
+        "reports/evidence/commands/TSC-MSW-MIN-TS56.json"
       ],
-      "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
-      "rootCauseIds": [
-        "BUG-MSW-SCHEMALESS-JSON"
-      ],
-      "severity": "P2",
       "notes": ""
     },
     {
@@ -2388,19 +2233,12 @@
         "scenarios/generators/tsconfig.swr-minimal.json"
       ],
       "expected": "strict compilation succeeds without the shared inline-enum fixture",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-SWR-MIN-TS6.json",
-        "reports/evidence/failures/TSC-SWR-MIN-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-SWR-MIN-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-SWR-MIN-TS6.json"
       ],
-      "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
-      "rootCauseIds": [
-        "BUG-SWR-IMPLICIT-ANY"
-      ],
-      "severity": "P1",
       "notes": ""
     },
     {
@@ -2418,19 +2256,12 @@
         "scenarios/generators/tsconfig.msw-minimal.json"
       ],
       "expected": "strict compilation succeeds without the shared inline-enum fixture",
-      "actual": "exit 2",
-      "exitCode": 2,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-MSW-MIN-TS6.json",
-        "reports/evidence/failures/TSC-MSW-MIN-TS6.stdout.txt",
-        "reports/evidence/failures/TSC-MSW-MIN-TS6.stderr.txt"
+        "reports/evidence/commands/TSC-MSW-MIN-TS6.json"
       ],
-      "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
-      "rootCauseIds": [
-        "BUG-MSW-SCHEMALESS-JSON"
-      ],
-      "severity": "P2",
       "notes": ""
     },
     {
@@ -2471,19 +2302,12 @@
         "scenarios/generators/tsconfig.swr-minimal.json"
       ],
       "expected": "strict compilation succeeds without the shared inline-enum fixture",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-SWR-MIN-TS7.json",
-        "reports/evidence/failures/TSC-SWR-MIN-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-SWR-MIN-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-SWR-MIN-TS7.json"
       ],
-      "rootCauseId": "BUG-SWR-IMPLICIT-ANY",
-      "rootCauseIds": [
-        "BUG-SWR-IMPLICIT-ANY"
-      ],
-      "severity": "P1",
       "notes": ""
     },
     {
@@ -2501,19 +2325,12 @@
         "scenarios/generators/tsconfig.msw-minimal.json"
       ],
       "expected": "strict compilation succeeds without the shared inline-enum fixture",
-      "actual": "exit 1",
-      "exitCode": 1,
-      "status": "FAIL",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
       "evidence": [
-        "reports/evidence/commands/TSC-MSW-MIN-TS7.json",
-        "reports/evidence/failures/TSC-MSW-MIN-TS7.stdout.txt",
-        "reports/evidence/failures/TSC-MSW-MIN-TS7.stderr.txt"
+        "reports/evidence/commands/TSC-MSW-MIN-TS7.json"
       ],
-      "rootCauseId": "BUG-MSW-SCHEMALESS-JSON",
-      "rootCauseIds": [
-        "BUG-MSW-SCHEMALESS-JSON"
-      ],
-      "severity": "P2",
       "notes": ""
     },
     {
@@ -2741,6 +2558,35 @@
         "reports/evidence/hashes/lifecycle.json"
       ],
       "notes": ""
+    },
+    {
+      "id": "HARNESS-REPORT-GENERATION",
+      "suite": "harness",
+      "feature": "result-driven report generation",
+      "command": "/usr/local/bin/node scripts/report.mjs",
+      "args": [
+        "scripts/report.mjs"
+      ],
+      "expected": "report completes without timeout/signal and exits 0",
+      "actual": {
+        "stage": "verify:report",
+        "command": "/usr/local/bin/node scripts/report.mjs",
+        "exitCode": 1,
+        "timedOut": false,
+        "stdout": "wrote result-driven reports (98 cases, 6 failures)\n",
+        "stderr": ""
+      },
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": [
+        "reports/evidence/commands/HARNESS-REPORT-GENERATION.json"
+      ],
+      "severity": "HARNESS",
+      "notes": "",
+      "rootCauseId": "HARNESS-HARNESS-REPORT-GENERATION",
+      "rootCauseIds": [
+        "HARNESS-HARNESS-REPORT-GENERATION"
+      ]
     }
   ]
 }
