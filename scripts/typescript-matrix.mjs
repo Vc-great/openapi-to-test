@@ -127,6 +127,14 @@ for (const compiler of compilers) {
   item.actualVersion = actualVersion;
 }
 
+await recordCommand({
+  id: "GEN-FULL-SWR",
+  feature: "Generate full SWR fixture for strict matrix",
+  executable: process.execPath,
+  args: [openapiBin, "generate", "--config", "swr.config.ts", "--json"],
+  expected: "full SWR generation succeeds before strict compilation",
+});
+
 function classifyFullFailure(plugin, outputText) {
   const rootCauseIds = [];
   if (/UseroptionalInlineModeEnumValue|TS2552/.test(outputText)) {
