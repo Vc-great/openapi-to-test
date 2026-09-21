@@ -30,13 +30,48 @@ const compilers = [
 }));
 
 const fullScenarios = [
-  { key: "TS-TYPE", plugin: "pluginTSType", config: "scenarios/generators/tsconfig.ts-type.json" },
-  { key: "TS-REQUEST", plugin: "pluginTSRequest", config: "scenarios/generators/tsconfig.ts-request.json" },
-  { key: "ZOD", plugin: "pluginZod", config: "scenarios/generators/tsconfig.zod.json" },
-  { key: "SWR", plugin: "pluginSWR", config: "scenarios/generators/tsconfig.swr.json" },
-  { key: "VUE-QUERY", plugin: "pluginVueQuery", config: "scenarios/generators/tsconfig.vue-query.json" },
-  { key: "MSW", plugin: "pluginMSW", config: "scenarios/generators/tsconfig.msw.json" },
-  { key: "OAS31", plugin: "OpenAPI 3.1 fixture", config: "scenarios/generators/tsconfig.oas31.json" },
+  {
+    key: "TS-TYPE",
+    plugin: "pluginTSType",
+    generationConfig: "ts-type.config.ts",
+    tsconfig: "scenarios/generators/tsconfig.ts-type.json",
+  },
+  {
+    key: "TS-REQUEST",
+    plugin: "pluginTSRequest",
+    generationConfig: "ts-request.config.ts",
+    tsconfig: "scenarios/generators/tsconfig.ts-request.json",
+  },
+  {
+    key: "ZOD",
+    plugin: "pluginZod",
+    generationConfig: "zod.config.ts",
+    tsconfig: "scenarios/generators/tsconfig.zod.json",
+  },
+  {
+    key: "SWR",
+    plugin: "pluginSWR",
+    generationConfig: "swr.config.ts",
+    tsconfig: "scenarios/generators/tsconfig.swr.json",
+  },
+  {
+    key: "VUE-QUERY",
+    plugin: "pluginVueQuery",
+    generationConfig: "vue-query.config.ts",
+    tsconfig: "scenarios/generators/tsconfig.vue-query.json",
+  },
+  {
+    key: "MSW",
+    plugin: "pluginMSW",
+    generationConfig: "msw.config.ts",
+    tsconfig: "scenarios/generators/tsconfig.msw.json",
+  },
+  {
+    key: "OAS31",
+    plugin: "OpenAPI 3.1 fixture",
+    generationConfig: "oas31.config.ts",
+    tsconfig: "scenarios/generators/tsconfig.oas31.json",
+  },
 ];
 
 const strictOptions = {
@@ -108,6 +143,19 @@ for (const definition of generationDefinitions) {
   });
 }
 
+const fullGenerationRuns = new Map();
+for (const scenario of fullScenarios) {
+  const generation = await recordCommand({
+    id: `GEN-FULL-${scenario.key}`,
+    feature: `Generate ${scenario.plugin} full fixture for strict matrix`,
+    plugin: scenario.plugin,
+    executable: process.execPath,
+    args: [openapiBin, "generate", "--config", scenario.generationConfig, "--json"],
+    expected: "full fixture generation succeeds before strict compilation",
+  });
+  fullGenerationRuns.set(scenario.key, generation);
+}
+
 const actualVersions = new Map();
 for (const compiler of compilers) {
   const { actual, item } = await recordCommand({
@@ -127,14 +175,6 @@ for (const compiler of compilers) {
   item.actualVersion = actualVersion;
 }
 
-await recordCommand({
-  id: "GEN-FULL-SWR",
-  feature: "Generate full SWR fixture for strict matrix",
-  executable: process.execPath,
-  args: [openapiBin, "generate", "--config", "swr.config.ts", "--json"],
-  expected: "full SWR generation succeeds before strict compilation",
-});
-
 function classifyFullFailure(plugin, outputText) {
   const rootCauseIds = [];
   if (/UseroptionalInlineModeEnumValue|TS2552/.test(outputText)) {
@@ -153,9 +193,11 @@ for (const compiler of compilers) {
   for (const scenario of fullScenarios) {
     const id = `TSC-${scenario.key}-${compiler.key}`;
     await clearFailureEvidence(id);
+    const generation = fullGenerationRuns.get(scenario.key);
+    const generationFailed = generation.item.status === "FAIL";
     const run = await runProcess({
       executable: process.execPath,
-      args: [compiler.entry, "-p", scenario.config],
+      args: [compiler.entry, "-p", scenario.tsconfig],
       cwd: root,
       stage: id,
     });
@@ -166,7 +208,9 @@ for (const compiler of compilers) {
     });
     const status = run.exitCode === 0 ? "PASS" : "FAIL";
     const rootCauseIds = status === "FAIL"
-      ? classifyFullFailure(scenario.plugin, `${run.stdout}\n${run.stderr}`)
+      ? generationFailed
+        ? [`GEN-FULL-${scenario.key}`]
+        : classifyFullFailure(scenario.plugin, `${run.stdout}\n${run.stderr}`)
       : [];
     if (status === "FAIL" && rootCauseIds.length === 0) {
       rootCauseIds.push(`COMPAT-${scenario.key}-${compiler.key}`);
@@ -192,11 +236,12 @@ for (const compiler of compilers) {
       rootCauseIds,
       severity: status === "FAIL" ? (rootCauseIds[0]?.startsWith("COMPAT-") ? "P2" : "P1") : undefined,
       rootCauseSeverities: status === "FAIL" ? {
+        [`GEN-FULL-${scenario.key}`]: "P1",
         "BUG-INLINE-ENUM-CASING": "P1",
         "BUG-SWR-IMPLICIT-ANY": "P1",
         "BUG-MSW-SCHEMALESS-JSON": "P2",
       } : undefined,
-      notes: "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures.",
+      notes: "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures.",
     });
   }
 }
