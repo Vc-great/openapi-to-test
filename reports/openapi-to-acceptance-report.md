@@ -2,21 +2,21 @@
 
 ## 总体结论
 
-本次共执行 99 个结构化用例，7 个测试用例失败，对应 7 个独立根因；Known Limitation 为 1 个。仍建议保持 RC，不将当前版本提升为稳定推荐。
+本次共执行 106 个结构化用例，7 个测试用例失败，对应 7 个独立根因；Known Limitation 为 1 个。仍建议保持 RC，不将当前版本提升为稳定推荐。
 
 ## 报告与环境证据
 
 - Report schema version：2.0.0
-- Run ID：5b9070a2-e906-4e11-8869-a102d7d7b876
-- Test harness commit：c416a088d0c6dd91d59a6531a9fccc5b91998d4f
+- Run ID：f526b127-7981-492d-9cee-f41455d43ab2
+- Test harness commit：75790f68fbaf50388a01ca440ed08214e9f2c0f7
 - Baseline branch：main
-- Baseline Git HEAD：c416a088d0c6dd91d59a6531a9fccc5b91998d4f
-- Baseline working tree status：192 条变更
-- Verify startedAt：2026-09-18T15:24:11.667Z
-- Results generatedAt：2026-09-18T15:26:28.768Z
-- Report generatedAt：2026-09-18T15:27:39.249Z
-- Current report-time Git HEAD：c416a088d0c6dd91d59a6531a9fccc5b91998d4f
-- Current report-time working tree status：192 条变更
+- Baseline Git HEAD：75790f68fbaf50388a01ca440ed08214e9f2c0f7
+- Baseline working tree status：46 条变更
+- Verify startedAt：2026-09-21T06:40:39.624Z
+- Results generatedAt：2026-09-21T06:43:07.404Z
+- Report generatedAt：2026-09-21T06:44:17.920Z
+- Current report-time Git HEAD：75790f68fbaf50388a01ca440ed08214e9f2c0f7
+- Current report-time working tree status：112 条变更
 - Tested package：openapi-to@4.0.0-rc.3
 - Tested package integrity：未能证明一致
 - Node：v24.20.0
@@ -29,7 +29,7 @@
 
 | Total | PASS | FAIL | KNOWN_LIMITATION | BLOCKED | SKIPPED | 独立缺陷 |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 99 | 90 | 7 | 1 | 1 | 0 | 7 |
+| 106 | 97 | 7 | 1 | 1 | 0 | 7 |
 
 ## TypeScript matrix
 
@@ -57,7 +57,7 @@
 | npm package / bin / ESM / CJS / declarations | FAIL | PUB-001, CLI-003, CLI-004, CLI-005, PUB-002, PUB-003 |
 | CLI validation / inspect / diff | PASS | INSPECT-001, VAL-001, VAL-002, VAL-003, VAL-003B, VAL-003C, VAL-004, VAL-005, VAL-006, VAL-007, DIFF-001 |
 | six plugin generation | PASS | GEN-001, GEN-002, GEN-003, GEN-004, GEN-005, GEN-006, GEN-007 |
-| TypeScript compatibility matrix | PASS | GEN-ISO-SWR, GEN-ISO-MSW, GEN-ISO-TS-REQUEST, TS-VERSION-TS56, TS-VERSION-TS6, TS-VERSION-TS7, TSC-TS-TYPE-TS56, TSC-TS-REQUEST-TS56, TSC-ZOD-TS56, TSC-SWR-TS56, TSC-VUE-QUERY-TS56, TSC-MSW-TS56, TSC-OAS31-TS56, TSC-TS-TYPE-TS6, TSC-TS-REQUEST-TS6, TSC-ZOD-TS6, TSC-SWR-TS6, TSC-VUE-QUERY-TS6, TSC-MSW-TS6, TSC-OAS31-TS6, TSC-TS-TYPE-TS7, TSC-TS-REQUEST-TS7, TSC-ZOD-TS7, TSC-SWR-TS7, TSC-VUE-QUERY-TS7, TSC-MSW-TS7, TSC-OAS31-TS7, TSC-SWR-MIN-TS56, TSC-MSW-MIN-TS56, TSC-TS-REQUEST-BOUNDARY-TS56, TSC-SWR-MIN-TS6, TSC-MSW-MIN-TS6, TSC-TS-REQUEST-BOUNDARY-TS6, TSC-SWR-MIN-TS7, TSC-MSW-MIN-TS7, TSC-TS-REQUEST-BOUNDARY-TS7 |
+| TypeScript compatibility matrix | PASS | GEN-ISO-SWR, GEN-ISO-MSW, GEN-ISO-TS-REQUEST, GEN-FULL-TS-TYPE, GEN-FULL-TS-REQUEST, GEN-FULL-ZOD, GEN-FULL-SWR, GEN-FULL-VUE-QUERY, GEN-FULL-MSW, GEN-FULL-OAS31, TS-VERSION-TS56, TS-VERSION-TS6, TS-VERSION-TS7, TSC-TS-TYPE-TS56, TSC-TS-REQUEST-TS56, TSC-ZOD-TS56, TSC-SWR-TS56, TSC-VUE-QUERY-TS56, TSC-MSW-TS56, TSC-OAS31-TS56, TSC-TS-TYPE-TS6, TSC-TS-REQUEST-TS6, TSC-ZOD-TS6, TSC-SWR-TS6, TSC-VUE-QUERY-TS6, TSC-MSW-TS6, TSC-OAS31-TS6, TSC-TS-TYPE-TS7, TSC-TS-REQUEST-TS7, TSC-ZOD-TS7, TSC-SWR-TS7, TSC-VUE-QUERY-TS7, TSC-MSW-TS7, TSC-OAS31-TS7, TSC-SWR-MIN-TS56, TSC-MSW-MIN-TS56, TSC-TS-REQUEST-BOUNDARY-TS56, TSC-SWR-MIN-TS6, TSC-MSW-MIN-TS6, TSC-TS-REQUEST-BOUNDARY-TS6, TSC-SWR-MIN-TS7, TSC-MSW-MIN-TS7, TSC-TS-REQUEST-BOUNDARY-TS7 |
 | lifecycle | PASS | LIFE-001, LIFE-003, LIFE-002, LIFE-004, LIFE-005, LIFE-006, LIFE-007, LIFE-008, LIFE-009 |
 | MCP | PASS | MCP-SUITE |
 | Skills | FAIL | SKILL-001, SKILL-002, SKILL-003, SKILL-004 |
@@ -154,6 +154,13 @@
 | GEN-ISO-SWR | Generate minimal SWR isolation fixture | PASS | 0 | reports/evidence/commands/GEN-ISO-SWR.json |
 | GEN-ISO-MSW | Generate minimal MSW schema-less isolation fixture | PASS | 0 | reports/evidence/commands/GEN-ISO-MSW.json |
 | GEN-ISO-TS-REQUEST | Generate TS Request header/cookie boundary fixture | PASS | 0 | reports/evidence/commands/GEN-ISO-TS-REQUEST.json |
+| GEN-FULL-TS-TYPE | Generate pluginTSType full fixture for strict matrix | PASS | 0 | reports/evidence/commands/GEN-FULL-TS-TYPE.json |
+| GEN-FULL-TS-REQUEST | Generate pluginTSRequest full fixture for strict matrix | PASS | 0 | reports/evidence/commands/GEN-FULL-TS-REQUEST.json |
+| GEN-FULL-ZOD | Generate pluginZod full fixture for strict matrix | PASS | 0 | reports/evidence/commands/GEN-FULL-ZOD.json |
+| GEN-FULL-SWR | Generate pluginSWR full fixture for strict matrix | PASS | 0 | reports/evidence/commands/GEN-FULL-SWR.json |
+| GEN-FULL-VUE-QUERY | Generate pluginVueQuery full fixture for strict matrix | PASS | 0 | reports/evidence/commands/GEN-FULL-VUE-QUERY.json |
+| GEN-FULL-MSW | Generate pluginMSW full fixture for strict matrix | PASS | 0 | reports/evidence/commands/GEN-FULL-MSW.json |
+| GEN-FULL-OAS31 | Generate OpenAPI 3.1 fixture full fixture for strict matrix | PASS | 0 | reports/evidence/commands/GEN-FULL-OAS31.json |
 | TS-VERSION-TS56 | TypeScript legacy actual version | PASS | 0 | reports/evidence/commands/TS-VERSION-TS56.json |
 | TS-VERSION-TS6 | TypeScript baseline actual version | PASS | 0 | reports/evidence/commands/TS-VERSION-TS6.json |
 | TS-VERSION-TS7 | TypeScript current actual version | PASS | 0 | reports/evidence/commands/TS-VERSION-TS7.json |

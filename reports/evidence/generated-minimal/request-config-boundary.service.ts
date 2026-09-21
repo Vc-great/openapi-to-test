@@ -4,15 +4,16 @@
  * @generated
  */
 
-import type { GetUserPathParams, GetUserResponse } from "./get-user.types.ts";
+import type { GetUserPathParams, GetUserQueryParams, GetUserResponse } from "./get-user.types.ts";
 import type { AxiosResponse, AxiosRequestConfig } from "axios";
 import { request } from "@/utils/request";
 
 /** */
-export async function getUserService(userId: GetUserPathParams['userId'], requestConfig?: Partial<AxiosRequestConfig>) {
+export async function getUserService(userId: GetUserPathParams['userId'], params?: GetUserQueryParams, requestConfig?: Partial<AxiosRequestConfig>) {
   const res = await request<GetUserResponse, AxiosResponse<GetUserResponse>>({
     method: 'GET',
     url: `/users/${userId}`,
+    params,
     ...requestConfig
   });
   return res.data;

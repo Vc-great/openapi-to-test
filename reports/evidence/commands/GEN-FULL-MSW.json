@@ -1,18 +1,18 @@
 {
-  "id": "GEN-004",
-  "stage": "GEN-004",
+  "id": "GEN-FULL-MSW",
+  "stage": "GEN-FULL-MSW",
   "executable": "/usr/local/bin/node",
   "args": [
     "<workspace>/node_modules/openapi-to/bin/openapi.js",
     "generate",
     "--config",
-    "swr.config.ts",
+    "msw.config.ts",
     "--json"
   ],
   "cwd": ".",
-  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config swr.config.ts --json",
+  "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config msw.config.ts --json",
   "exitCode": 0,
   "signal": null,
   "timedOut": false,
-  "durationMs": 772
+  "durationMs": 709
 }

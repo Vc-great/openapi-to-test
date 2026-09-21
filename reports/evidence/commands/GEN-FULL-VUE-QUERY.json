@@ -1,6 +1,6 @@
 {
-  "id": "GEN-005",
-  "stage": "GEN-005",
+  "id": "GEN-FULL-VUE-QUERY",
+  "stage": "GEN-FULL-VUE-QUERY",
   "executable": "/usr/local/bin/node",
   "args": [
     "<workspace>/node_modules/openapi-to/bin/openapi.js",
@@ -14,5 +14,5 @@
   "exitCode": 0,
   "signal": null,
   "timedOut": false,
-  "durationMs": 735
+  "durationMs": 722
 }

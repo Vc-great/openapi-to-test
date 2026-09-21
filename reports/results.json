@@ -1,72 +1,18 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-09-18T15:26:28.768Z",
+  "generatedAt": "2026-09-21T06:43:07.404Z",
   "source": "verify",
-  "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
-  "verifyStartedAt": "2026-09-18T15:24:11.667Z",
-  "startedAt": "2026-09-18T15:24:11.667Z",
-  "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
+  "runId": "f526b127-7981-492d-9cee-f41455d43ab2",
+  "verifyStartedAt": "2026-09-21T06:40:39.624Z",
+  "startedAt": "2026-09-21T06:40:39.624Z",
+  "testHarnessCommit": "75790f68fbaf50388a01ca440ed08214e9f2c0f7",
   "baseline": {
     "branch": "main",
-    "gitHead": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
+    "gitHead": "75790f68fbaf50388a01ca440ed08214e9f2c0f7",
     "gitStatus": [
-      "M openapi.config.ts",
-      " M reports/environment.json",
-      " M reports/evidence/commands/BASELINE-START.json",
-      " M reports/evidence/commands/CFG-001.json",
-      " M reports/evidence/commands/CFG-002.json",
-      " M reports/evidence/commands/CFG-003.json",
-      " M reports/evidence/commands/CLI-001.json",
-      " M reports/evidence/commands/CLI-002.json",
-      " M reports/evidence/commands/CLI-003.json",
-      " M reports/evidence/commands/CLI-004.json",
-      " M reports/evidence/commands/CLI-005.json",
-      " M reports/evidence/commands/DIFF-001.json",
-      " M reports/evidence/commands/ENV-DIST-TAGS.json",
-      " M reports/evidence/commands/ENV-GIT-HEAD.json",
-      " M reports/evidence/commands/ENV-GIT-STATUS.json",
-      " M reports/evidence/commands/ENV-INTEGRITY.json",
-      " M reports/evidence/commands/ENV-PNPM.json",
-      " M reports/evidence/commands/ENV-REGISTRY.json",
-      " M reports/evidence/commands/GEN-001.json",
-      " M reports/evidence/commands/GEN-002.json",
-      " M reports/evidence/commands/GEN-003.json",
-      " M reports/evidence/commands/GEN-004.json",
-      " M reports/evidence/commands/GEN-005.json",
-      " M reports/evidence/commands/GEN-006.json",
-      " M reports/evidence/commands/GEN-007.json",
-      " M reports/evidence/commands/GEN-ISO-MSW.json",
+      "M reports/evidence/commands/GEN-ISO-MSW.json",
       " M reports/evidence/commands/GEN-ISO-SWR.json",
       " M reports/evidence/commands/GEN-ISO-TS-REQUEST.json",
-      " M reports/evidence/commands/INIT-002.json",
-      " M reports/evidence/commands/INIT-003.json",
-      " M reports/evidence/commands/INIT-003B.json",
-      " M reports/evidence/commands/INIT-004.json",
-      " M reports/evidence/commands/INSPECT-001.json",
-      " M reports/evidence/commands/LIFE-001.json",
-      " M reports/evidence/commands/LIFE-002.json",
-      " M reports/evidence/commands/LIFE-003.json",
-      " M reports/evidence/commands/LIFE-004.json",
-      " M reports/evidence/commands/LIFE-005.json",
-      " M reports/evidence/commands/LIFE-006.json",
-      " M reports/evidence/commands/LIFE-007.json",
-      " M reports/evidence/commands/LIFE-008.json",
-      " M reports/evidence/commands/LIFE-009.json",
-      " M reports/evidence/commands/MCP-SUITE.json",
-      " M reports/evidence/commands/MULTI-001.json",
-      " M reports/evidence/commands/MULTI-002.json",
-      " M reports/evidence/commands/PUB-001.json",
-      " M reports/evidence/commands/SEC-CLI-001.json",
-      " M reports/evidence/commands/SEC-CLI-002.json",
-      " M reports/evidence/commands/SEC-CLI-003.json",
-      " M reports/evidence/commands/SEC-CLI-004.json",
-      " M reports/evidence/commands/SEC-CLI-005.json",
-      " M reports/evidence/commands/SEC-CLI-006.json",
-      " M reports/evidence/commands/SEC-REMOTE.json",
-      " M reports/evidence/commands/SKILL-001.json",
-      " M reports/evidence/commands/SKILL-002.json",
-      " M reports/evidence/commands/SKILL-003.json",
-      " M reports/evidence/commands/SKILL-004.json",
       " M reports/evidence/commands/TS-VERSION-TS56.json",
       " M reports/evidence/commands/TS-VERSION-TS6.json",
       " M reports/evidence/commands/TS-VERSION-TS7.json",
@@ -100,125 +46,33 @@
       " M reports/evidence/commands/TSC-ZOD-TS56.json",
       " M reports/evidence/commands/TSC-ZOD-TS6.json",
       " M reports/evidence/commands/TSC-ZOD-TS7.json",
-      " M reports/evidence/commands/VAL-001.json",
-      " M reports/evidence/commands/VAL-002.json",
-      " M reports/evidence/commands/VAL-003.json",
-      " M reports/evidence/commands/VAL-003B.json",
-      " M reports/evidence/commands/VAL-003C.json",
-      " M reports/evidence/commands/VAL-004.json",
-      " M reports/evidence/commands/VAL-005.json",
-      " M reports/evidence/commands/VAL-006.json",
-      " M reports/evidence/commands/VAL-007.json",
       " M reports/evidence/commands/ZOD-001.json",
-      " D reports/evidence/failures/TSC-MSW-MIN-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-MSW-MIN-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-MSW-MIN-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-MSW-MIN-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-MSW-MIN-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-MSW-MIN-TS7.stdout.txt",
-      " D reports/evidence/failures/TSC-MSW-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-MSW-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-MSW-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-MSW-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-MSW-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-MSW-TS7.stdout.txt",
-      " D reports/evidence/failures/TSC-SWR-MIN-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-SWR-MIN-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-SWR-MIN-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-SWR-MIN-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-SWR-MIN-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-SWR-MIN-TS7.stdout.txt",
-      " D reports/evidence/failures/TSC-SWR-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-SWR-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-SWR-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-SWR-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-SWR-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-SWR-TS7.stdout.txt",
-      " D reports/evidence/failures/TSC-TS-REQUEST-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-TS-REQUEST-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-TS-REQUEST-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-TS-REQUEST-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-TS-REQUEST-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-TS-REQUEST-TS7.stdout.txt",
-      " D reports/evidence/failures/TSC-TS-TYPE-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-TS-TYPE-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-TS-TYPE-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-TS-TYPE-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-TS-TYPE-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-TS-TYPE-TS7.stdout.txt",
-      " D reports/evidence/failures/TSC-VUE-QUERY-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-VUE-QUERY-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-VUE-QUERY-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-VUE-QUERY-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-VUE-QUERY-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-VUE-QUERY-TS7.stdout.txt",
-      " D reports/evidence/failures/TSC-ZOD-TS56.stderr.txt",
-      " D reports/evidence/failures/TSC-ZOD-TS56.stdout.txt",
-      " D reports/evidence/failures/TSC-ZOD-TS6.stderr.txt",
-      " D reports/evidence/failures/TSC-ZOD-TS6.stdout.txt",
-      " D reports/evidence/failures/TSC-ZOD-TS7.stderr.txt",
-      " D reports/evidence/failures/TSC-ZOD-TS7.stdout.txt",
-      " M reports/evidence/generated-minimal/inline-enum-user.model.ts",
-      " M reports/evidence/generated-minimal/msw-schema-less.handler.ts",
-      " M reports/evidence/generated-minimal/swr-implicit-any.query.ts",
-      " M reports/evidence/hashes/generated-minimal.sha256.json",
-      " M reports/evidence/runs/latest/baseline.json",
-      " M reports/generated-code-review.md",
-      " M reports/openapi-to-acceptance-report.md",
-      " M reports/results.json",
-      " M reports/snapshots/mcp-calls.json",
-      " M reports/snapshots/mcp-tools.json",
-      " M reports/typescript-compatibility-matrix.md",
-      " M scripts/__tests__/install-openapi-to-main.test.mjs",
-      " M scripts/acceptance.mjs",
-      " M scripts/install-openapi-to-main.mjs",
-      " M scripts/lib/openapi-to-main.mjs",
       " M scripts/typescript-matrix.mjs",
-      "?? .gitattributes",
-      "?? controlled-remote.config.ts",
-      "?? docs/openapi-to-natural-language-acceptance-2026-09-18-rerun-2.md",
-      "?? docs/openapi-to-natural-language-acceptance-2026-09-18-rerun.md",
-      "?? docs/openapi-to-natural-language-acceptance-2026-09-18.md",
-      "?? fixtures/acceptance/",
-      "?? prompt-injection.config.ts",
-      "?? public-remote.config.ts",
-      "?? react-query.config.ts",
-      "?? reports/evidence/commands/HARNESS-REPORT-GENERATION.json",
-      "?? reports/evidence/failures/CFG-003.stderr.txt",
-      "?? reports/evidence/failures/CFG-003.stdout.txt",
-      "?? reports/evidence/failures/SEC-REMOTE.stderr.txt",
-      "?? reports/evidence/failures/SEC-REMOTE.stdout.txt",
-      "?? reports/evidence/failures/SKILL-001.stderr.txt",
-      "?? reports/evidence/failures/SKILL-001.stdout.txt",
-      "?? reports/evidence/failures/SKILL-002.stderr.txt",
-      "?? reports/evidence/failures/SKILL-002.stdout.txt",
-      "?? reports/evidence/failures/SKILL-003.stderr.txt",
-      "?? reports/evidence/failures/SKILL-003.stdout.txt",
-      "?? scenarios/generators/consumers/react-query.ts",
-      "?? scenarios/generators/tsconfig.react-query.json",
-      "?? scripts/controlled-remote-rerun.mjs",
-      "?? scripts/local-rerun-crosscheck.mjs",
-      "?? scripts/prompt-injection-rerun.mjs",
-      "?? scripts/public-remote-rerun.mjs",
-      "?? src/types/",
-      "?? swr.config.ts"
+      "?? reports/evidence/commands/GEN-FULL-MSW.json",
+      "?? reports/evidence/commands/GEN-FULL-OAS31.json",
+      "?? reports/evidence/commands/GEN-FULL-SWR.json",
+      "?? reports/evidence/commands/GEN-FULL-TS-REQUEST.json",
+      "?? reports/evidence/commands/GEN-FULL-TS-TYPE.json",
+      "?? reports/evidence/commands/GEN-FULL-VUE-QUERY.json",
+      "?? reports/evidence/commands/GEN-FULL-ZOD.json",
+      "?? swr.config.ts.orig"
     ],
-    "startedAt": "2026-09-18T15:24:11.667Z",
+    "startedAt": "2026-09-21T06:40:39.624Z",
     "evidence": "reports/evidence/runs/latest/baseline.json"
   },
   "sources": {
     "acceptance": {
-      "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
-      "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
+      "runId": "f526b127-7981-492d-9cee-f41455d43ab2",
+      "testHarnessCommit": "75790f68fbaf50388a01ca440ed08214e9f2c0f7",
       "source": "acceptance",
-      "output": "<workspace>/.tmp/verify-5b9070a2-e906-4e11-8869-a102d7d7b876/acceptance.json",
+      "output": "<workspace>/.tmp/verify-f526b127-7981-492d-9cee-f41455d43ab2/acceptance.json",
       "exitCode": 1,
       "signal": null,
       "timedOut": false,
       "fragmentIdentityValid": true,
       "exitCodeConsistent": true,
-      "generatedAt": "2026-09-18T15:24:32.523Z",
-      "startedAt": "2026-09-18T15:24:12.621Z",
+      "generatedAt": "2026-09-21T06:41:02.434Z",
+      "startedAt": "2026-09-21T06:40:40.948Z",
       "summary": {
         "total": 53,
         "pass": 45,
@@ -275,20 +129,20 @@
       }
     },
     "typescript-matrix": {
-      "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
-      "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
+      "runId": "f526b127-7981-492d-9cee-f41455d43ab2",
+      "testHarnessCommit": "75790f68fbaf50388a01ca440ed08214e9f2c0f7",
       "source": "typescript-matrix",
-      "output": "<workspace>/.tmp/verify-5b9070a2-e906-4e11-8869-a102d7d7b876/typescript-matrix.json",
+      "output": "<workspace>/.tmp/verify-f526b127-7981-492d-9cee-f41455d43ab2/typescript-matrix.json",
       "exitCode": 0,
       "signal": null,
       "timedOut": false,
       "fragmentIdentityValid": true,
       "exitCodeConsistent": true,
-      "generatedAt": "2026-09-18T15:25:12.912Z",
-      "startedAt": "2026-09-18T15:24:32.560Z",
+      "generatedAt": "2026-09-21T06:41:51.008Z",
+      "startedAt": "2026-09-21T06:41:02.479Z",
       "summary": {
-        "total": 36,
-        "pass": 36,
+        "total": 43,
+        "pass": 43,
         "fail": 0,
         "knownLimitations": 0,
         "blocked": 0,
@@ -331,17 +185,17 @@
       }
     },
     "lifecycle": {
-      "runId": "5b9070a2-e906-4e11-8869-a102d7d7b876",
-      "testHarnessCommit": "c416a088d0c6dd91d59a6531a9fccc5b91998d4f",
+      "runId": "f526b127-7981-492d-9cee-f41455d43ab2",
+      "testHarnessCommit": "75790f68fbaf50388a01ca440ed08214e9f2c0f7",
       "source": "lifecycle",
-      "output": "<workspace>/.tmp/verify-5b9070a2-e906-4e11-8869-a102d7d7b876/lifecycle.json",
+      "output": "<workspace>/.tmp/verify-f526b127-7981-492d-9cee-f41455d43ab2/lifecycle.json",
       "exitCode": 0,
       "signal": null,
       "timedOut": false,
       "fragmentIdentityValid": true,
       "exitCodeConsistent": true,
-      "generatedAt": "2026-09-18T15:25:18.268Z",
-      "startedAt": "2026-09-18T15:25:12.953Z",
+      "generatedAt": "2026-09-21T06:41:56.817Z",
+      "startedAt": "2026-09-21T06:41:51.050Z",
       "summary": {
         "total": 9,
         "pass": 9,
@@ -366,8 +220,8 @@
     "testHarnessCommitMatchesBaseline": true
   },
   "summary": {
-    "total": 99,
-    "pass": 90,
+    "total": 106,
+    "pass": 97,
     "fail": 7,
     "knownLimitations": 1,
     "blocked": 1,
@@ -1583,6 +1437,160 @@
       "notes": ""
     },
     {
+      "id": "GEN-FULL-TS-TYPE",
+      "suite": "typescript-matrix",
+      "feature": "Generate pluginTSType full fixture for strict matrix",
+      "plugin": "pluginTSType",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config ts-type.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "ts-type.config.ts",
+        "--json"
+      ],
+      "expected": "full fixture generation succeeds before strict compilation",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-FULL-TS-TYPE.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-FULL-TS-REQUEST",
+      "suite": "typescript-matrix",
+      "feature": "Generate pluginTSRequest full fixture for strict matrix",
+      "plugin": "pluginTSRequest",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config ts-request.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "ts-request.config.ts",
+        "--json"
+      ],
+      "expected": "full fixture generation succeeds before strict compilation",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-FULL-TS-REQUEST.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-FULL-ZOD",
+      "suite": "typescript-matrix",
+      "feature": "Generate pluginZod full fixture for strict matrix",
+      "plugin": "pluginZod",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config zod.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "zod.config.ts",
+        "--json"
+      ],
+      "expected": "full fixture generation succeeds before strict compilation",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-FULL-ZOD.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-FULL-SWR",
+      "suite": "typescript-matrix",
+      "feature": "Generate pluginSWR full fixture for strict matrix",
+      "plugin": "pluginSWR",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config swr.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "swr.config.ts",
+        "--json"
+      ],
+      "expected": "full fixture generation succeeds before strict compilation",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-FULL-SWR.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-FULL-VUE-QUERY",
+      "suite": "typescript-matrix",
+      "feature": "Generate pluginVueQuery full fixture for strict matrix",
+      "plugin": "pluginVueQuery",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config vue-query.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "vue-query.config.ts",
+        "--json"
+      ],
+      "expected": "full fixture generation succeeds before strict compilation",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-FULL-VUE-QUERY.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-FULL-MSW",
+      "suite": "typescript-matrix",
+      "feature": "Generate pluginMSW full fixture for strict matrix",
+      "plugin": "pluginMSW",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config msw.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "msw.config.ts",
+        "--json"
+      ],
+      "expected": "full fixture generation succeeds before strict compilation",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-FULL-MSW.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "GEN-FULL-OAS31",
+      "suite": "typescript-matrix",
+      "feature": "Generate OpenAPI 3.1 fixture full fixture for strict matrix",
+      "plugin": "OpenAPI 3.1 fixture",
+      "command": "/usr/local/bin/node <workspace>/node_modules/openapi-to/bin/openapi.js generate --config oas31.config.ts --json",
+      "args": [
+        "<workspace>/node_modules/openapi-to/bin/openapi.js",
+        "generate",
+        "--config",
+        "oas31.config.ts",
+        "--json"
+      ],
+      "expected": "full fixture generation succeeds before strict compilation",
+      "actual": "exit 0",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": [
+        "reports/evidence/commands/GEN-FULL-OAS31.json"
+      ],
+      "notes": ""
+    },
+    {
       "id": "TS-VERSION-TS56",
       "suite": "typescript-matrix",
       "feature": "TypeScript legacy actual version",
@@ -1667,7 +1675,7 @@
         "reports/evidence/commands/TSC-TS-TYPE-TS56.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-TS-REQUEST-TS56",
@@ -1691,7 +1699,7 @@
         "reports/evidence/commands/TSC-TS-REQUEST-TS56.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-ZOD-TS56",
@@ -1715,7 +1723,7 @@
         "reports/evidence/commands/TSC-ZOD-TS56.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-SWR-TS56",
@@ -1739,7 +1747,7 @@
         "reports/evidence/commands/TSC-SWR-TS56.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-VUE-QUERY-TS56",
@@ -1763,7 +1771,7 @@
         "reports/evidence/commands/TSC-VUE-QUERY-TS56.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-MSW-TS56",
@@ -1787,7 +1795,7 @@
         "reports/evidence/commands/TSC-MSW-TS56.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-OAS31-TS56",
@@ -1811,7 +1819,7 @@
         "reports/evidence/commands/TSC-OAS31-TS56.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-TS-TYPE-TS6",
@@ -1835,7 +1843,7 @@
         "reports/evidence/commands/TSC-TS-TYPE-TS6.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-TS-REQUEST-TS6",
@@ -1859,7 +1867,7 @@
         "reports/evidence/commands/TSC-TS-REQUEST-TS6.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-ZOD-TS6",
@@ -1883,7 +1891,7 @@
         "reports/evidence/commands/TSC-ZOD-TS6.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-SWR-TS6",
@@ -1907,7 +1915,7 @@
         "reports/evidence/commands/TSC-SWR-TS6.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-VUE-QUERY-TS6",
@@ -1931,7 +1939,7 @@
         "reports/evidence/commands/TSC-VUE-QUERY-TS6.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-MSW-TS6",
@@ -1955,7 +1963,7 @@
         "reports/evidence/commands/TSC-MSW-TS6.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-OAS31-TS6",
@@ -1979,7 +1987,7 @@
         "reports/evidence/commands/TSC-OAS31-TS6.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-TS-TYPE-TS7",
@@ -2003,7 +2011,7 @@
         "reports/evidence/commands/TSC-TS-TYPE-TS7.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-TS-REQUEST-TS7",
@@ -2027,7 +2035,7 @@
         "reports/evidence/commands/TSC-TS-REQUEST-TS7.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-ZOD-TS7",
@@ -2051,7 +2059,7 @@
         "reports/evidence/commands/TSC-ZOD-TS7.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-SWR-TS7",
@@ -2075,7 +2083,7 @@
         "reports/evidence/commands/TSC-SWR-TS7.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-VUE-QUERY-TS7",
@@ -2099,7 +2107,7 @@
         "reports/evidence/commands/TSC-VUE-QUERY-TS7.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-MSW-TS7",
@@ -2123,7 +2131,7 @@
         "reports/evidence/commands/TSC-MSW-TS7.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-OAS31-TS7",
@@ -2147,7 +2155,7 @@
         "reports/evidence/commands/TSC-OAS31-TS7.json"
       ],
       "rootCauseIds": [],
-      "notes": "Full fixture is retained; rootCauseIds separate shared from plugin-specific failures."
+      "notes": "Full fixture is generated from the scenario mapping before compilation; rootCauseIds separate generation from compatibility failures."
     },
     {
       "id": "TSC-SWR-MIN-TS56",
@@ -2573,7 +2581,7 @@
         "command": "/usr/local/bin/node scripts/report.mjs",
         "exitCode": 1,
         "timedOut": false,
-        "stdout": "wrote result-driven reports (98 cases, 6 failures)\n",
+        "stdout": "wrote result-driven reports (105 cases, 6 failures)\n",
         "stderr": ""
       },
       "exitCode": 1,

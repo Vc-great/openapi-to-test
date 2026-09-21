@@ -1,6 +1,6 @@
 {
-  "id": "GEN-002",
-  "stage": "GEN-002",
+  "id": "GEN-FULL-TS-REQUEST",
+  "stage": "GEN-FULL-TS-REQUEST",
   "executable": "/usr/local/bin/node",
   "args": [
     "<workspace>/node_modules/openapi-to/bin/openapi.js",
@@ -14,5 +14,5 @@
   "exitCode": 0,
   "signal": null,
   "timedOut": false,
-  "durationMs": 699
+  "durationMs": 682
 }

@@ -1,0 +1,43 @@
+<<<<<<< HEAD
+import { defineConfig, pluginSWR, pluginTSRequest, pluginTSType, pluginZod } from "openapi-to";
+
+export default defineConfig({
+  servers: [{
+    name: "swr-api",
+=======
+import {
+  defineConfig,
+  pluginSWR,
+  pluginTSRequest,
+  pluginTSType,
+  pluginZod,
+} from "openapi-to";
+
+export default defineConfig({
+  servers: [{
+    name: "swr",
+>>>>>>> f7c88bac4b0e182afe2f049f6a2cc4646a7e7c97
+    input: { path: "fixtures/openapi30/main.yaml" },
+    output: {
+      base: "workspace",
+      dir: "scenarios/generators/generated/swr",
+      clean: true,
+    },
+  }],
+  plugins: [
+    pluginTSType(),
+    pluginZod(),
+<<<<<<< HEAD
+    pluginTSRequest({
+      requestImportDeclaration: { moduleSpecifier: "@/utils/request" },
+      requestConfigTypeImportDeclaration: {
+        namedImports: ["AxiosRequestConfig"],
+        moduleSpecifier: "axios",
+      },
+    }),
+=======
+    pluginTSRequest({ requestClient: "axios" }),
+>>>>>>> f7c88bac4b0e182afe2f049f6a2cc4646a7e7c97
+    pluginSWR(),
+  ],
+});

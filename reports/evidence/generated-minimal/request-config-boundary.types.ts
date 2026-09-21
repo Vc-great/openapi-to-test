@@ -4,8 +4,13 @@
  * @generated
  */
 
+import type { ErrorModel } from "../types/models/error.model.ts";
+import type { UserModel } from "../types/models/user.model.ts";
 export type GetUserPathParams = {
   userId: string;
+};
+export type GetUserQueryParams = {
+  verbose?: boolean;
 };
 export type GetUserHeaderParams = {
   "X-Tenant": string;
@@ -13,6 +18,17 @@ export type GetUserHeaderParams = {
 export type GetUserCookieParams = {
   session?: string;
 };
-export type GetUserResponse204 = undefined;
-export type GetUserResponseError = unknown;
-export type GetUserResponse = GetUserResponse204;
+/**
+ * @description Found
+ */
+export type GetUserResponse200 = UserModel;
+/**
+ * @description Missing
+ */
+export type GetUserResponse404 = ErrorModel;
+/**
+ * @description Unknown error
+ */
+export type GetUserResponseDefault = unknown;
+export type GetUserResponseError = GetUserResponse404 | GetUserResponseDefault;
+export type GetUserResponse = GetUserResponse200;

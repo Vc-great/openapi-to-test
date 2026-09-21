@@ -1,6 +1,6 @@
 {
-  "id": "GEN-004",
-  "stage": "GEN-004",
+  "id": "GEN-FULL-SWR",
+  "stage": "GEN-FULL-SWR",
   "executable": "/usr/local/bin/node",
   "args": [
     "<workspace>/node_modules/openapi-to/bin/openapi.js",
@@ -14,5 +14,5 @@
   "exitCode": 0,
   "signal": null,
   "timedOut": false,
-  "durationMs": 772
+  "durationMs": 733
 }
